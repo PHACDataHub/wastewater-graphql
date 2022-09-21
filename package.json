@@ -33,6 +33,8 @@
   "author": "Luc Belliveau <luc.belliveau@phac-aspc.gc.ca>",
   "license": "MIT",
   "dependencies": {
+    "@azure/functions": "^3.2.0",
+    "apollo-server-azure-functions": "^3.10.2",
     "apollo-server-cloud-functions": "^3.10.2",
     "apollo-server-core": "^3.10.2",
     "copyfiles": "^2.4.1",

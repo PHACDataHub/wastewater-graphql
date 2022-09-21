@@ -1,6 +1,7 @@
 import { readFileSync } from 'fs';
 
-import { ApolloServer } from 'apollo-server-cloud-functions';
+// import { ApolloServer } from 'apollo-server-cloud-functions';
+import { ApolloServer } from 'apollo-server-azure-functions';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 
 import wasteWaterAPI from './api';

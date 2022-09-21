@@ -4,6 +4,10 @@
 
 The following environment variables must be defined:
 
+- DB_CONNECTION_STRING
+
+OR
+
 - DB_HOST
 - DB_USER
 - DB_PASSWORD
