@@ -1,0 +1,37 @@
+type MethodSteps {
+  stepID: String
+  methID: String
+  measID: String
+  name: String
+  summ: String
+  stepVer: String
+  refLink: String
+  orgID: String
+  contID: String
+  instID: String
+  value: String
+  unitID: String
+  aggID: String
+  notes: String
+}
+
+input MethodStepsFilter {
+  stepID: StringFilter
+  methID: StringFilter
+  measID: StringFilter
+  name: StringFilter
+  summ: StringFilter
+  stepVer: StringFilter
+  refLink: StringFilter
+  orgID: StringFilter
+  contID: StringFilter
+  instID: StringFilter
+  value: StringFilter
+  unitID: StringFilter
+  aggID: StringFilter
+  notes: StringFilter
+}
+
+extend type Query {
+  methodSteps(filter: MethodStepsFilter): [MethodSteps]!
+}
