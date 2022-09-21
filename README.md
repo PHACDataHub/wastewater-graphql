@@ -1,5 +1,15 @@
 # WasteWater GraphQL API
 
+## Building
+
+    npm install
+    npm run compile
+
+## Deployment
+
+The contents of the `build` folder should be submitted for deployment.  The
+entrypoint is `build/src/index.js`.
+
 ## Environment
 
 The following environment variables must be defined:
