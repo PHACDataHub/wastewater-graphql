@@ -1,0 +1,17 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "build",
+    "skipLibCheck": true,
+    "target": "ES6",
+    "module": "CommonJS"
+  },
+  "include": [
+    "src/**/*.ts",
+    "test/**/*.ts"
+  ],
+  "exclude": [
+    "src/**/*.test.ts",
+    "src/**/*.spec.ts"
+  ]
+}

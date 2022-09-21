@@ -1,0 +1,19 @@
+type TranslationLUs {
+  langID: String
+  partID: String
+  partLab: String
+  partDesc: String
+  partInstr: String
+}
+
+input TranslationLUsFilter {
+  langID: StringFilter
+  partID: StringFilter
+  partLab: StringFilter
+  partDesc: StringFilter
+  partInstr: StringFilter
+}
+
+extend type Query {
+  translationLUs(filter: TranslationLUsFilter): [TranslationLUs]!
+}
