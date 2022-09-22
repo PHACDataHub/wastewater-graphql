@@ -23,11 +23,11 @@
     "clean": "del build",
     "copySchema": "copyfiles src/schema/*.graphql build/",
     "copyVersion": "node version.js",
-    "watch": "npm run prepare && (npm-watch compile & npm-watch start)",
+    "watch": "npm run build && (npm-watch compile & npm-watch start)",
     "compile": "tsc",
     "start": "npx functions-framework --target=handler",
     "fix": "eslint --fix .",
-    "prepare": "npm run clean && npm run copySchema && npm run copyVersion && npm run compile",
+    "build": "npm run clean && npm run copySchema && npm run copyVersion && npm run compile",
     "posttest": "npm run lint"
   },
   "author": "Luc Belliveau <luc.belliveau@phac-aspc.gc.ca>",
