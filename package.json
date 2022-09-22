@@ -20,7 +20,7 @@
   "scripts": {
     "test": "jest --reporters=default --reporters=jest-junit --coverage --coverageReporters=cobertura",
     "lint": "eslint src",
-    "clean": "del build",
+    "clean": "del build && del coverage",
     "copySchema": "copyfiles src/schema/*.graphql build/",
     "copyVersion": "node version.js",
     "watch": "npm run build && (npm-watch compile & npm-watch start)",

@@ -24,15 +24,16 @@ steps:
     command: 'custom'
     customCommand: 'run test'
 
+- task: PublishCodeCoverageResults@1
+  displayName: 'Publish coverage'
+  condition: succeededOrFailed()
+  inputs:
+    failIfCoverageEmpty: true
+    codeCoverageTool: 'Cobertura'
+    summaryFileLocation: 'coverage/cobertura-coverage.xml'
+
 - task: PublishTestResults@2
-  displayName: 'supply test results to pipeline'
+  displayName: 'Publish test results'
   condition: succeededOrFailed()
   inputs:
     testResultsFiles: 'junit.xml'
-
-- task: PublishCodeCoverageResults@1
-  displayName: 'supply coverage results to pipeline'
-  condition: succeededOrFailed()
-  inputs:
-    codeCoverageTool: Cobertura
-    summaryFileLocation: 'coverage/cobertura-coverage.xml'
