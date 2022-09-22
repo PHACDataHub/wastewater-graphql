@@ -31,6 +31,8 @@ steps:
     testResultsFiles: 'junit.xml'
 
 - task: PublishCodeCoverageResults@1
+  displayName: 'supply coverage results to pipeline'
+  condition: succeededOrFailed()
   inputs:
     codeCoverageTool: Cobertura
-    summaryFileLocation: $(System.DefaultWorkingDirectory)/coverage/cobertura-coverage.xml
+    summaryFileLocation: 'coverage/cobertura-coverage.xml'
