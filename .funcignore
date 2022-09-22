@@ -1,7 +1,6 @@
-*.js.map
-*.ts
-.git*
-.vscode
-local.settings.json
-test
-tsconfig.json
+# Ignore everything
+*
+
+# Include the build and node_modules directories
+!build/*
+!node_modules/*
