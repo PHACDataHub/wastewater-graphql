@@ -15,7 +15,17 @@ steps:
     versionSpec: '18.x'
   displayName: 'Install Node.js'
 
-- script: |
-    npm install
-    npm run test
-  displayName: 'npm install and test'
+- task: Npm@1
+  displayName: 'npm install'
+
+- task: Npm@1
+  displayName: 'Run tests'
+  inputs:
+    command: 'custom'
+    customCommand: 'run test'
+
+- task: PublishTestResults@2
+  displayName: 'supply test results to pipeline'
+  condition: succeededOrFailed()
+  inputs:
+    testResultsFiles: 'junit.xml'

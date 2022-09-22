@@ -1,5 +1,8 @@
-# Compiled 
+# Build directory
 build/
+
+# Test results
+junit.xml
 
 # Dependency directory
 # Commenting this out is preferred by some people, see
