@@ -18,7 +18,7 @@
     }
   },
   "scripts": {
-    "test": "jest --reporters=default --reporters=jest-junit --coverage --coverageReporters=cobertura",
+    "test": "jest --reporters=default --reporters=jest-junit --coverage --coverageReporters=cobertura --coverageReporters=text",
     "lint": "eslint src",
     "clean": "del build && del coverage",
     "copySchema": "copyfiles src/schema/*.graphql build/",

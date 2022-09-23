@@ -16,10 +16,12 @@ steps:
   displayName: 'Install Node.js'
 
 - task: Npm@1
-  displayName: 'npm install'
+  displayName: 'Install dependencies'
+  inputs:
+    command: 'ci'
 
 - task: Npm@1
-  displayName: 'Run tests'
+  displayName: 'Tests'
   inputs:
     command: 'custom'
     customCommand: 'run test'
