@@ -18,11 +18,13 @@ steps:
 - task: Npm@1
   displayName: 'Install dependencies'
   inputs:
+    workingDir: $(System.DefaultWorkingDirectory)
     command: 'ci'
 
 - task: Npm@1
   displayName: 'Tests'
   inputs:
+    workingDir: $(System.DefaultWorkingDirectory)
     command: 'custom'
     customCommand: 'run test'
 
@@ -30,6 +32,7 @@ steps:
   displayName: 'Publish coverage'
   condition: succeededOrFailed()
   inputs:
+    workingDir: $(System.DefaultWorkingDirectory)
     failIfCoverageEmpty: true
     codeCoverageTool: 'Cobertura'
     summaryFileLocation: 'coverage/cobertura-coverage.xml'
@@ -38,4 +41,29 @@ steps:
   displayName: 'Publish test results'
   condition: succeededOrFailed()
   inputs:
+    workingDir: $(System.DefaultWorkingDirectory)
     testResultsFiles: 'junit.xml'
+
+- task: Npm@1
+  displayName: 'Build'
+  inputs:
+    command: 'custom'
+    workingDir: $(System.DefaultWorkingDirectory)
+    customCommand: 'run build'   
+
+- task: Npm@1
+  displayName: Remove extraneous packages
+  inputs:
+    command: custom
+    workingDir: $(System.DefaultWorkingDirectory)
+    verbose: false
+    customCommand: prune --production     
+
+- task: ArchiveFiles@2
+  displayName: Archive files
+  inputs:
+    rootFolderOrFile: $(System.DefaultWorkingDirectory)
+    includeRootFolder: false
+
+- task: PublishBuildArtifacts@1
+  displayName: 'Publish Artifacts'
