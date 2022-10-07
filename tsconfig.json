@@ -1,0 +1,28 @@
+{
+  "compilerOptions": {
+    "rootDir": ".",
+    "outDir": "dist",
+    "skipLibCheck": true,
+    "target": "ES6",
+    "module": "CommonJS",
+    "sourceMap": true,
+    "strict": true
+  },
+  "include": [
+    "graphql/**/*.ts"
+  ],
+  "exclude": [
+    "graphql/**/*.test.ts"
+  ]
+}
+
+// {
+//   "compilerOptions": {
+//     "module": "commonjs",
+//     "target": "es6",
+//     "outDir": "dist",
+//     "rootDir": ".",
+//     "sourceMap": true,
+//     "strict": false
+//   }
+// }

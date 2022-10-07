@@ -1,0 +1,27 @@
+type Instruments {
+  instID: String
+  dataID: String
+  name: String
+  model: String
+  descr: String
+  refLink: String
+  instType: String
+  insTypeOth: String
+  notes: String
+}
+
+input InstrumentsFilter {
+  instID: StringFilter
+  dataID: StringFilter
+  name: StringFilter
+  model: StringFilter
+  descr: StringFilter
+  refLink: StringFilter
+  instType: StringFilter
+  insTypeOth: StringFilter
+  notes: StringFilter
+}
+
+extend type Query {
+  instruments(filter: InstrumentsFilter): [Instruments]!
+}

@@ -1,0 +1,25 @@
+type Contacts {
+  contID: String
+  orgID: String
+  firstName: String
+  lastName: String
+  email: String
+  phone: String
+  role: String
+  notes: String
+}
+
+input ContactsFilter {
+  contID: StringFilter
+  orgID: StringFilter
+  firstName: StringFilter
+  lastName: StringFilter
+  email: StringFilter
+  phone: StringFilter
+  role: StringFilter
+  notes: StringFilter
+}
+
+extend type Query {
+  contacts(filter: ContactsFilter): [Contacts]!
+}
