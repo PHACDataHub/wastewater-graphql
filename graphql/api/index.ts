@@ -1,12 +1,33 @@
 import { SQLDataSource } from 'datasource-sql';
 import { Knex } from 'knex';
+import { AuthContext, TableKeys } from '../auth';
 
 import { database } from '../config';
 
+export type DatasourceContext = {
+  dataSources: {
+    wasteWater: WasteWaterAPI;
+  };
+};
+
 export class QuerySet {
   private querySet;
-  public constructor(knex: Knex, table: TableName) {
+  public constructor(knex: Knex, table: TableName, auth: AuthContext) {
     this.querySet = knex.select('*').from(table);
+    if (Object.keys(auth.grants).includes(table)) {
+      const allowedValues = auth.grants[table];
+      if ((allowedValues?.length || 0) > 0 && !allowedValues?.includes('*')) {
+        this.querySet.where((q) => {
+          let qu = q;
+          allowedValues?.forEach((v, idx) => {
+            qu =
+              idx === 0
+                ? qu.where(TableKeys[table], v)
+                : qu.orWhere(TableKeys[table], v);
+          });
+        });
+      }
+    }
   }
   public applyFilter(filter: FilteredFields) {
     if (filter && typeof filter === 'object') {
@@ -41,6 +62,7 @@ export class QuerySet {
         }
       }
     }
+    console.log(this.querySet.toSQL().toNative());
     return this.querySet;
   }
 }
@@ -55,8 +77,13 @@ export class WasteWaterAPI extends SQLDataSource {
   private getKnex() {
     return this.knex.withSchema(this.conf.schema) as any;
   }
-  private standardQuery(table: TableName, filter: FilteredFields) {
-    const qs = new QuerySet(this.getKnex(), table);
+  private standardQuery(
+    table: TableName,
+    filter: FilteredFields,
+    context: AuthContext
+  ) {
+    const qs = new QuerySet(this.getKnex(), table, context);
+
     return qs.applyFilter(filter).catch((e) => {
       if (process.env.NODE_ENV === 'production') {
         throw new Error('[E001] Error executing this query.');
@@ -64,53 +91,12 @@ export class WasteWaterAPI extends SQLDataSource {
       throw e;
     });
   }
-  public getAddresses(args: any) {
-    return this.standardQuery('addresses', args.filter);
-  }
-  public getOrganizations(args: any) {
-    return this.standardQuery('organizations', args.filter);
-  }
-  public getDatasets(args: any) {
-    return this.standardQuery('datasets', args.filter);
-  }
-  public getPolygons(args: any) {
-    return this.standardQuery('polygons', args.filter);
-  }
-  public getInstruments(args: any) {
-    return this.standardQuery('instruments', args.filter);
-  }
-  public getSetLUs(args: any) {
-    return this.standardQuery('setLUs', args.filter);
-  }
-  public getPartLUs(args: any) {
-    return this.standardQuery('partLUs', args.filter);
-  }
-  public getContacts(args: any) {
-    return this.standardQuery('contacts', args.filter);
-  }
-  public getMethodSteps(args: any) {
-    return this.standardQuery('methodSteps', args.filter);
-  }
-  public getMethodSets(args: any) {
-    return this.standardQuery('methodSets', args.filter);
-  }
-  public getMeasureSets(args: any) {
-    return this.standardQuery('measureSets', args.filter);
-  }
-  public getLanguageLUs(args: any) {
-    return this.standardQuery('languageLUs', args.filter);
-  }
-  public getTranslationLUs(args: any) {
-    return this.standardQuery('translationLUs', args.filter);
-  }
-  public getSamples(args: any) {
-    return this.standardQuery('samples', args.filter);
-  }
-  public getSites(args: any) {
-    return this.standardQuery('sites', args.filter);
-  }
-  public getMeasures(args: any) {
-    return this.standardQuery('measures', args.filter);
+  public get(
+    table: TableName,
+    args: any,
+    context: AuthContext & DatasourceContext
+  ) {
+    return this.standardQuery(table, args.filter, context);
   }
 }
 

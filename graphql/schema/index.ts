@@ -4,7 +4,6 @@ import * as path from 'path';
 // Load the schema into memory
 export const SCHEMA_DIR = path.resolve(__dirname);
 const schemaFiles = readdirSync(SCHEMA_DIR);
-console.log(schemaFiles);
 const typeDefs = schemaFiles
   .map((filename) => {
     if (filename.endsWith('.graphql')) {
