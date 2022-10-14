@@ -1,6 +1,6 @@
 import { SQLDataSource } from 'datasource-sql';
 import { Knex } from 'knex';
-import { AuthContext, TableKeys } from '../auth';
+import { AuthContext } from '../auth';
 
 import { database } from '../config';
 
@@ -13,23 +13,21 @@ export type DatasourceContext = {
 export class QuerySet {
   private querySet;
   public constructor(knex: Knex, table: TableName, auth: AuthContext) {
-    this.querySet = knex.select('*').from(table);
-    if (Object.keys(auth.grants).includes(table)) {
-      const allowedValues = auth.grants[table];
-      if ((allowedValues?.length || 0) > 0 && !allowedValues?.includes('*')) {
-        this.querySet.where((q) => {
-          let qu = q;
-          allowedValues?.forEach((v, idx) => {
-            qu =
-              idx === 0
-                ? qu.where(TableKeys[table], v)
-                : qu.orWhere(TableKeys[table], v);
-          });
-        });
+    if (!auth.authenticated) {
+      this.querySet = null;
+    } else {
+      this.querySet = knex.select('*').from(table);
+      if (table in auth.filters) {
+        const filters = auth.filters[table];
+        if (filters) {
+          if (filters.where) this.querySet.where(...filters.where);
+          if (filters.whereNot) this.querySet.whereNot(...filters.whereNot);
+        }
       }
     }
   }
   public applyFilter(filter: FilteredFields) {
+    if (this.querySet === null) return new Promise((resolve) => resolve([]));
     if (filter && typeof filter === 'object') {
       for (const k of Object.keys(filter)) {
         const params = filter[k];
@@ -62,7 +60,6 @@ export class QuerySet {
         }
       }
     }
-    console.log(this.querySet.toSQL().toNative());
     return this.querySet;
   }
 }
