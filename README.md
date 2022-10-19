@@ -27,8 +27,9 @@ water surveillance data.
 
 1. Tag commit with version
 
-        git tag -a -m'build(release): <version>' '<version-prefix><version>'
+        git tag -a -m'build(release): <version>' 'v<version>'
 
 1. Push all changes
 
         git push
+        git push --tags

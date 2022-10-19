@@ -12,11 +12,18 @@ export type DatasourceContext = {
 
 export class QuerySet {
   private querySet;
-  public constructor(knex: Knex, table: TableName, auth: AuthContext) {
+  public constructor(
+    knex: Knex,
+    table: TableName,
+    auth: AuthContext,
+    first?: boolean
+  ) {
     if (!auth.authenticated) {
       this.querySet = null;
     } else {
-      this.querySet = knex.select('*').from(table);
+      this.querySet = first
+        ? knex.first('*').from(table)
+        : knex.select('*').from(table);
       if (table in auth.filters) {
         const filters = auth.filters[table];
         if (filters) {
@@ -60,11 +67,12 @@ export class QuerySet {
         }
       }
     }
+    console.log(this.querySet.toSQL());
     return this.querySet;
   }
 }
 
-const valid = (p: any) => typeof p !== 'undefined' && p !== null;
+const valid = (p: any) => true; //typeof p !== 'undefined' && p !== null;
 export class WasteWaterAPI extends SQLDataSource {
   private conf;
   public constructor(conf: any) {
@@ -77,9 +85,10 @@ export class WasteWaterAPI extends SQLDataSource {
   private standardQuery(
     table: TableName,
     filter: FilteredFields,
-    context: AuthContext
+    context: AuthContext,
+    first?: boolean
   ) {
-    const qs = new QuerySet(this.getKnex(), table, context);
+    const qs = new QuerySet(this.getKnex(), table, context, first);
 
     return qs.applyFilter(filter).catch((e) => {
       if (process.env.NODE_ENV === 'production') {
@@ -94,6 +103,13 @@ export class WasteWaterAPI extends SQLDataSource {
     context: AuthContext & DatasourceContext
   ) {
     return this.standardQuery(table, args.filter, context);
+  }
+  public first(
+    table: TableName,
+    args: any,
+    context: AuthContext & DatasourceContext
+  ) {
+    return this.standardQuery(table, args.filter, context, true);
   }
 }
 

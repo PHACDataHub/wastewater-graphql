@@ -7,6 +7,10 @@ type Datasets {
   funderID: String
   custodyID: String
   notes: String
+  funder: Organizations
+  custody: Organizations
+  sites(filter: SitesFilter): [Sites]!
+  samples(filter: SamplesFilter): [Samples]!
 }
 
 input DatasetsFilter {
