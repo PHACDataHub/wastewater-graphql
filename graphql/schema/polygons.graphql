@@ -9,6 +9,9 @@ type Polygons {
   geoWKT: String
   refLink: String
   notes: String
+  dataset: Datasets
+  measures(filter: MeasuresFilter): [Measures]!
+  sites(filter: SitesFilter): [Sites]!
 }
 
 input PolygonsFilter {

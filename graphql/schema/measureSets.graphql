@@ -1,6 +1,8 @@
 type MeasureSets {
   MeasSetRepID: String
   mSRID: String
+  methodSet: MethodSets
+  measures(filter: MeasuresFilter): [Measures]!
 }
 
 input MeasureSetsFilter {

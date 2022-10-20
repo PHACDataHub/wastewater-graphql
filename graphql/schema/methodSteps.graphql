@@ -13,6 +13,14 @@ type MethodSteps {
   unitID: String
   aggID: String
   notes: String
+  meth: PartLUs
+  meas: PartLUs
+  organization: Organizations
+  contact: Contacts
+  instrument: Instruments
+  unit: PartLUs
+  agg: PartLUs
+  methodSets(filter: MethodSetsFilter): [MethodSets]!
 }
 
 input MethodStepsFilter {

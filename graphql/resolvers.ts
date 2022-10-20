@@ -1,109 +1,114 @@
-import { DatasourceContext } from './api';
-import { AuthContext } from './auth';
-import { Resolvers } from './types';
-
-const argsWithAppendedFilter = (args: any, appended: FilteredFields) => ({
-  ...args,
-  filter: Object.assign({}, args.filter, {
-    ...appended,
-  }),
-});
-
-const nestedResolver =
-  (
-    name: TableName,
-    rule: (parent: any, args: any) => FilteredFields,
-    single?: boolean
-  ) =>
-  (parent: any, args: any, context: AuthContext & DatasourceContext) => {
-    const newArgs = argsWithAppendedFilter(args, rule(parent, args));
-    if (single) {
-      return context.dataSources.wasteWater.first(name, newArgs, context);
-    }
-    return context.dataSources.wasteWater.get(name, newArgs, context);
-  };
-
-const nestedSingleResolver = (
-  name: TableName,
-  rule: (parent: any, args: any) => FilteredFields
-) => nestedResolver(name, rule, true);
+import { apiSingleResolver, apiResolver } from './api/resolvers';
 
 const resolvers: Resolvers = {
+  Samples: {
+    parentSample: apiSingleResolver('samples', ['sampID', 'parSampID']),
+    methodSet: apiSingleResolver('methodSets', 'mSRID'),
+    contact: apiSingleResolver('contacts', 'contID'),
+    purpose: apiSingleResolver('partLUs', ['partID', 'purposeID']),
+    dataset: apiSingleResolver('datasets', 'dataID'),
+    measures: apiResolver('measures', ['sampleID', 'sampID']),
+  },
+  Measures: {
+    methodSet: apiSingleResolver('methodSets', 'mSRID'),
+    sample: apiSingleResolver('samples', ['sampID', 'sampleID']),
+    purpose: apiSingleResolver('partLUs', ['partID', 'purposeID']),
+    polygon: apiSingleResolver('polygons', 'polygonID'),
+    site: apiSingleResolver('sites', 'siteID'),
+    dataset: apiSingleResolver('datasets', 'dataID'),
+    measureSet: apiSingleResolver('measureSets', 'measSetRepID'),
+    spec: apiSingleResolver('partLUs', ['partID', 'specID']),
+    fraction: apiSingleResolver('partLUs', ['partID', 'fractionID']),
+    meas: apiSingleResolver('partLUs', ['partID', 'measID']),
+    group: apiSingleResolver('partLUs', ['partID', 'groupID']),
+    class: apiSingleResolver('partLUs', ['partID', 'classID']),
+    unit: apiSingleResolver('partLUs', ['partID', 'unitID']),
+    agg: apiSingleResolver('partLUs', ['partID', 'aggID']),
+  },
+  Addresses: {
+    organizations: apiResolver('organizations', 'addID'),
+  },
+  Organizations: {
+    address: apiSingleResolver('addresses', 'addID'),
+    contacts: apiResolver('contacts', 'orgID'),
+    methodSteps: apiResolver('methodSteps', 'orgID'),
+  },
   Datasets: {
-    funder: nestedSingleResolver('organizations', (dataset) => ({
-      orgID: { is: dataset.funderID },
-    })),
-    custody: nestedSingleResolver('organizations', (dataset) => ({
-      orgID: { is: dataset.custodyID },
-    })),
-    sites: nestedResolver('sites', (dataset) => ({
-      dataID: { is: dataset.dataID },
-    })),
-    samples: nestedResolver('samples', (dataset) => ({
-      dataID: { is: dataset.dataID },
-    })),
+    funder: apiSingleResolver('organizations', ['orgID', 'funderID']),
+    custody: apiSingleResolver('organizations', ['orgID', 'custodyID']),
+    samples: apiResolver('samples', 'dataID'),
+    measures: apiResolver('measures', 'dataID'),
+    polygons: apiResolver('polygons', 'dataID'),
+    instruments: apiResolver('instruments', 'dataID'),
+    sites: apiResolver('sites', 'dataID'),
+  },
+  Polygons: {
+    measures: apiResolver('measures', 'polygonID'),
+    sites: apiResolver('sites', 'polygonID'),
+  },
+  Instruments: {
+    dataset: apiSingleResolver('datasets', 'dataID'),
+    methodSteps: apiResolver('methodSteps', 'instID'),
+  },
+  Contacts: {
+    organization: apiSingleResolver('contacts', 'orgID'),
+    samples: apiResolver('samples', 'contID'),
+    methodSteps: apiResolver('methodSteps', 'contID'),
+  },
+  MethodSteps: {
+    meth: apiSingleResolver('partLUs', ['partID', 'methID']),
+    meas: apiSingleResolver('partLUs', ['partID', 'measID']),
+    organization: apiSingleResolver('organizations', 'orgID'),
+    contact: apiSingleResolver('contacts', 'contID'),
+    instrument: apiSingleResolver('instruments', 'instID'),
+    unit: apiSingleResolver('partLUs', ['partID', 'unitID']),
+    agg: apiSingleResolver('partLUs', ['partID', 'aggID']),
+    methodSets: apiResolver('methodSets', 'stepID'),
+  },
+  MethodSets: {
+    methodStep: apiSingleResolver('methodSteps', 'StepID'),
+    samples: apiResolver('samples', 'mSRID'),
+    measures: apiResolver('measures', 'mSRID'),
+    measureSets: apiResolver('measureSets', 'mSRID'),
+  },
+  MeasureSets: {
+    methodSet: apiSingleResolver('methodSets', 'mSRID'),
+    measures: apiResolver('measures', 'measSetRepID'),
+  },
+  LanguageLUs: {
+    translationLUs: apiResolver('translationLUs', 'langID'),
+  },
+  TranslationLUs: {
+    languageLU: apiSingleResolver('languageLUs', 'langID'),
+    partLU: apiSingleResolver('partLUs', 'partID'),
+  },
+  Sites: {
+    parentSite: apiSingleResolver('sites', ['siteID', 'parSiteID']),
+    polygon: apiSingleResolver('polygons', 'polygonID'),
+    dataset: apiSingleResolver('datasets', 'dataID'),
+    measures: apiResolver('measures', 'siteID'),
   },
   Query: {
     // _version() {
     //   return 'muffin';
     // },
-    addresses(_, args, context) {
-      return context.dataSources.wasteWater.get('addresses', args, context);
-    },
-    organizations(_, args, context) {
-      return context.dataSources.wasteWater.get('organizations', args, context);
-    },
-    datasets(_, args, context) {
-      console.log('-- resolver datasets --');
-      return context.dataSources.wasteWater.get('datasets', args, context);
-    },
-    polygons(_, args, context) {
-      return context.dataSources.wasteWater.get('polygons', args, context);
-    },
-    instruments(_, args, context) {
-      return context.dataSources.wasteWater.get('instruments', args, context);
-    },
-    setLUs(_, args, context) {
-      return context.dataSources.wasteWater.get('setLUs', args, context);
-    },
-    partLUs(_, args, context) {
-      return context.dataSources.wasteWater.get('partLUs', args, context);
-    },
-    contacts(_, args, context) {
-      return context.dataSources.wasteWater.get('contacts', args, context);
-    },
-    methodSteps(_, args, context) {
-      return context.dataSources.wasteWater.get('methodSteps', args, context);
-    },
-    methodSets(_, args, context) {
-      return context.dataSources.wasteWater.get('methodSets', args, context);
-    },
-    measureSets(_, args, context) {
-      return context.dataSources.wasteWater.get('measureSets', args, context);
-    },
-    languageLUs(_, args, context) {
-      return context.dataSources.wasteWater.get('languageLUs', args, context);
-    },
-    translationLUs(
-      _: any,
-      args: any,
-      context: AuthContext & DatasourceContext
-    ) {
-      return context.dataSources.wasteWater.get(
-        'translationLUs',
-        args,
-        context
-      );
-    },
-    samples(_, args, context) {
-      return context.dataSources.wasteWater.get('samples', args, context);
-    },
-    sites(_, args, context) {
-      return context.dataSources.wasteWater.get('sites', args, context);
-    },
-    measures(_, args, context) {
-      return context.dataSources.wasteWater.get('measures', args, context);
-    },
+    addresses: apiResolver('addresses'),
+    organizations: apiResolver('organizations'),
+    datasets: apiResolver('datasets'),
+    polygons: apiResolver('polygons'),
+    instruments: apiResolver('instruments'),
+    optionSets: apiResolver('optionSets'),
+    setLUs: apiResolver('setLUs'),
+    partLUs: apiResolver('partLUs'),
+    contacts: apiResolver('contacts'),
+    methodSteps: apiResolver('methodSteps'),
+    methodSets: apiResolver('methodSets'),
+    measureSets: apiResolver('measureSets'),
+    languageLUs: apiResolver('languageLUs'),
+    translationLUs: apiResolver('translationLUs'),
+    samples: apiResolver('samples'),
+    sites: apiResolver('sites'),
+    measures: apiResolver('measures'),
   },
 };
 

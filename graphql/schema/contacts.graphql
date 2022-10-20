@@ -7,6 +7,9 @@ type Contacts {
   phone: String
   role: String
   notes: String
+  organization: Organizations
+  samples(filter: SamplesFilter): [Samples]!
+  methodSteps(filter: MethodStepsFilter): [MethodSteps]!
 }
 
 input ContactsFilter {

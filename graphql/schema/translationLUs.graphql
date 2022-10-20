@@ -4,6 +4,8 @@ type TranslationLUs {
   partLab: String
   partDesc: String
   partInstr: String
+  languageLU: LanguageLUs
+  partLU: PartLUs
 }
 
 input TranslationLUsFilter {

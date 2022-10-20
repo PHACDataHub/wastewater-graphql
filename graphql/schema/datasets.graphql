@@ -9,8 +9,11 @@ type Datasets {
   notes: String
   funder: Organizations
   custody: Organizations
-  sites(filter: SitesFilter): [Sites]!
   samples(filter: SamplesFilter): [Samples]!
+  measures(filter: MeasuresFilter): [Measures]!
+  polygons(filter: PolygonsFilter): [Polygons]!
+  instruments(filter: InstrumentsFilter): [Instruments]!
+  sites(filter: SitesFilter): [Sites]!
 }
 
 input DatasetsFilter {
