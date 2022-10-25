@@ -6,7 +6,8 @@
     "build": "npm run copySchema && tsc",
     "watch": "tsc -w",
     "copySchema": "copyfiles graphql/schema/*.graphql dist/",
-    "prestart": "npm run build",
+    "prepare": "npm run build",
+    "prestart": "npm run prepare",
     "start": "func start",
     "test": "echo \"No tests yet...\""
   },
