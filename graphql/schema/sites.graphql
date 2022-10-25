@@ -40,6 +40,7 @@ type Sites {
   polygon: Polygons
   dataset: Datasets
   measures(filter: MeasuresFilter): [Measures]!
+  samples(filter: SamplesFilter): [Samples]!
 }
 
 extend type Query {

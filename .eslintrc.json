@@ -4,6 +4,7 @@
     "node": true,
     "mocha": true
   },
+  "ignorePatterns": ["dist/"],
   "parserOptions": {
     "parser": "@typescript-eslint/parser",
     "ecmaVersion": 2018,
@@ -14,7 +15,8 @@
     "prettier"
   ],
   "extends": [
-    "plugin:@typescript-eslint/recommended"
+    "plugin:@typescript-eslint/recommended",
+    "prettier"
   ],
   "rules": {
     "max-len": [
@@ -24,10 +26,6 @@
         "tabWidth": 2,
         "ignoreUrls": true
       }
-    ],
-    "indent": [
-      "error",
-      2
     ],
     "linebreak-style": [
       "error",

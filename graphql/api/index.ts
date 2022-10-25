@@ -1,8 +1,8 @@
 import { SQLDataSource } from 'datasource-sql';
 import { Knex } from 'knex';
-import { AuthContext } from '../auth';
 
 import { database } from '../config';
+import { createAuthorizationPlan } from './authorization';
 
 const tableColumnMaps: TableColumnMaps = {
   methodSets: [
@@ -13,13 +13,20 @@ const tableColumnMaps: TableColumnMaps = {
 
 export class QuerySet {
   private querySet;
+  private knex;
+  private auth;
+  private schema;
   public constructor(
     knex: Knex,
     table: TableName,
+    schema: string,
     auth: AuthContext,
     columnMaps?: readonly [string, string][],
     first?: boolean
   ) {
+    this.knex = knex;
+    this.auth = auth;
+    this.schema = schema;
     if (!auth.authenticated) {
       this.querySet = null;
     } else {
@@ -27,16 +34,13 @@ export class QuerySet {
         .concat(Array.isArray(columnMaps) ? columnMaps : [])
         .map((cm) => `${cm[0]} as ${cm[1]}`);
 
+      const qb = knex.withSchema(schema);
+
       this.querySet = first
-        ? knex.first('*', ...aliases).from(table)
-        : knex.select('*', ...aliases).from(table);
-      if (table in auth.filters) {
-        const filters = auth.filters[table];
-        if (filters) {
-          if (filters.where) this.querySet.where(...filters.where);
-          if (filters.whereNot) this.querySet.whereNot(...filters.whereNot);
-        }
-      }
+        ? qb.first('*', ...aliases).from(table)
+        : qb.select('*', ...aliases).from(table);
+
+      this.secure(this.querySet, createAuthorizationPlan(this.auth, table));
     }
   }
   public applyFilter(filter: FilteredFields) {
@@ -44,41 +48,70 @@ export class QuerySet {
     if (filter && typeof filter === 'object') {
       for (const k of Object.keys(filter)) {
         const params = filter[k];
-        if ('is' in params && valid(params.is)) {
+        if ('is' in params) {
           this.querySet.where(k, params.is);
         }
-        if ('contains' in params && valid(params.contains)) {
+        if ('contains' in params) {
           this.querySet.where(k, 'like', `%${params.contains}%`);
         }
-        if ('startsWith' in params && valid(params.startsWith)) {
+        if ('startsWith' in params) {
           this.querySet.where(k, 'like', `${params.startsWith}%`);
         }
-        if ('endsWith' in params && valid(params.endsWith)) {
+        if ('endsWith' in params) {
           this.querySet.where(k, 'like', `%${params.endsWith}`);
         }
-        if ('greaterThan' in params && valid(params.greaterThan)) {
+        if ('greaterThan' in params) {
           this.querySet.where(k, '>', params.greaterThan || 0);
         }
-        if ('lesserThan' in params && valid(params.lesserThan)) {
+        if ('lesserThan' in params) {
           this.querySet.where(k, '<', params.lesserThan || 0);
         }
-        if (
-          'greaterOrEqualThan' in params &&
-          valid(params.greaterOrEqualThan)
-        ) {
+        if ('greaterOrEqualThan' in params) {
           this.querySet.where(k, '>=', params.greaterOrEqualThan || 0);
         }
-        if ('lesserOrEqualThan' in params && valid(params.lesserOrEqualThan)) {
+        if ('lesserOrEqualThan' in params) {
           this.querySet.where(k, '<=', params.lesserOrEqualThan || 0);
         }
       }
     }
-    // console.log(this.querySet.toSQL().sql);
+    console.log(this.querySet.toString());
     return this.querySet;
+  }
+  private secure(querySet: Knex.QueryBuilder, step: AuthQueryPlan) {
+    if (step.filters) {
+      if (step.filters.where) querySet.where(...step.filters.where);
+      if (step.filters.whereNot) querySet.whereNot(...step.filters.whereNot);
+    }
+    step.children.forEach((c) => {
+      const joinedF = typeof c.fk === 'string' ? c.fk : c.fk[0];
+      const parentF = typeof c.fk === 'string' ? c.fk : c.fk[1];
+      const r = this.knex.ref(`${step.table}.${parentF}`);
+      const sq = [
+        this.knex
+          .withSchema(this.schema)
+          .select(joinedF)
+          .from(c.table)
+          .where(joinedF, r)
+          .limit(1),
+        this.knex
+          .withSchema(this.schema)
+          .select(joinedF)
+          .from(c.table)
+          .where(joinedF, r)
+          .limit(1),
+      ];
+      this.secure(sq[1], c);
+      querySet.andWhere(function () {
+        if (c.required) {
+          this.whereExists(sq[1]);
+        } else {
+          this.whereNotExists(sq[0]).orWhereExists(sq[1]);
+        }
+      });
+    });
   }
 }
 
-const valid = (p: any) => true; //typeof p !== 'undefined' && p !== null;
 export class WasteWaterAPI extends SQLDataSource {
   private conf;
   public constructor(conf: any) {
@@ -86,7 +119,7 @@ export class WasteWaterAPI extends SQLDataSource {
     this.conf = conf;
   }
   private getKnex() {
-    return this.knex.withSchema(this.conf.schema) as any;
+    return this.knex;
   }
   private standardQuery(
     table: TableName,
@@ -95,7 +128,14 @@ export class WasteWaterAPI extends SQLDataSource {
     columnMaps?: readonly [string, string][],
     first?: boolean
   ) {
-    const qs = new QuerySet(this.getKnex(), table, context, columnMaps, first);
+    const qs = new QuerySet(
+      this.getKnex(),
+      table,
+      this.conf.schema,
+      context,
+      columnMaps,
+      first
+    );
 
     return qs.applyFilter(filter).catch((e) => {
       if (process.env.NODE_ENV === 'production') {

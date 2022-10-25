@@ -1,97 +1,97 @@
-import { apiSingleResolver, apiResolver } from './api/resolvers';
+import { apiResolver, withParentResolver } from './api/resolvers';
 
 const resolvers: Resolvers = {
-  Samples: {
-    parentSample: apiSingleResolver('samples', ['sampID', 'parSampID']),
-    methodSet: apiSingleResolver('methodSets', 'mSRID'),
-    contact: apiSingleResolver('contacts', 'contID'),
-    purpose: apiSingleResolver('partLUs', ['partID', 'purposeID']),
-    dataset: apiSingleResolver('datasets', 'dataID'),
-    measures: apiResolver('measures', ['sampleID', 'sampID']),
-  },
-  Measures: {
-    methodSet: apiSingleResolver('methodSets', 'mSRID'),
-    sample: apiSingleResolver('samples', ['sampID', 'sampleID']),
-    purpose: apiSingleResolver('partLUs', ['partID', 'purposeID']),
-    polygon: apiSingleResolver('polygons', 'polygonID'),
-    site: apiSingleResolver('sites', 'siteID'),
-    dataset: apiSingleResolver('datasets', 'dataID'),
-    measureSet: apiSingleResolver('measureSets', 'measSetRepID'),
-    spec: apiSingleResolver('partLUs', ['partID', 'specID']),
-    fraction: apiSingleResolver('partLUs', ['partID', 'fractionID']),
-    meas: apiSingleResolver('partLUs', ['partID', 'measID']),
-    group: apiSingleResolver('partLUs', ['partID', 'groupID']),
-    class: apiSingleResolver('partLUs', ['partID', 'classID']),
-    unit: apiSingleResolver('partLUs', ['partID', 'unitID']),
-    agg: apiSingleResolver('partLUs', ['partID', 'aggID']),
-  },
-  Addresses: {
-    organizations: apiResolver('organizations', 'addID'),
-  },
-  Organizations: {
-    address: apiSingleResolver('addresses', 'addID'),
-    contacts: apiResolver('contacts', 'orgID'),
-    methodSteps: apiResolver('methodSteps', 'orgID'),
-  },
-  Datasets: {
-    funder: apiSingleResolver('organizations', ['orgID', 'funderID']),
-    custody: apiSingleResolver('organizations', ['orgID', 'custodyID']),
-    samples: apiResolver('samples', 'dataID'),
-    measures: apiResolver('measures', 'dataID'),
-    polygons: apiResolver('polygons', 'dataID'),
-    instruments: apiResolver('instruments', 'dataID'),
-    sites: apiResolver('sites', 'dataID'),
-  },
-  Polygons: {
-    measures: apiResolver('measures', 'polygonID'),
-    sites: apiResolver('sites', 'polygonID'),
-  },
-  Instruments: {
-    dataset: apiSingleResolver('datasets', 'dataID'),
-    methodSteps: apiResolver('methodSteps', 'instID'),
-  },
-  Contacts: {
-    organization: apiSingleResolver('contacts', 'orgID'),
-    samples: apiResolver('samples', 'contID'),
-    methodSteps: apiResolver('methodSteps', 'contID'),
-  },
-  MethodSteps: {
-    meth: apiSingleResolver('partLUs', ['partID', 'methID']),
-    meas: apiSingleResolver('partLUs', ['partID', 'measID']),
-    organization: apiSingleResolver('organizations', 'orgID'),
-    contact: apiSingleResolver('contacts', 'contID'),
-    instrument: apiSingleResolver('instruments', 'instID'),
-    unit: apiSingleResolver('partLUs', ['partID', 'unitID']),
-    agg: apiSingleResolver('partLUs', ['partID', 'aggID']),
-    methodSets: apiResolver('methodSets', 'stepID'),
-  },
-  MethodSets: {
-    methodStep: apiSingleResolver('methodSteps', 'StepID'),
-    samples: apiResolver('samples', 'mSRID'),
-    measures: apiResolver('measures', 'mSRID'),
-    measureSets: apiResolver('measureSets', 'mSRID'),
-  },
-  MeasureSets: {
-    methodSet: apiSingleResolver('methodSets', 'mSRID'),
-    measures: apiResolver('measures', 'measSetRepID'),
-  },
-  LanguageLUs: {
-    translationLUs: apiResolver('translationLUs', 'langID'),
-  },
-  TranslationLUs: {
-    languageLU: apiSingleResolver('languageLUs', 'langID'),
-    partLU: apiSingleResolver('partLUs', 'partID'),
-  },
-  Sites: {
-    parentSite: apiSingleResolver('sites', ['siteID', 'parSiteID']),
-    polygon: apiSingleResolver('polygons', 'polygonID'),
-    dataset: apiSingleResolver('datasets', 'dataID'),
-    measures: apiResolver('measures', 'siteID'),
-  },
+  Samples: withParentResolver('samples')(({ single, list }) => ({
+    parentSample: single('methodSets'),
+    site: single('sites'),
+    methodSet: single('methodSets'),
+    contact: single('contacts'),
+    purpose: single('partLUs'),
+    dataset: single('datasets'),
+    measures: list('measures'),
+  })),
+  Measures: withParentResolver('measures')(({ single }) => ({
+    methodSet: single('methodSets'),
+    sample: single('samples'),
+    purpose: single('partLUs', 'purpose'),
+    polygon: single('polygons'),
+    site: single('sites'),
+    dataset: single('datasets'),
+    measureSet: single('measureSets'),
+    spec: single('partLUs', 'spec'),
+    fraction: single('partLUs', 'fraction'),
+    meas: single('partLUs', 'meas'),
+    group: single('partLUs', 'group'),
+    class: single('partLUs', 'class'),
+    unit: single('partLUs', 'unit'),
+    agg: single('partLUs', 'agg'),
+  })),
+  Addresses: withParentResolver('addresses')(({ list }) => ({
+    organizations: list('organizations'),
+    sites: list('sites')
+  })),
+  Organizations: withParentResolver('organizations')(({ single, list }) => ({
+    address: single('addresses'),
+    contacts: list('contacts'),
+    methodSteps: list('methodSteps'),
+  })),
+  Datasets: withParentResolver('datasets')(({ single, list }) => ({
+    funder: single('organizations', 'funder'),
+    custody: single('organizations', 'custody'),
+    samples: list('samples'),
+    measures: list('measures'),
+    polygons: list('polygons'),
+    instruments: list('instruments'),
+    sites: list('sites'),
+  })),
+  Polygons: withParentResolver('polygons')(({ list }) => ({
+    measures: list('measures'),
+    sites: list('sites'),
+  })),
+  Instruments: withParentResolver('instruments')(({ single, list }) => ({
+    dataset: single('datasets'),
+    methodSteps: list('methodSteps'),
+  })),
+  Contacts: withParentResolver('contacts')(({ single, list }) => ({
+    organization: single('contacts'),
+    samples: list('samples'),
+    methodSteps: list('methodSteps'),
+  })),
+  MethodSteps: withParentResolver('methodSteps')(({ single, list }) => ({
+    meth: single('partLUs', 'meth'),
+    meas: single('partLUs', 'meas'),
+    organization: single('organizations'),
+    contact: single('contacts'),
+    instrument: single('instruments'),
+    unit: single('partLUs', 'unit'),
+    agg: single('partLUs', 'agg'),
+    methodSets: list('methodSets'),
+  })),
+  MethodSets: withParentResolver('methodSets')(({ single, list }) => ({
+    methodStep: single('methodSteps'),
+    samples: list('samples'),
+    measures: list('measures'),
+    measureSets: list('measureSets'),
+  })),
+  MeasureSets: withParentResolver('measureSets')(({ single, list }) => ({
+    methodSet: single('methodSets'),
+    measures: list('measures'),
+  })),
+  LanguageLUs: withParentResolver('languageLUs')(({ list }) => ({
+    translationLUs: list('translationLUs'),
+  })),
+  TranslationLUs: withParentResolver('translationLUs')(({ single }) => ({
+    languageLU: single('languageLUs'),
+    partLU: single('partLUs'),
+  })),
+  Sites: withParentResolver('sites')(({ single, list }) => ({
+    parentSite: single('sites'),
+    polygon: single('polygons'),
+    dataset: single('datasets'),
+    measures: list('measures'),
+    samples: list('samples'),
+  })),
   Query: {
-    // _version() {
-    //   return 'muffin';
-    // },
     addresses: apiResolver('addresses'),
     organizations: apiResolver('organizations'),
     datasets: apiResolver('datasets'),

@@ -39,6 +39,7 @@ type Samples {
   contact: Contacts
   purpose: PartLUs
   dataset: Datasets
+  site: Sites!
   measures(filter: MeasuresFilter): [Measures]!
 }
 

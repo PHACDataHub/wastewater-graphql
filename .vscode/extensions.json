@@ -1,5 +1,10 @@
 {
   "recommendations": [
-    "ms-azuretools.vscode-azurefunctions"
+    "ms-azuretools.vscode-azurefunctions",
+    "rvest.vs-code-prettier-eslint",
+    "bierner.markdown-preview-github-styles",
+    "yzhang.markdown-all-in-one",
+    "vivaxy.vscode-conventional-commits",
+    "GraphQL.vscode-graphql"
   ]
 }

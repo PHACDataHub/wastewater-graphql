@@ -1,34 +1,28 @@
 import { ContextFunction, HttpQueryRequest } from 'apollo-server-core';
 
-type AuthFilters = {
-  readonly [table in TableName]?: {
-    readonly where?: [any, any];
-    readonly whereNot?: [any, any];
-  };
-};
-
+// List of authorizations
 const groups: { readonly [authGroup: string]: AuthFilters } = {
-  'nml-lab': {
+  'test': {
     sites: {
-      whereNot: ['siteID', 'HHA'],
+      where: ['healthReg', 'Edmonton'],
     },
   },
-  csc: {},
-  bccdc: {},
+  'nml-lab': {},
+  csc: {
+    sites: {
+      where: ['healthReg', 'CSC'],
+    },
+  },
+  bccdc: {
+    datasets: {
+      where: ['dataID', 'BCCDC'],
+    },
+  },
 };
 
-// -	NML Lab / Data integration team / Modeling :  Have Full access to the database
-// Correct
+// -	NML Lab / Data integration team :  Have Full access to the database
 // -	CSC Folks: Have access to only CSC Data -i.e  health Region = CSC
-// Correct
 // -	BCCDC Folks soon: Get only BCCDC data. i.e. DatasetID = BCCDC.
-// Correct
-
-export type AuthContext =
-  | {
-      authenticated: false;
-    }
-  | { authenticated: true; filters: AuthFilters };
 
 const AuthContextFunction: ContextFunction<any, AuthContext> = (
   request: HttpQueryRequest
@@ -46,7 +40,6 @@ const AuthContextFunction: ContextFunction<any, AuthContext> = (
   }
 
   return { authenticated: false };
-
 };
 
 export default AuthContextFunction;
