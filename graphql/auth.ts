@@ -1,12 +1,8 @@
 import { ContextFunction, HttpQueryRequest } from 'apollo-server-core';
+import { AuthFilters, AuthContext } from './types';
 
 // List of authorizations
-const groups: { readonly [authGroup: string]: AuthFilters } = {
-  'test': {
-    sites: {
-      where: ['healthReg', 'Edmonton'],
-    },
-  },
+export const groups: { readonly [authGroup: string]: AuthFilters } = {
   'nml-lab': {},
   csc: {
     sites: {
@@ -19,10 +15,6 @@ const groups: { readonly [authGroup: string]: AuthFilters } = {
     },
   },
 };
-
-// -	NML Lab / Data integration team :  Have Full access to the database
-// -	CSC Folks: Have access to only CSC Data -i.e  health Region = CSC
-// -	BCCDC Folks soon: Get only BCCDC data. i.e. DatasetID = BCCDC.
 
 const AuthContextFunction: ContextFunction<any, AuthContext> = (
   request: HttpQueryRequest

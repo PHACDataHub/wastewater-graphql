@@ -1,0 +1,47 @@
+api=>start: https://api-ipa-dt.hc-sc.gc.ca:>https://api-ipa-dt.hc-sc.gc.ca[blank]
+gateway=>operation: Azure API Management Gateway
+get_header=>subroutine: Get `Ocp-Apim-Subscription-Key` header
+
+is_csc_key=>condition: Has CSC key?
+is_bccdc_key=>condition: Has BCCDC key?
+is_nml_key=>condition: Has NML key?
+
+setgroupcsc=>subroutine: Set `x-group-auth` header to "csc"
+setgroupbccdc=>subroutine: Set `x-group-auth` header to "bccdc"
+setgroupnml=>subroutine: Set `x-group-auth` header to "nml-lab"
+
+denied=>end: Access Denied (403)
+
+func=>start: https://funcwwsdev.azurewebsites.net:>https://funcwwsdev.azurewebsites.net[blank]
+funcapp=>operation: Watewater Function App
+get_group=>subroutine: Get `x-auth-group` header
+
+is_csc_group=>condition: Is `x-auth-group` = "csc"?
+is_bccdc_group=>condition: Is `x-auth-group` = "bccdc"?
+is_nml_group=>condition: Is `x-auth-group` = "nml-lab"?
+
+no_data=>end: All data is filtered out
+csc_data=>end: CSC data filter is applied
+bccdc_data=>end: BCCDC data filter is applied
+nml_data=>end: No data filter is applied
+
+
+api->gateway->get_header->is_csc_key
+is_csc_key(yes)->setgroupcsc->func
+is_csc_key(no)->is_bccdc_key
+
+is_csc_key(no)->is_bccdc_key(yes)->setgroupbccdc->func
+is_csc_key(no)->is_bccdc_key(no)->is_nml_key
+
+is_bccdc_key(no)->is_nml_key(yes)->setgroupnml->func
+is_bccdc_key(no)->is_nml_key(no)->denied
+
+func->funcapp->get_group->is_csc_group
+is_csc_group(yes)->csc_data
+is_csc_group(no)->is_bccdc_group
+
+is_csc_group(no)->is_bccdc_group(yes)->bccdc_data
+is_csc_group(no)->is_bccdc_group(no)->is_nml_group
+
+is_bccdc_group(no)->is_nml_group(yes)->nml_data
+is_bccdc_group(no)->is_nml_group(no)->no_data

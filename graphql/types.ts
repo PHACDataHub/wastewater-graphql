@@ -1,25 +1,27 @@
-type AuthContext =
+import { DatasourceContext, TableName } from "./api/types";
+
+export type AuthContext =
   | {
       authenticated: false;
     }
   | { authenticated: true; filters: AuthFilters };
 
-type AuthFilter = {
+export type AuthFilter = {
   readonly where?: [any, any];
   readonly whereNot?: [any, any];
 };
 
-type AuthFilters = {
+export type AuthFilters = {
   readonly [table in TableName]?: AuthFilter;
 };
 
-type ResolverFunc = (
+export type ResolverFunc = (
   parent: any,
   args: any,
   context: AuthContext & DatasourceContext
 ) => Promise<any>;
 
-type Resolvers = {
+export type Resolvers = {
   [schemaType: string]: {
     [key: string]: ResolverFunc;
   };
