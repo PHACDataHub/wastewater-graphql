@@ -8,6 +8,8 @@ type Instruments {
   instType: String
   insTypeOth: String
   notes: String
+  dataset: Datasets
+  methodSteps(filter: MethodStepsFilter): [MethodSteps]!
 }
 
 input InstrumentsFilter {

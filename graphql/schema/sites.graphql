@@ -36,6 +36,10 @@ type Sites {
   geoLong: String
   geoEPSG: String
   notes: String
+  parentSite: Sites
+  polygon: Polygons
+  dataset: Datasets
+  measures(filter: MeasuresFilter): [Measures]!
 }
 
 extend type Query {

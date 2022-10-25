@@ -5,7 +5,7 @@ input MeasuresFilter {
   purposeID: StringFilter
   polygonID: StringFilter
   siteID: StringFilter
-  datasetID: StringFilter
+  dataID: StringFilter
   measSetRepID: StringFilter
   specID: StringFilter
   fractionID: StringFilter
@@ -28,7 +28,7 @@ type Measures {
   purposeID: String
   polygonID: String
   siteID: String
-  datasetID: String
+  dataID: String
   measSetRepID: String
   specID: String
   fractionID: String
@@ -42,6 +42,21 @@ type Measures {
   qualityFlag: String
   reportable: Boolean
   notes: String
+  methodSet: MethodSets
+  sample: Samples
+  purpose: PartLUs
+  polygon: Polygons
+  site: Sites
+  dataset: Datasets
+  measureSet: MeasureSets
+  spec: PartLUs
+  fraction: PartLUs
+  meas: PartLUs
+  group: PartLUs
+  class: PartLUs
+  unit: PartLUs
+  agg: PartLUs
+
 }
 
 extend type Query {

@@ -7,6 +7,13 @@ type Datasets {
   funderID: String
   custodyID: String
   notes: String
+  funder: Organizations
+  custody: Organizations
+  samples(filter: SamplesFilter): [Samples]!
+  measures(filter: MeasuresFilter): [Measures]!
+  polygons(filter: PolygonsFilter): [Polygons]!
+  instruments(filter: InstrumentsFilter): [Instruments]!
+  sites(filter: SitesFilter): [Sites]!
 }
 
 input DatasetsFilter {

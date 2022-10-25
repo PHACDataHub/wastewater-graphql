@@ -42,7 +42,6 @@ const AuthContextFunction: ContextFunction<any, AuthContext> = (
   if (!header) return { authenticated: false };
 
   if (header in groups) {
-    console.log('-- authenticated --');
     return { authenticated: true, filters: groups[header] };
   }
 

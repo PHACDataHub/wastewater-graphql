@@ -9,6 +9,7 @@ type LanguageLUs {
   ISO6393: String
   ISO6396: String
   notes: String
+  translationLUs(filter: TranslationLUsFilter): [TranslationLUs]!
 }
 
 input LanguageLUsFilter {

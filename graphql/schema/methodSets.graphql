@@ -5,6 +5,10 @@ type MethodSets {
   stepIndexID_CK: Int
   setVers: String
   notes: String
+  methodStep: MethodSets
+  samples(filter: SamplesFilter): [Samples]!
+  measures(filter: MeasuresFilter): [Measures]!
+  measureSets(filter: MeasureSetsFilter): [MeasureSets]!
 }
 
 input MethodSetsFilter {

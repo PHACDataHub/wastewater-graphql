@@ -7,6 +7,7 @@ type Addresses {
   stateProvReg: String
   pCode: String
   country: String
+  organizations(filter: OrganizationsFilter): [Organizations]!
 }
 
 input AddressesFilter {

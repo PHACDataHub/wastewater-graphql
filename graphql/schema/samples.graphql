@@ -31,9 +31,15 @@ type Samples {
   collType: String
   collPer: Float
   collNum: Int
-  pooled: Int
+  pooled: Int 
   qualityFlag: String
   notes: String
+  parentSample: Samples
+  methodSet: MethodSets
+  contact: Contacts
+  purpose: PartLUs
+  dataset: Datasets
+  measures(filter: MeasuresFilter): [Measures]!
 }
 
 extend type Query {

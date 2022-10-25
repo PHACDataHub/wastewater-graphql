@@ -4,6 +4,9 @@ type Organizations {
   orgTypeID: String
   name: String
   descr: String
+  address: Addresses
+  contacts(filter: ContactsFilter): [Contacts]!
+  methodSteps(filter: MethodStepsFilter): [MethodSteps]!
 }
 
 input OrganizationsFilter {

@@ -4,19 +4,32 @@ import { AuthContext } from '../auth';
 
 import { database } from '../config';
 
-export type DatasourceContext = {
-  dataSources: {
-    wasteWater: WasteWaterAPI;
-  };
+const tableColumnMaps: TableColumnMaps = {
+  methodSets: [
+    ['methSetID (CK)', 'methSetID_CK'],
+    ['stepIndexID (CK)', 'stepIndexID_CK'],
+  ],
 };
 
 export class QuerySet {
   private querySet;
-  public constructor(knex: Knex, table: TableName, auth: AuthContext) {
+  public constructor(
+    knex: Knex,
+    table: TableName,
+    auth: AuthContext,
+    columnMaps?: readonly [string, string][],
+    first?: boolean
+  ) {
     if (!auth.authenticated) {
       this.querySet = null;
     } else {
-      this.querySet = knex.select('*').from(table);
+      const aliases = (tableColumnMaps[table] || [])
+        .concat(Array.isArray(columnMaps) ? columnMaps : [])
+        .map((cm) => `${cm[0]} as ${cm[1]}`);
+
+      this.querySet = first
+        ? knex.first('*', ...aliases).from(table)
+        : knex.select('*', ...aliases).from(table);
       if (table in auth.filters) {
         const filters = auth.filters[table];
         if (filters) {
@@ -60,11 +73,12 @@ export class QuerySet {
         }
       }
     }
+    // console.log(this.querySet.toSQL().sql);
     return this.querySet;
   }
 }
 
-const valid = (p: any) => typeof p !== 'undefined' && p !== null;
+const valid = (p: any) => true; //typeof p !== 'undefined' && p !== null;
 export class WasteWaterAPI extends SQLDataSource {
   private conf;
   public constructor(conf: any) {
@@ -77,9 +91,11 @@ export class WasteWaterAPI extends SQLDataSource {
   private standardQuery(
     table: TableName,
     filter: FilteredFields,
-    context: AuthContext
+    context: AuthContext,
+    columnMaps?: readonly [string, string][],
+    first?: boolean
   ) {
-    const qs = new QuerySet(this.getKnex(), table, context);
+    const qs = new QuerySet(this.getKnex(), table, context, columnMaps, first);
 
     return qs.applyFilter(filter).catch((e) => {
       if (process.env.NODE_ENV === 'production') {
@@ -91,9 +107,18 @@ export class WasteWaterAPI extends SQLDataSource {
   public get(
     table: TableName,
     args: any,
-    context: AuthContext & DatasourceContext
+    context: AuthContext & DatasourceContext,
+    columnMaps?: readonly [string, string][]
   ) {
-    return this.standardQuery(table, args.filter, context);
+    return this.standardQuery(table, args.filter, context, columnMaps);
+  }
+  public first(
+    table: TableName,
+    args: any,
+    context: AuthContext & DatasourceContext,
+    columnMaps?: readonly [string, string][]
+  ) {
+    return this.standardQuery(table, args.filter, context, columnMaps, true);
   }
 }
 
