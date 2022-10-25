@@ -2,7 +2,10 @@ import { SQLDataSource } from 'datasource-sql';
 import { Knex } from 'knex';
 
 import { database } from '../config';
+import { AuthContext } from '../types';
 import { createAuthorizationPlan } from './authorization';
+import { TableColumnMaps, TableName, FilteredFields, AuthQueryPlan, DatasourceContext } from './types';
+import { generateAuthDiagram } from './utils/diagram';
 
 const tableColumnMaps: TableColumnMaps = {
   methodSets: [

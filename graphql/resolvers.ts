@@ -1,4 +1,5 @@
 import { apiResolver, withParentResolver } from './api/resolvers';
+import { Resolvers } from './types';
 
 const resolvers: Resolvers = {
   Samples: withParentResolver('samples')(({ single, list }) => ({

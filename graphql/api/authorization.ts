@@ -1,4 +1,6 @@
+import { AuthContext } from '../types';
 import { tableRelantionships } from './relationships';
+import { AuthQueryPlan, TableName, AuthQueryPlanChild } from './types';
 
 const countFilters = (obj: AuthQueryPlan): number => {
   return obj.children.reduce(
@@ -13,17 +15,6 @@ export const optimizeQueryPlan = (obj: AuthQueryPlan): AuthQueryPlan => {
       .filter((c) => countFilters(c) > 0)
       .map((c) => optimizeQueryPlan(c)),
   });
-};
-
-export const printAuthQueryPlan = (obj: AuthQueryPlan, i = 0) => {
-  const pf = ' '.repeat(i);
-  const f = obj.filters
-    ? Object.keys(obj.filters)
-        .map((k) => `[${k}] = ${JSON.stringify((obj.filters as any)[k])}`)
-        .join(', ')
-    : '';
-  console.log(`${pf}${obj.key} (${f}) =>`);
-  obj.children.forEach((c) => printAuthQueryPlan(c, i + 2));
 };
 
 export const createAuthorizationPlan = (
@@ -47,6 +38,7 @@ export const buildAuthQueryPlan: (
     filters: {},
     children: [],
     parent: null,
+    depth: 0,
   },
   depth = false
 ) => {
@@ -77,8 +69,8 @@ export const buildAuthQueryPlan: (
         if ('foreignKeys' in joinConf) {
           const key = `${table}__${
             typeof joinConf.foreignKeys === 'string'
-              ? `${joinConf.foreignKeys}-${joinConf.foreignKeys}`
-              : `${joinConf.foreignKeys[0]}-${joinConf.foreignKeys[1]}`
+              ? `${joinConf.foreignKeys}_${joinConf.foreignKeys}`
+              : `${joinConf.foreignKeys[0]}_${joinConf.foreignKeys[1]}`
           }__${joinTable}`;
           if (!findKey(step, key)) {
             const childStep: AuthQueryPlanChild = {
@@ -89,6 +81,7 @@ export const buildAuthQueryPlan: (
               fk: joinConf.foreignKeys,
               parent: step,
               required: joinConf.auth.required,
+              depth: depth === false ? joinConf.auth.depth : depth,
             };
             step.children.push(childStep);
             buildAuthQueryPlan(

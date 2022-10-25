@@ -1,3 +1,25 @@
+import { TableRelantionships } from "./types";
+
+export const tables = [
+  'addresses',
+  'organizations',
+  'datasets',
+  'polygons',
+  'instruments',
+  'optionSets',
+  'setLUs',
+  'partLUs',
+  'contacts',
+  'measureSets',
+  'methodSteps',
+  'methodSets',
+  'languageLUs',
+  'translationLUs',
+  'sites',
+  'samples',
+  'measures',
+] as const;
+
 /*
 Defines the list of foreign key relationships in the underlying SQL database.
 

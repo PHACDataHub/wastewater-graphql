@@ -1,4 +1,11 @@
+import { ResolverFunc } from '../types';
 import { tableRelantionships } from './relationships';
+import {
+  FilteredFields,
+  TableName,
+  ApiResolver,
+  WithResolverCallBack,
+} from './types';
 
 const argsWithAppendedFilter = (args: any, appended: FilteredFields) => ({
   ...args,
