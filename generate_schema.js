@@ -1,12 +1,13 @@
+/* eslint-disable @typescript-eslint/no-var-requires */
+
 /**
  * Utility function used to generate an initial GraphQL schema
  * from an existing SQL database.
- * 
+ *
  * Prerequisites: npm install --no-save db2graphql
- * 
+ *
  */
 const knex = require('knex');
-// eslint-disable-next-line import/no-extraneous-dependencies
 const Db2g = require('db2graphql');
 const dotenv = require('dotenv');
 

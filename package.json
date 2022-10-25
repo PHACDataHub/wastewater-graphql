@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "description": "",
   "scripts": {
+    "lint": "eslint .",
     "build": "npm run copySchema && tsc",
     "watch": "tsc -w",
     "copySchema": "copyfiles graphql/schema/*.graphql dist/",
@@ -15,6 +16,7 @@
     "@tediousjs/connection-string": "^0.4.1",
     "apollo-server-azure-functions": "^3.10.2",
     "copyfiles": "^2.4.1",
+    "dataloader": "^2.1.0",
     "datasource-sql": "^2.0.1",
     "dotenv": "^16.0.3",
     "graphql": "^16.6.0",
@@ -25,7 +27,10 @@
   "devDependencies": {
     "@azure/functions": "^3.0.0",
     "@types/node": "16.x",
+    "@typescript-eslint/eslint-plugin": "^5.41.0",
     "azure-functions-core-tools": "^4.x",
-    "eslint": "^8.25.0"
+    "eslint": "^8.25.0",
+    "eslint-config-prettier": "^8.5.0",
+    "eslint-plugin-prettier": "^4.2.1"
   }
 }

@@ -8,6 +8,7 @@ type Addresses {
   pCode: String
   country: String
   organizations(filter: OrganizationsFilter): [Organizations]!
+  sites(filter: SitesFilter): [Sites]!
 }
 
 input AddressesFilter {
