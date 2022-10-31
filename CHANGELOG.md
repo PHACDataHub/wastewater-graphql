@@ -1,3 +1,9 @@
+## **v0.2.0** <sub><sup>2022-10-31 ([6849818...9cffd22](https://github.com/PHACDataHub/wastewater-graphql/compare/6849818...9cffd22?diff=split))</sup></sub>
+
+### Features
+*  :sparkles: Implemented data access control ([976466a](https://github.com/PHACDataHub/wastewater-graphql/commit/976466a))
+
+
 ## **v0.1.0** <sub><sup>2022-10-25 ([a987ee5...66fb027](https://github.com/PHACDataHub/wastewater-graphql/compare/a987ee5...66fb027?diff=split))</sup></sub>
 
 ### Features
