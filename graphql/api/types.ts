@@ -19,7 +19,7 @@ export interface NumberFilter {
   between?: {
     min: number;
     max: number;
-  }
+  };
 }
 export interface DateFilter {
   is?: string;
@@ -30,7 +30,7 @@ export interface DateFilter {
   between?: {
     min: string;
     max: string;
-  }
+  };
 }
 
 export type StandardFilter = StringFilter | NumberFilter | DateFilter;

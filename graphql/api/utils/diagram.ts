@@ -29,7 +29,7 @@ const getPaths = (
   const key = `${prefix ? `${prefix}->` : ''}${node.key}`;
   if (prefix && node.children.length === 0 && prefix !== node.key)
     paths.push(key);
-  node.children.map((c, i) => {
+  node.children.map((c) => {
     paths.push(`${node.key}->${c.key}`);
     const path = getPaths(c, c.key, paths);
     return path;
@@ -144,6 +144,7 @@ export const saveAuthDiagram = (
 ) => {
   try {
     const diagram = generateAuthDiagram(createAuthorizationPlan(auth, target));
+    // eslint-disable-next-line @typescript-eslint/no-var-requires
     const fs = require('fs');
     const err = fs.writeFileSync(filename, diagram);
     if (err) {

@@ -1,4 +1,4 @@
-import { TableRelantionships } from "./types";
+import { TableRelantionships } from './types';
 
 export const tables = [
   'addresses',

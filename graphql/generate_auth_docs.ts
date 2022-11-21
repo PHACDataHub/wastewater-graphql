@@ -2,7 +2,9 @@ import { saveAuthDiagram } from './api/utils/diagram';
 import { tables } from './api/relationships';
 import { groups } from './auth';
 
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const fs = require('fs');
+// eslint-disable-next-line @typescript-eslint/no-var-requires
 const { execSync } = require('node:child_process');
 
 let markdown = `
@@ -68,7 +70,7 @@ all_groups.forEach((grp) => {
   });
   console.log('\n');
   execSync(`xvfb-run -a diagrams build ${basedir}`);
-  tables.forEach((table, i) => {
+  tables.forEach((table) => {
     fs.unlinkSync(`${basedir}/${table}.dot`);
   });
 });

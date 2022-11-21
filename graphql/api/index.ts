@@ -4,8 +4,13 @@ import { Knex } from 'knex';
 import { database } from '../config';
 import { AuthContext } from '../types';
 import { createAuthorizationPlan } from './authorization';
-import { TableColumnMaps, TableName, FilteredFields, AuthQueryPlan, DatasourceContext } from './types';
-import { generateAuthDiagram } from './utils/diagram';
+import {
+  TableColumnMaps,
+  TableName,
+  FilteredFields,
+  AuthQueryPlan,
+  DatasourceContext,
+} from './types';
 
 const tableColumnMaps: TableColumnMaps = {
   methodSets: [
@@ -77,7 +82,8 @@ export class QuerySet {
         }
         if ('between' in params) {
           const between = params.between;
-          if (between) this.querySet.whereBetween(k, [between.min, between.max])
+          if (between)
+            this.querySet.whereBetween(k, [between.min, between.max]);
         }
       }
     }

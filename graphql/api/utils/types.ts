@@ -1,4 +1,3 @@
-
 export type AuthNodeType = 'start' | 'end' | 'condition' | 'operation' | 'path';
 
 export type AuthNode = {

@@ -1,4 +1,4 @@
-import { DatasourceContext, TableName } from "./api/types";
+import { DatasourceContext, TableName } from './api/types';
 
 export type AuthContext =
   | {

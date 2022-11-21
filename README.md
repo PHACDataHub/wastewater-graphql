@@ -4,58 +4,6 @@ This is a GraphQL server built using Apollo that provides access to waste
 water surveillance data.
 
 ## Getting started
-<<<<<<< HEAD
-
-Create a local configuration file named `local.settings.json` with the following
-content (or whatever content is required for your envrionment):
-
-```json
-// local.settings.json
-{
-    "IsEncrypted": false,
-    "Values": {
-      "FUNCTIONS_WORKER_RUNTIME": "node",
-      "AzureWebJobsStorage": "UseDevelopmentStorage=true"
-    }
-  }
-```
-
-Create a `.env` file that defines the required envrionment variables.
-
-| Variable          | Description                                   |
-| ----------------- | --------------------------------------------- |
-| ***DB_DATABASE**  | The name of the database                      |
-| ***DB_HOST**      | The host                                      |
-| ***DB_AUTH_TYPE** | Authentication type. See allowed values below |
-| DB_USER           | SQL Authentication username                   |
-| DB_PASSWORD       | SQL Authentication password                   |
-
-Valid values for `DB_AUTH_TYPE` are:
-
-  - default
-  - ntlm
-  - azure-active-directory-password
-  - azure-active-directory-access-token
-  - azure-active-directory-msi-vm
-  - azure-active-directory-msi-app-service
-  - azure-active-directory-service-principal-secret
-
-
-Example `.env` file:
-
-```bash
-# .env
-DB_DATABASE=wwdb
-DB_HOST=localhost
-DB_AUTH_TYPE=default
-
-DB_USER=test
-DB_PASSWORD=test
-```
-
-## Before merging with main
-=======
->>>>>>> 73b6839... docs: Added diagrams on data authorization
 
 Create a local configuration file named `local.settings.json` with the following
 content (or whatever content is required for your envrionment):
