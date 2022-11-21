@@ -16,8 +16,24 @@ export interface NumberFilter {
   greaterOrEqualThan?: number;
   lesserThan?: number;
   lesserOrEqualThan?: number;
+  between?: {
+    min: number;
+    max: number;
+  }
 }
-export type StandardFilter = StringFilter | NumberFilter;
+export interface DateFilter {
+  is?: string;
+  greaterThan?: string;
+  greaterOrEqualThan?: string;
+  lesserThan?: string;
+  lesserOrEqualThan?: string;
+  between?: {
+    min: string;
+    max: string;
+  }
+}
+
+export type StandardFilter = StringFilter | NumberFilter | DateFilter;
 
 export interface FilteredFields {
   [field: string]: StandardFilter;

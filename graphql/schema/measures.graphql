@@ -7,6 +7,9 @@ input MeasuresFilter {
   siteID: StringFilter
   dataID: StringFilter
   measSetRepID: StringFilter
+  aDateStart: DateTimeFilter
+  aDateEnd: DateTimeFilter
+  repDate: DateTimeFilter
   specID: StringFilter
   fractionID: StringFilter
   measID: StringFilter
@@ -18,6 +21,7 @@ input MeasuresFilter {
   index: IntFilter
   qualityFlag: StringFilter
   reportable: Boolean
+  lastEdited: DateTimeFilter
   notes: StringFilter
 }
 
@@ -30,6 +34,9 @@ type Measures {
   siteID: String
   dataID: String
   measSetRepID: String
+  aDateStart: DateTime
+  aDateEnd: DateTime
+  repDate: DateTime
   specID: String
   fractionID: String
   measID: String
@@ -41,6 +48,7 @@ type Measures {
   index: Int
   qualityFlag: String
   reportable: Boolean
+  lastEdited: DateTime
   notes: String
   methodSet: MethodSets
   sample: Samples
@@ -56,7 +64,6 @@ type Measures {
   class: PartLUs
   unit: PartLUs
   agg: PartLUs
-
 }
 
 extend type Query {
