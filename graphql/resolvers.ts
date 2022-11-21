@@ -29,7 +29,7 @@ const resolvers: Resolvers = {
   })),
   Addresses: withParentResolver('addresses')(({ list }) => ({
     organizations: list('organizations'),
-    sites: list('sites')
+    sites: list('sites'),
   })),
   Organizations: withParentResolver('organizations')(({ single, list }) => ({
     address: single('addresses'),

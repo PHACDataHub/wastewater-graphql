@@ -13,7 +13,13 @@ input SamplesFilter {
   collPer: FloatFilter
   collNum: IntFilter
   pooled: IntFilter
+  collDT: DateTimeFilter
+  collDTStart: DateTimeFilter
+  collDTEnd: DateTimeFilter
+  sentDate: DateTimeFilter
+  recDate: DateTimeFilter
   qualityFlag: StringFilter
+  lastEdited: DateTimeFilter
   notes: StringFilter
 }
 
@@ -32,7 +38,13 @@ type Samples {
   collPer: Float
   collNum: Int
   pooled: Int 
+  collDT: DateTime
+  collDTStart: DateTime
+  collDTEnd: DateTime
+  sentDate: DateTime
+  recDate: DateTime
   qualityFlag: String
+  lastEdited: DateTime
   notes: String
   parentSample: Samples
   methodSet: MethodSets

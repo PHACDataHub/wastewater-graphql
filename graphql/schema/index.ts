@@ -1,5 +1,6 @@
 import { readFileSync, readdirSync } from 'fs';
 import * as path from 'path';
+import { DateTimeTypeDefinition } from 'graphql-scalars';
 
 // Load the schema into memory
 export const SCHEMA_DIR = path.resolve(__dirname);
@@ -11,6 +12,7 @@ const typeDefs = schemaFiles
     }
     return '';
   })
+  .concat([DateTimeTypeDefinition])
   .join('\n');
 
 export default typeDefs;

@@ -5,12 +5,18 @@ input StringFilter {
   endsWith: String
 }
 
+input IntBetweenFilter {
+  min: Int
+  max: Int
+}
+
 input IntFilter {
   is: Int
   greaterThan: Int
   lesserThan: Int
   greaterOrEqualThan: Int
   lesserOrEqualThan: Int
+  between: IntBetweenFilter
 }
 
 input FloatFilter {
@@ -19,4 +25,18 @@ input FloatFilter {
   lesserThan: Float
   greaterOrEqualThan: Float
   lesserOrEqualThan: Float
+}
+
+input DateTimeBetweenFilter {
+  min: DateTime
+  max: DateTime
+}
+
+input DateTimeFilter {
+  is: DateTime
+  greaterThan: DateTime
+  lesserThan: DateTime
+  greaterOrEqualThan: DateTime
+  lesserOrEqualThan: DateTime
+  between: DateTimeBetweenFilter
 }

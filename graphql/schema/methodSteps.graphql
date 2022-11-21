@@ -12,6 +12,7 @@ type MethodSteps {
   value: String
   unitID: String
   aggID: String
+  lastEdit: DateTime
   notes: String
   meth: PartLUs
   meas: PartLUs
@@ -37,6 +38,7 @@ input MethodStepsFilter {
   value: StringFilter
   unitID: StringFilter
   aggID: StringFilter
+  lastEdit: DateTimeFilter
   notes: StringFilter
 }
 

@@ -7,6 +7,7 @@ type Instruments {
   refLink: String
   instType: String
   insTypeOth: String
+  lastEdit: DateTime
   notes: String
   dataset: Datasets
   methodSteps(filter: MethodStepsFilter): [MethodSteps]!
@@ -21,6 +22,7 @@ input InstrumentsFilter {
   refLink: StringFilter
   instType: StringFilter
   insTypeOth: StringFilter
+  lastEdit: DateTimeFilter
   notes: StringFilter
 }
 

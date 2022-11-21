@@ -75,6 +75,10 @@ export class QuerySet {
         if ('lesserOrEqualThan' in params) {
           this.querySet.where(k, '<=', params.lesserOrEqualThan || 0);
         }
+        if ('between' in params) {
+          const between = params.between;
+          if (between) this.querySet.whereBetween(k, [between.min, between.max])
+        }
       }
     }
     console.log(this.querySet.toString());
