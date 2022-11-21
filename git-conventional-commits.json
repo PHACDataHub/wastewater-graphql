@@ -11,6 +11,7 @@
       "ops",
       "docs",
       "chore",
+      "ci",
       "merge",
       "revert"
     ],
