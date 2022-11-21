@@ -1,3 +1,9 @@
+## **v0.3.0** <sub><sup>2022-11-21 ([d125716...81cf257](https://github.com/PHACDataHub/wastewater-graphql/compare/d125716...81cf257?diff=split))</sup></sub>
+
+### Features
+*  Added support for datetime types ([99d1d84](https://github.com/PHACDataHub/wastewater-graphql/commit/99d1d84))
+
+
 ## **v0.2.0** <sub><sup>2022-10-31 ([6849818...9cffd22](https://github.com/PHACDataHub/wastewater-graphql/compare/6849818...9cffd22?diff=split))</sup></sub>
 
 ### Features
