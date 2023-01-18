@@ -34,6 +34,20 @@ file.
         "BCCDC"
       ]
     }
+  },
+  "hnj": {
+    "sites": {
+      "where": [
+        "siteID",
+        "HNJ"
+      ]
+    },
+    "datasets": {
+      "where": [
+        "dataID",
+        "NML-WWPCR"
+      ]
+    }
   }
 }
 ```
@@ -307,4 +321,89 @@ and table combination.
 ### bccdc -> measures
 
 ![bccdc measures query flow](bccdc/measures.dot.svg)
+
+
+### hnj -> addresses
+
+![hnj addresses query flow](hnj/addresses.dot.svg)
+
+
+### hnj -> organizations
+
+![hnj organizations query flow](hnj/organizations.dot.svg)
+
+
+### hnj -> datasets
+
+![hnj datasets query flow](hnj/datasets.dot.svg)
+
+
+### hnj -> polygons
+
+![hnj polygons query flow](hnj/polygons.dot.svg)
+
+
+### hnj -> instruments
+
+![hnj instruments query flow](hnj/instruments.dot.svg)
+
+
+### hnj -> optionSets
+
+![hnj optionSets query flow](hnj/optionSets.dot.svg)
+
+
+### hnj -> setLUs
+
+![hnj setLUs query flow](hnj/setLUs.dot.svg)
+
+
+### hnj -> partLUs
+
+![hnj partLUs query flow](hnj/partLUs.dot.svg)
+
+
+### hnj -> contacts
+
+![hnj contacts query flow](hnj/contacts.dot.svg)
+
+
+### hnj -> measureSets
+
+![hnj measureSets query flow](hnj/measureSets.dot.svg)
+
+
+### hnj -> methodSteps
+
+![hnj methodSteps query flow](hnj/methodSteps.dot.svg)
+
+
+### hnj -> methodSets
+
+![hnj methodSets query flow](hnj/methodSets.dot.svg)
+
+
+### hnj -> languageLUs
+
+![hnj languageLUs query flow](hnj/languageLUs.dot.svg)
+
+
+### hnj -> translationLUs
+
+![hnj translationLUs query flow](hnj/translationLUs.dot.svg)
+
+
+### hnj -> sites
+
+![hnj sites query flow](hnj/sites.dot.svg)
+
+
+### hnj -> samples
+
+![hnj samples query flow](hnj/samples.dot.svg)
+
+
+### hnj -> measures
+
+![hnj measures query flow](hnj/measures.dot.svg)
 
