@@ -14,6 +14,14 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       where: ['dataID', 'BCCDC'],
     },
   },
+  hnj: {
+    sites: {
+      where: ['siteID', 'HNJ'],
+    },
+    datasets: {
+      where: ['dataID', 'NML-WWPCR'],
+    },
+  },
 };
 
 const AuthContextFunction: ContextFunction<any, AuthContext> = (
