@@ -63,6 +63,7 @@ running `npm run docs` on a linux system with `xvfb` installed.
 ## Contributing
 
 This repository uses [conventional commits](https://www.conventionalcommits.org)
+and [release please](https://github.com/googleapis/release-please)
 to maintain [CHANGELOG.md](CHANGELOG.md) and
 [semantic versioning](https://semver.org/).  To achieve this PRs are either 
 squashed or rebased into main with the appropriate commit messages.
@@ -70,42 +71,18 @@ squashed or rebased into main with the appropriate commit messages.
 
 ### Example release commit workflow
 
-1. Create a new branch
+1. Create a new branch 
    
-1. Determine version
+2. Make your changes (ensure commits follow the
+[conventional commits](https://www.conventionalcommits.org) specification)
 
-        npx git-conventional-commits version
-
-1. Update version in project files
-
-    - package.json
-
-1. Commit version bump
-
-        git commit -am'build(release): bump project version to <version>'
-
-1. Generate change log
-
-        git-conventional-commits changelog --release <version> --file 'CHANGELOG.md'
-
-1. Commit change log
-
-        git commit -am'docs(release): create <version> change log entry'
+        git commit -am'feat: added new feature'
 
 1. Push to github
 
         git push
 
-1. Create PR and rebase to main
-
-1. Checkout and pull main
-
-        git checkout main
-        git pull
-
-1. Tag commit with version and push
-
-        git tag -a -m'build(release): <version>' 'v<version>'
-        git push --tags
-
-1.  Rebase release PR into main
+2. Create PR and rebase to main
+3. `release-please` will automatically create release PRs. Merge the PR
+   when ready and `release-please` will update the changelog and tag the commit
+   with the version number.
