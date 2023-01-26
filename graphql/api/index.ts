@@ -157,6 +157,7 @@ export class QuerySet {
   private secure(querySet: Knex.QueryBuilder, step: AuthQueryPlan) {
     if (step.filters) {
       if (step.filters.where) querySet.where(...step.filters.where);
+      if (step.filters.whereIn) querySet.whereIn(...step.filters.whereIn);
       if (step.filters.whereNot) querySet.whereNot(...step.filters.whereNot);
     }
     step.children.forEach((c) => {
