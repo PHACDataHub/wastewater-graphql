@@ -23,7 +23,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       where: ['siteID', 'HNJ'],
     },
     datasets: {
-      where: ['dataID', 'NML-WWPCR'],
+      whereIn: ['dataID', ['NML-WWPCR', 'NML-WWGX']],
     },
   },
 };
