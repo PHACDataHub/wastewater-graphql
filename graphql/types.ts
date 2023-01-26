@@ -8,6 +8,7 @@ export type AuthContext =
 
 export type AuthFilter = {
   readonly where?: [any, any];
+  readonly whereIn?: [any, any[]];
   readonly whereNot?: [any, any];
 };
 
