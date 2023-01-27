@@ -1,5 +1,5 @@
 import { ResolverFunc } from '../types';
-import { tableRelantionships } from './relationships';
+import { tableRelationships } from './relationships';
 import {
   FilteredFields,
   TableName,
@@ -7,6 +7,14 @@ import {
   WithResolverCallBack,
 } from './types';
 
+/**
+ * Convenience function which appends the provided filters to an object's
+ * existing `filter` object. 
+ *
+ * @param {*} args
+ * @param {FilteredFields} appended
+ * @returns {*}
+ */
 const argsWithAppendedFilter = (args: any, appended: FilteredFields) => ({
   ...args,
   filter: Object.assign({}, args.filter, {
@@ -14,16 +22,33 @@ const argsWithAppendedFilter = (args: any, appended: FilteredFields) => ({
   }),
 });
 
+/**
+ * Convenience function that returns a relationship pair that will not impact
+ * the query, for when no relationship exists.
+ *
+ * @param {TableName} source
+ * @returns {([TableName, string | [string, string]])}
+ */
 const emptyRelationship = (
   source: TableName
 ): [TableName, string | [string, string]] => [source, ['["1"]', '["2"]']];
 
+/**
+ * Returns the relationship (if any) between 2 tables.  Using the information
+ * from relationships.ts, when a GraphQL query accesses related data, the
+ * relationship pair is used to produce the appropriate JOIN.
+ *
+ * @param {TableName} source
+ * @param {TableName} table
+ * @param {?string} [property]
+ * @returns {([TableName, string | [string, string]])}
+ */
 export const relPair = (
   source: TableName,
   table: TableName,
   property?: string
 ): [TableName, string | [string, string]] => {
-  const relationship = tableRelantionships[source];
+  const relationship = tableRelationships[source];
   if (!relationship) return emptyRelationship(source);
   if (relationship) {
     const pairs = relationship.find((r) => r.table === table);
@@ -41,6 +66,15 @@ export const relPair = (
   return emptyRelationship(source);
 };
 
+/**
+ * Convenience function used to translate graphQL queries to SQL queries.
+ * 
+ * @param {*} name
+ * @param {*} rule
+ * @param {*} columnMaps
+ * @param {*} single
+ * @returns {(parent: any, args: any, context: any) => any}
+ */
 export const apiResolver: ApiResolver =
   (name, rule, columnMaps, single) => (parent, args, context) => {
     const newArgs =
@@ -67,9 +101,25 @@ export const apiResolver: ApiResolver =
     );
   };
 
+/**
+ * Returns a single record
+ *
+ * @param {*} name
+ * @param {*} rule
+ * @param {*} columnMaps
+ * @returns {*}
+ */
 export const apiSingleResolver: ApiResolver = (name, rule, columnMaps) =>
   apiResolver(name, rule, columnMaps, true);
 
+/**
+ * Returns resolver function for single record, with parent/child relationships
+ *
+ * @param {TableName} parent
+ * @param {TableName} table
+ * @param {?string} [property]
+ * @returns {*}
+ */
 export const getSingleResolver = (
   parent: TableName,
   table: TableName,
@@ -78,6 +128,14 @@ export const getSingleResolver = (
   return apiSingleResolver(...relPair(parent, table, property));
 };
 
+/**
+ * Returns resolver function for lists, with parent/child relationships.
+ *
+ * @param {TableName} parent
+ * @param {TableName} table
+ * @param {?string} [property]
+ * @returns {*}
+ */
 export const getResolver = (
   parent: TableName,
   table: TableName,
@@ -86,6 +144,13 @@ export const getResolver = (
   return apiResolver(...relPair(parent, table, property));
 };
 
+/**
+ * Convenience function which provides both a single and list resolver for a
+ * given "parent" relationship.
+ *
+ * @param {TableName} parent
+ * @returns {(cb: any) => { [key: string]: any; }}
+ */
 export const withParentResolver =
   (parent: TableName) =>
   (

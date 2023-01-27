@@ -60,11 +60,11 @@ export type ApiResolver = (
 ) => ResolverFunc;
 
 export type TableFk = string | [string, string];
-export type TableRelantionships = Partial<
-  Record<TableName, RelantionshipConfig[]>
+export type TableRelationships = Partial<
+  Record<TableName, RelationshipConfig[]>
 >;
 
-export type BaseRelantionshipConfig = {
+export type BaseRelationshipConfig = {
   table: TableName;
   auth?: {
     depth: number; // depth 0 no limit
@@ -72,22 +72,17 @@ export type BaseRelantionshipConfig = {
   };
 };
 
-export type FKRelantionshipConfig = BaseRelantionshipConfig & {
+export type FKRelationshipConfig = BaseRelationshipConfig & {
   foreignKeys: TableFk;
 };
 
-export type PropRelantionshipConfig = BaseRelantionshipConfig & {
-  properties: PropertyRelantionShipConfig[];
+export type PropRelationshipConfig = BaseRelationshipConfig & {
+  properties: PropertyRelationshipConfig[];
 };
 
-export type RelantionshipConfig =
-  | FKRelantionshipConfig
-  | PropRelantionshipConfig;
+export type RelationshipConfig = FKRelationshipConfig | PropRelationshipConfig;
 
-export type PropertyRelantionShipConfig = Omit<
-  FKRelantionshipConfig,
-  'table'
-> & {
+export type PropertyRelationshipConfig = Omit<FKRelationshipConfig, 'table'> & {
   property: string;
 };
 

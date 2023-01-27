@@ -1,5 +1,28 @@
-import { TableRelantionships } from './types';
+import { TableRelationships } from './types';
 
+/**
+ * List of SQL tables
+ *
+ * @type {readonly [
+ *  "addresses",
+ *  "organizations",
+ *  "datasets",
+ *  "polygons",
+ *  "instruments",
+ *  "optionSets",
+ *  "setLUs",
+ *  "partLUs",
+ *  "contacts",
+ *  "measureSets",
+ *  "methodSteps",
+ *  "methodSets",
+ *  "languageLUs",
+ *  "translationLUs",
+ *  "sites",
+ *  "samples",
+ *  "measures"
+ * ]}
+ */
 export const tables = [
   'addresses',
   'organizations',
@@ -20,24 +43,27 @@ export const tables = [
   'measures',
 ] as const;
 
-/*
-Defines the list of foreign key relationships in the underlying SQL database.
+/**
+ * Defines the list of foreign key relationships in the underlying SQL database.
+ *
+ * Relationships that enforce authorization rules must declare an `auth` object
+ * with the applicable `depth`.  Depth determines how many relationships to
+ * traverse during lookup and they are applied at the beginning of a query only.
+ * In other words if the query begins at table X, depths declared on related
+ * tables are ignored.
 
-Relationships that enforce authorization rules must declare an `auth` object
-with the applicable `depth`.  Depth determines how many relationships to
-traverse during lookup and they are applied at the beginning of a query only. In
-other words if the query begins at table X, depths declared on related tables
-are ignored.
-
-TABLE X
-  -> TABLE Y (depth 2)
-    -> TABLE Z (depth 3)
-      -> TABLE A ... 
-
-In the example above, queries at table `X` will stop at table `Z`, because the 
-declared depth of the first relationship is `2`.
-*/
-export const tableRelantionships: TableRelantionships = {
+ * TABLE X
+ *  -> TABLE Y (depth 2)
+ *    -> TABLE Z (depth 3)
+ *      -> TABLE A ... 
+ *
+ * In the example above, queries at table `X` will stop at table `Z`, because
+ * the declared depth of the first relationship is `2`.
+ *
+ *
+ * @type {TableRelationships}
+ */
+export const tableRelationships: TableRelationships = {
   samples: [
     {
       table: 'sites',

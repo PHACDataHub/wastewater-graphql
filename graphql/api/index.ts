@@ -12,6 +12,11 @@ import {
   DatasourceContext,
 } from './types';
 
+/**
+ * Setup mappings for graphql columns that don't match the SQL columns.
+ *
+ * @type {TableColumnMaps}
+ */
 const tableColumnMaps: TableColumnMaps = {
   methodSets: [
     ['methSetID (CK)', 'methSetID_CK'],
@@ -19,11 +24,56 @@ const tableColumnMaps: TableColumnMaps = {
   ],
 };
 
+/**
+ * The QuerySet class is responsible for performing queries on the underlying
+ * SQL database via knex.js, and applying any filters required by either the
+ * authorization or the graphql query.
+ * 
+ * @export
+ * @class QuerySet
+ * @typedef {QuerySet}
+ */
 export class QuerySet {
+  /**
+   * The knex QueryBuilder object
+   *
+   * @private
+   * @type {Knex.QueryBuilder}
+   */
   private querySet;
+  /**
+   * Knex object
+   *
+   * @private
+   * @type {Knex}
+   */
   private knex;
+  /**
+   * The authorization context of the query
+   *
+   * @private
+   * @type {AuthContext}
+   */
   private auth;
+  /**
+   * The database schema
+   *
+   * @private
+   * @type {string}
+   */
   private schema;
+  /**
+   * Creates an instance of QuerySet.
+   *
+   * @constructor
+   * @public
+   * @param {Knex} knex
+   * @param {TableName} table
+   * @param {string} schema
+   * @param {AuthContext} auth
+   * @param {?readonly [string, string][]} [columnMaps]
+   * @param {?boolean} [first]
+   */
   public constructor(
     knex: Knex,
     table: TableName,
@@ -51,6 +101,13 @@ export class QuerySet {
       this.secure(this.querySet, createAuthorizationPlan(this.auth, table));
     }
   }
+  /**
+   * Apply the specified filters to the SQL.
+   *
+   * @public
+   * @param {FilteredFields} filter
+   * @returns {*}
+   */
   public applyFilter(filter: FilteredFields) {
     if (this.querySet === null) return new Promise((resolve) => resolve([]));
     if (filter && typeof filter === 'object') {
@@ -90,6 +147,13 @@ export class QuerySet {
     console.log(this.querySet.toString());
     return this.querySet;
   }
+  /**
+   * Apply the filters related to authorization to the query
+   *
+   * @private
+   * @param {Knex.QueryBuilder} querySet
+   * @param {AuthQueryPlan} step
+   */
   private secure(querySet: Knex.QueryBuilder, step: AuthQueryPlan) {
     if (step.filters) {
       if (step.filters.where) querySet.where(...step.filters.where);
@@ -125,15 +189,53 @@ export class QuerySet {
   }
 }
 
+/**
+ * WasteWaterAPI
+ *
+ * @export
+ * @class WasteWaterAPI
+ * @typedef {WasteWaterAPI}
+ * @extends {SQLDataSource}
+ */
 export class WasteWaterAPI extends SQLDataSource {
+  /**
+   * Knex configuration
+   *
+   * @private
+   * @type {any}
+   */
   private conf;
+  /**
+   * Creates an instance of WasteWaterAPI.
+   *
+   * @constructor
+   * @public
+   * @param {*} conf
+   */
   public constructor(conf: any) {
     super(conf);
     this.conf = conf;
   }
+  /**
+   * Returns the knex instance.
+   *
+   * @private
+   * @returns {Knex}
+   */
   private getKnex() {
     return this.knex;
   }
+  /**
+   * Perform a standard graphQL query on the SQL database.
+   *
+   * @private
+   * @param {TableName} table
+   * @param {FilteredFields} filter
+   * @param {AuthContext} context
+   * @param {?readonly [string, string][]} [columnMaps]
+   * @param {?boolean} [first]
+   * @returns {*}
+   */
   private standardQuery(
     table: TableName,
     filter: FilteredFields,
@@ -157,6 +259,16 @@ export class WasteWaterAPI extends SQLDataSource {
       throw e;
     });
   }
+  /**
+   * Return all results
+   *
+   * @public
+   * @param {TableName} table
+   * @param {*} args
+   * @param {(AuthContext & DatasourceContext)} context
+   * @param {?readonly [string, string][]} [columnMaps]
+   * @returns {*}
+   */
   public get(
     table: TableName,
     args: any,
@@ -165,6 +277,16 @@ export class WasteWaterAPI extends SQLDataSource {
   ) {
     return this.standardQuery(table, args.filter, context, columnMaps);
   }
+  /**
+   * Return first result.
+   *
+   * @public
+   * @param {TableName} table
+   * @param {*} args
+   * @param {(AuthContext & DatasourceContext)} context
+   * @param {?readonly [string, string][]} [columnMaps]
+   * @returns {*}
+   */
   public first(
     table: TableName,
     args: any,

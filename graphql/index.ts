@@ -1,3 +1,6 @@
+/**
+ * Main server entrypoint
+ */
 import { ApolloServer } from 'apollo-server-azure-functions';
 import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
 
@@ -8,7 +11,11 @@ import wasteWaterAPI from './api';
 import typeDefs from './schema';
 import resolvers from './resolvers';
 
-// Create our server.
+/**
+ * Create our server.
+ *
+ * @type {ApolloServer}
+ */
 const server = new ApolloServer({
   typeDefs,
   resolvers: {

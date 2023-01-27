@@ -1,6 +1,11 @@
 import { apiResolver, withParentResolver } from './api/resolvers';
 import { Resolvers } from './types';
 
+/**
+ * GraphQL Resolvers.
+ *
+ * @type {Resolvers}
+ */
 const resolvers: Resolvers = {
   Samples: withParentResolver('samples')(({ single, list }) => ({
     parentSample: single('methodSets'),
