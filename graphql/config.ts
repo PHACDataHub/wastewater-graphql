@@ -3,7 +3,11 @@ import { Knex } from 'knex';
 
 dotenv.config();
 
-// List of accepted values for authentication type.
+/**
+ * List of accepted values for authentication type.
+ *
+ * @type {Knex.MsSqlAuthenticationTypeOptions[]}
+ */
 const validTypes: Knex.MsSqlAuthenticationTypeOptions[] = [
   'default',
   'ntlm',
@@ -22,6 +26,11 @@ if (!process.env.DB_HOST) {
   throw new Error('The environment variable DB_HOST is required.');
 }
 
+/**
+ * Database authentication type.
+ *
+ * @type {(Knex.MsSqlAuthenticationTypeOptions | undefined)}
+ */
 let type: Knex.MsSqlAuthenticationTypeOptions | undefined = undefined;
 if (process.env.DB_AUTH_TYPE) {
   if (process.env.DB_AUTH_TYPE || '' in validTypes) {
@@ -35,6 +44,11 @@ if (process.env.DB_AUTH_TYPE) {
   }
 }
 
+/**
+ * Database connection
+ *
+ * @type {Knex.StaticConnectionConfig}
+ */
 const connection: Knex.StaticConnectionConfig = {
   server: process.env.DB_HOST,
   port: parseInt(process.env.DB_PORT || '1433'),
@@ -48,6 +62,11 @@ const connection: Knex.StaticConnectionConfig = {
   },
 };
 
+/**
+ * Database object.
+ *
+ * @type {{ client: string; schema: string; connection: any; }}
+ */
 export const database = {
   client: 'mssql',
   schema: 'wastewater',

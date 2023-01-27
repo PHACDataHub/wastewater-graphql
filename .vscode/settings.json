@@ -6,5 +6,12 @@
   "debug.internalConsoleOptions": "neverOpen",
   "azureFunctions.preDeployTask": "npm prune (functions)",
   "editor.rulers": [80],
-  "markdown-preview-github-styles.colorTheme": "light"
+  "markdown-preview-github-styles.colorTheme": "light",
+  "cSpell.words": [
+    "Datasource",
+    "funder",
+    "ntlm",
+    "wwdb",
+    "xvfb"
+  ]
 }

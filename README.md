@@ -6,10 +6,9 @@ water surveillance data.
 ## Getting started
 
 Create a local configuration file named `local.settings.json` with the following
-content (or whatever content is required for your envrionment):
+content (or whatever content is required for your environment):
 
 ```json
-// local.settings.json
 {
     "IsEncrypted": false,
     "Values": {
@@ -19,7 +18,7 @@ content (or whatever content is required for your envrionment):
   }
 ```
 
-Create a `.env` file that defines the required envrionment variables.
+Create a `.env` file that defines the required environment variables.
 
 | Variable          | Description                                   |
 | ----------------- | --------------------------------------------- |
@@ -63,26 +62,9 @@ running `npm run docs` on a linux system with `xvfb` installed.
 ## Contributing
 
 This repository uses [conventional commits](https://www.conventionalcommits.org)
-and [release please](https://github.com/googleapis/release-please)
 to maintain [CHANGELOG.md](CHANGELOG.md) and
 [semantic versioning](https://semver.org/).  To achieve this PRs are either 
 squashed or rebased into main with the appropriate commit messages.
 
-
-### Example release commit workflow
-
-1. Create a new branch 
-   
-2. Make your changes (ensure commits follow the
-[conventional commits](https://www.conventionalcommits.org) specification)
-
-        git commit -am'feat: added new feature'
-
-1. Push to github
-
-        git push
-
-2. Create PR and rebase to main
-3. `release-please` will automatically create release PRs. Merge the PR
-   when ready and `release-please` will update the changelog and tag the commit
-   with the version number.
+The [release-please](https://github.com/googleapis/release-please) GitHub action
+is used to automatically update the changelog, and create releases.

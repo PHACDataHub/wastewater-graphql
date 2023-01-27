@@ -1,3 +1,11 @@
+/**
+ * This script generates diagrams for each authorization group defined in
+ * (./auth.ts).  The diagrams illustrate the authentication query plan that will
+ * be generated for each table in the database, for each group.
+ *
+ * These diagrams provide a visual representation of the authentication flow to
+ * help the developer understand what is happening.
+ */
 import { saveAuthDiagram } from './api/utils/diagram';
 import { tables } from './api/relationships';
 import { groups } from './auth';
