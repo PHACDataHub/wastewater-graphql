@@ -29,7 +29,8 @@ jobs:
         shell: pwsh
         run: |
           pushd './${{ env.AZURE_FUNCTIONAPP_PACKAGE_PATH }}'
-          npm install
+          npm install --production
+          npm audit
           npm run build --if-present
           npm run test --if-present
           popd
