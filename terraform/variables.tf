@@ -3,26 +3,31 @@
 # (auth.ts)(graphql/auth.ts)
 variable "auth_groups" {
   type = list(object({
-    group       = string
-    name        = string
-    description = string
+    group         = string
+    name          = string
+    description   = string
+    subscriptions = number
   }))
   default = [
-    { group       = "nml-lab"
-      name        = "NML"
-      description = "National Microbiology Laboratory"
+    { group         = "nml-lab"
+      name          = "NML"
+      description   = "National Microbiology Laboratory"
+      subscriptions = 15
     },
-    { group       = "csc"
-      name        = "CSC"
-      description = "Correctional Service Canada"
+    { group         = "csc"
+      name          = "CSC"
+      description   = "Correctional Service Canada"
+      subscriptions = 15
     },
-    { group       = "bccdc"
-      name        = "BCCDC"
-      description = "BC Centre for Disease Control"
+    { group         = "bccdc"
+      name          = "BCCDC"
+      description   = "BC Centre for Disease Control"
+      subscriptions = 15
     },
-    { group       = "hnj"
-      name        = "HNJ"
-      description = "Haines Junction (Yukon)"
+    { group         = "hnj"
+      name          = "HNJ"
+      description   = "Haines Junction (Yukon)"
+      subscriptions = 15
   }]
 }
 
@@ -64,5 +69,16 @@ variable "api_path" {
 
 # Absolute URL of the backend service implementing this API.
 variable "function_app_url" {
-  type    = string
+  type = string
+}
+
+locals {
+  subscriptions = distinct(flatten([
+    for group in var.auth_groups : [
+      for index in range(group.subscriptions) : {
+        display_name = format("HPOC-NSP-WWS-SUB-%s-%s", group.group, index)
+        group        = group
+      }
+    ]
+  ]))
 }

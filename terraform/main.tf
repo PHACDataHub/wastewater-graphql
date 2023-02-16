@@ -60,7 +60,7 @@ resource "azurerm_api_management_product" "ww-product" {
 
   product_id   = each.value.group
   display_name = format("WastewaterAPI: %s", each.value.name)
-  description  = format(
+  description = format(
     "This product controls Wastewater API access.\n\n%s",
     each.value.description
   )
@@ -115,6 +115,21 @@ resource "azurerm_api_management_product_api" "ww-product-api" {
   api_management_name = data.azurerm_api_management.apim.name
 
   product_id = each.value.group
+
+  depends_on = [azurerm_api_management_product.ww-product]
+}
+
+resource "azurerm_api_management_subscription" "ww-product-subscription" {
+  for_each = {
+    for index, subscr in local.subscriptions :
+      subscr.display_name => subscr
+  }
+
+  api_management_name = data.azurerm_api_management.apim.name
+  resource_group_name = data.azurerm_resource_group.api-resource-group.name
+
+  product_id = azurerm_api_management_product.ww-product[each.value.group.group].id
+  display_name = each.value.display_name
 
   depends_on = [azurerm_api_management_product.ww-product]
 }
