@@ -28,7 +28,7 @@ const tableColumnMaps: TableColumnMaps = {
  * The QuerySet class is responsible for performing queries on the underlying
  * SQL database via knex.js, and applying any filters required by either the
  * authorization or the graphql query.
- * 
+ *
  * @export
  * @class QuerySet
  * @typedef {QuerySet}
@@ -253,7 +253,12 @@ export class WasteWaterAPI extends SQLDataSource {
     );
 
     return qs.applyFilter(filter).catch((e) => {
-      if (process.env.NODE_ENV === 'production') {
+      console.log('!!!! ERROR !!!!');
+      console.log(e.name);
+      console.log(e.message);
+      console.log(e.errors);
+
+      if (process.env.WEBSITE_SLOT_NAME === 'Production') {
         throw new Error('[E001] Error executing this query.');
       }
       throw e;
