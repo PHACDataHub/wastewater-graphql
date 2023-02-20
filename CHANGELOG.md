@@ -1,3 +1,19 @@
+# Changelog
+
+## [0.2.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v0.1.0...v0.2.0) (2023-02-17)
+
+
+### Features
+
+* :sparkles: Implemented data access control ([a72e64a](https://github.com/PHACDataHub/wastewater-graphql/commit/a72e64a767977dbdff40102d511a443aece683b0))
+* Added support for datetime types ([dfe43e0](https://github.com/PHACDataHub/wastewater-graphql/commit/dfe43e0507d7a5e3c6ada081a739c8d289ed660f))
+* enable access for Haines Junction (HNJ) ([b3d0bc8](https://github.com/PHACDataHub/wastewater-graphql/commit/b3d0bc874567af55e6586e661b57d1be1b4a0912))
+
+
+### Bug Fixes
+
+* release-please.yml in proper directory ([d466a95](https://github.com/PHACDataHub/wastewater-graphql/commit/d466a95e2dc5491a7e6b2cae2cff8a0c44c1cdb0))
+
 ## **v0.3.0** <sub><sup>2022-11-21 ([d125716...81cf257](https://github.com/PHACDataHub/wastewater-graphql/compare/d125716...81cf257?diff=split))</sup></sub>
 
 ### Features
@@ -23,5 +39,3 @@
 
 ### Features
 *  Initial release ([ab89380](https://github.com/PHACDataHub/wastewater-graphql/commit/ab89380))
-
-
