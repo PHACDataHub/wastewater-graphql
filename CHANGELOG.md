@@ -1,5 +1,18 @@
 # Changelog
 
+## [1.0.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v0.2.0...v1.0.0) (2023-02-22)
+
+
+### Features
+
+* add NML-WWGX dataset access for Haines Junction (HNJ) ([42efe55](https://github.com/PHACDataHub/wastewater-graphql/commit/42efe558bb69a7e98c382278e0b9ac735a483124))
+* multiple condition support for data access ([da463fc](https://github.com/PHACDataHub/wastewater-graphql/commit/da463fc2191697ae25066d7218acbf9e07b70447))
+
+
+### Miscellaneous Chores
+
+* release 1.0.0 ([a3444ff](https://github.com/PHACDataHub/wastewater-graphql/commit/a3444ffa6644098d5fcba52045a7a74711f9e64d))
+
 ## [0.2.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v0.1.0...v0.2.0) (2023-02-17)
 
 
