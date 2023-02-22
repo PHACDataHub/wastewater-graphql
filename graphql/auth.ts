@@ -32,7 +32,9 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
  * Determines the authorization context of a request.
  *
  * @param {HttpQueryRequest} request
- * @returns {({ authenticated: boolean; filters?: undefined; } | { authenticated: boolean; filters: any; })}
+ * @returns
+ *  | { authenticated: boolean; filters?: undefined }
+ *  | { authenticated: boolean; filters: any } = {};
  */
 const AuthContextFunction: ContextFunction<any, AuthContext> = (
   request: HttpQueryRequest

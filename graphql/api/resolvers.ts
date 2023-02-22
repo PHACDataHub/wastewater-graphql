@@ -9,7 +9,7 @@ import {
 
 /**
  * Convenience function which appends the provided filters to an object's
- * existing `filter` object. 
+ * existing `filter` object.
  *
  * @param {*} args
  * @param {FilteredFields} appended
@@ -68,7 +68,7 @@ export const relPair = (
 
 /**
  * Convenience function used to translate graphQL queries to SQL queries.
- * 
+ *
  * @param {*} name
  * @param {*} rule
  * @param {*} columnMaps
