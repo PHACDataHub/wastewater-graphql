@@ -43,9 +43,12 @@ file.
       ]
     },
     "datasets": {
-      "where": [
+      "whereIn": [
         "dataID",
-        "NML-WWPCR"
+        [
+          "NML-WWPCR",
+          "NML-WWGX"
+        ]
       ]
     }
   }
