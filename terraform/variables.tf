@@ -7,27 +7,33 @@ variable "auth_groups" {
     name          = string
     description   = string
     subscriptions = number
+    suspended     = list(number)
   }))
   default = [
     { group         = "nml-lab"
       name          = "NML"
       description   = "National Microbiology Laboratory"
       subscriptions = 15
+      suspended     = []
+
     },
     { group         = "csc"
       name          = "CSC"
       description   = "Correctional Service Canada"
       subscriptions = 15
+      suspended     = []
     },
     { group         = "bccdc"
       name          = "BCCDC"
       description   = "BC Centre for Disease Control"
       subscriptions = 15
+      suspended     = []
     },
     { group         = "hnj"
       name          = "HNJ"
       description   = "Haines Junction (Yukon)"
       subscriptions = 15
+      suspended     = []
   }]
 }
 
@@ -78,6 +84,7 @@ locals {
       for index in range(group.subscriptions) : {
         display_name = format("HPOC-NSP-WWS-SUB-%s-%s", group.group, index)
         group        = group
+        state   = contains(group.suspended, index) ? "suspended" : "active"
       }
     ]
   ]))

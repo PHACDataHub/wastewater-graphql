@@ -131,5 +131,7 @@ resource "azurerm_api_management_subscription" "ww-product-subscription" {
   product_id = azurerm_api_management_product.ww-product[each.value.group.group].id
   display_name = each.value.display_name
 
+  state = each.value.state
+
   depends_on = [azurerm_api_management_product.ww-product]
 }
