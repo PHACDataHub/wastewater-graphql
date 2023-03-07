@@ -14,13 +14,16 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     },
   },
   bccdc: {
+    sites: {
+      where: ['healthReg', 'Vancouver'],
+    },
     datasets: {
-      where: ['dataID', 'BCCDC'],
+      whereIn: ['dataID', ['BCCDC', 'NML-WWPCR']],
     },
   },
   hnj: {
     sites: {
-      where: ['siteID', 'HNJ'],
+      whereIn: ['healthReg', ['Yukon', 'Yukon-HNJ']],
     },
     datasets: {
       whereIn: ['dataID', ['NML-WWPCR', 'NML-WWGX']],
