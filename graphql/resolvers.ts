@@ -103,7 +103,7 @@ const resolvers: Resolvers = {
     fraction: single('partLUs', 'fraction'),
     meas: single('partLUs', 'meas'),
   })),
-  allSitesAdj: withParentResolver('allSitesAdj')(({ single}) => ({
+  allSitesAdj: withParentResolver('allSitesAdj')(({ single }) => ({
     dataset: single('datasets'),
     sample: single('samples'),
     fraction: single('partLUs', 'fraction'),
@@ -117,7 +117,7 @@ const resolvers: Resolvers = {
     fraction: single('partLUs', 'fraction'),
     meas: single('partLUs', 'meas'),
   })),
-    
+
   Query: {
     addresses: apiResolver('addresses'),
     organizations: apiResolver('organizations'),
