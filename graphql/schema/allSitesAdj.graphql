@@ -1,0 +1,33 @@
+input allSitesAdjFilter {
+    collDT: DateTimeFilter
+    name: StringFilter
+    healthReg: StringFilter
+    measID: StringFilter
+    fractionID: StringFilter
+    dataID: StringFilter
+    valavg: FloatFilter
+    sampleID: StringFilter
+    MA7: FloatFilter
+    confidence: IntFilter
+}
+
+type allSitesAdj {
+    collDT: DateTime
+    name: String
+    healthReg: String
+    measID: String
+    fractionID: String
+    dataID: String
+    valavg: Float
+    sampleID: String
+    MA7: Float
+    confidence: Int
+    dataset: Datasets
+    sample: Samples
+    fraction: PartLUs
+    meas: PartLUs
+}
+
+extend type Query {
+  allSitesAdj(filter: allSitesAdjFilter): [allSitesAdj]!
+}

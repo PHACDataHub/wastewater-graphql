@@ -97,6 +97,27 @@ const resolvers: Resolvers = {
     measures: list('measures'),
     samples: list('samples'),
   })),
+  allSites: withParentResolver('allSites')(({ single }) => ({
+    dataset: single('datasets'),
+    sample: single('samples', 'sampID'),
+    fraction: single('partLUs', 'fraction'),
+    meas: single('partLUs', 'meas'),
+  })),
+  allSitesAdj: withParentResolver('allSitesAdj')(({ single }) => ({
+    dataset: single('datasets'),
+    sample: single('samples'),
+    fraction: single('partLUs', 'fraction'),
+    meas: single('partLUs', 'meas'),
+  })),
+  Infobase: withParentResolver('Infobase')(({ single }) => ({
+    fraction: single('partLUs', 'fraction'),
+    meas: single('partLUs', 'meas'),
+  })),
+  InfobaseTrend: withParentResolver('InfobaseTrend')(({ single }) => ({
+    fraction: single('partLUs', 'fraction'),
+    meas: single('partLUs', 'meas'),
+  })),
+
   Query: {
     addresses: apiResolver('addresses'),
     organizations: apiResolver('organizations'),
@@ -115,6 +136,10 @@ const resolvers: Resolvers = {
     samples: apiResolver('samples'),
     sites: apiResolver('sites'),
     measures: apiResolver('measures'),
+    allSites: apiResolver('allSites'),
+    allSitesAdj: apiResolver('allSitesAdj'),
+    Infobase: apiResolver('Infobase'),
+    InfobaseTrend: apiResolver('InfobaseTrend'),
   },
 };
 

@@ -28,18 +28,30 @@ file.
     }
   },
   "bccdc": {
-    "datasets": {
+    "sites": {
       "where": [
+        "healthReg",
+        "Vancouver"
+      ]
+    },
+    "datasets": {
+      "whereIn": [
         "dataID",
-        "BCCDC"
+        [
+          "BCCDC",
+          "NML-WWPCR"
+        ]
       ]
     }
   },
   "hnj": {
     "sites": {
-      "where": [
-        "siteID",
-        "HNJ"
+      "whereIn": [
+        "healthReg",
+        [
+          "Yukon",
+          "Yukon-HNJ"
+        ]
       ]
     },
     "datasets": {
@@ -76,6 +88,16 @@ and table combination.
 ![nml-lab addresses query flow](nml-lab/addresses.dot.svg)
 
 
+### nml-lab -> allSites
+
+![nml-lab allSites query flow](nml-lab/allSites.dot.svg)
+
+
+### nml-lab -> allSitesAdj
+
+![nml-lab allSitesAdj query flow](nml-lab/allSitesAdj.dot.svg)
+
+
 ### nml-lab -> organizations
 
 ![nml-lab organizations query flow](nml-lab/organizations.dot.svg)
@@ -84,6 +106,16 @@ and table combination.
 ### nml-lab -> datasets
 
 ![nml-lab datasets query flow](nml-lab/datasets.dot.svg)
+
+
+### nml-lab -> Infobase
+
+![nml-lab Infobase query flow](nml-lab/Infobase.dot.svg)
+
+
+### nml-lab -> InfobaseTrend
+
+![nml-lab InfobaseTrend query flow](nml-lab/InfobaseTrend.dot.svg)
 
 
 ### nml-lab -> polygons
@@ -161,6 +193,16 @@ and table combination.
 ![csc addresses query flow](csc/addresses.dot.svg)
 
 
+### csc -> allSites
+
+![csc allSites query flow](csc/allSites.dot.svg)
+
+
+### csc -> allSitesAdj
+
+![csc allSitesAdj query flow](csc/allSitesAdj.dot.svg)
+
+
 ### csc -> organizations
 
 ![csc organizations query flow](csc/organizations.dot.svg)
@@ -169,6 +211,16 @@ and table combination.
 ### csc -> datasets
 
 ![csc datasets query flow](csc/datasets.dot.svg)
+
+
+### csc -> Infobase
+
+![csc Infobase query flow](csc/Infobase.dot.svg)
+
+
+### csc -> InfobaseTrend
+
+![csc InfobaseTrend query flow](csc/InfobaseTrend.dot.svg)
 
 
 ### csc -> polygons
@@ -246,6 +298,16 @@ and table combination.
 ![bccdc addresses query flow](bccdc/addresses.dot.svg)
 
 
+### bccdc -> allSites
+
+![bccdc allSites query flow](bccdc/allSites.dot.svg)
+
+
+### bccdc -> allSitesAdj
+
+![bccdc allSitesAdj query flow](bccdc/allSitesAdj.dot.svg)
+
+
 ### bccdc -> organizations
 
 ![bccdc organizations query flow](bccdc/organizations.dot.svg)
@@ -254,6 +316,16 @@ and table combination.
 ### bccdc -> datasets
 
 ![bccdc datasets query flow](bccdc/datasets.dot.svg)
+
+
+### bccdc -> Infobase
+
+![bccdc Infobase query flow](bccdc/Infobase.dot.svg)
+
+
+### bccdc -> InfobaseTrend
+
+![bccdc InfobaseTrend query flow](bccdc/InfobaseTrend.dot.svg)
 
 
 ### bccdc -> polygons
@@ -331,6 +403,16 @@ and table combination.
 ![hnj addresses query flow](hnj/addresses.dot.svg)
 
 
+### hnj -> allSites
+
+![hnj allSites query flow](hnj/allSites.dot.svg)
+
+
+### hnj -> allSitesAdj
+
+![hnj allSitesAdj query flow](hnj/allSitesAdj.dot.svg)
+
+
 ### hnj -> organizations
 
 ![hnj organizations query flow](hnj/organizations.dot.svg)
@@ -339,6 +421,16 @@ and table combination.
 ### hnj -> datasets
 
 ![hnj datasets query flow](hnj/datasets.dot.svg)
+
+
+### hnj -> Infobase
+
+![hnj Infobase query flow](hnj/Infobase.dot.svg)
+
+
+### hnj -> InfobaseTrend
+
+![hnj InfobaseTrend query flow](hnj/InfobaseTrend.dot.svg)
 
 
 ### hnj -> polygons

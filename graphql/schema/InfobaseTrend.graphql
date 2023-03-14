@@ -1,0 +1,23 @@
+input InfobaseTrendFilter{
+    fractionid: StringFilter
+    region: StringFilter
+    Location: StringFilter
+    measureid: StringFilter
+    LatestTrend: StringFilter
+    pruid: IntFilter
+}
+
+type InfobaseTrend {
+    fractionid: String
+    region: String
+    Location: String
+    measureid: String
+    LatestTrend: String
+    pruid: Int
+    fraction: PartLUs
+    meas: PartLUs
+}
+
+extend type Query {
+  InfobaseTrend(filter: InfobaseTrendFilter): [InfobaseTrend]!
+}
