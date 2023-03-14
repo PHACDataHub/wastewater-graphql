@@ -1,5 +1,13 @@
 # Changelog
 
+## [1.1.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.0.0...v1.1.0) (2023-03-14)
+
+
+### Features
+
+* add access to `allSites`, `allSitesAdj`, `Infobase`, `InfobaseT… ([#22](https://github.com/PHACDataHub/wastewater-graphql/issues/22)) ([2c8084a](https://github.com/PHACDataHub/wastewater-graphql/commit/2c8084af8d27107c7d0663c860577ac96334831c))
+* update data access for BCCDC and HNJ ([#20](https://github.com/PHACDataHub/wastewater-graphql/issues/20)) ([a21ed04](https://github.com/PHACDataHub/wastewater-graphql/commit/a21ed04ad437b21889a46ce8ad6a022c3a7469ae))
+
 ## [1.0.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v0.2.0...v1.0.0) (2023-02-22)
 
 
