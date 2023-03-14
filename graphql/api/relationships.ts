@@ -5,8 +5,12 @@ import { TableRelationships } from './types';
  *
  * @type {readonly [
  *  "addresses",
+ *  "allSites"
+ *  "allSitesAdj"
  *  "organizations",
  *  "datasets",
+ *  "Infobase",
+ *  "InfobaseTrend",
  *  "polygons",
  *  "instruments",
  *  "optionSets",
@@ -25,8 +29,12 @@ import { TableRelationships } from './types';
  */
 export const tables = [
   'addresses',
+  'allSites',
+  'allSitesAdj',
   'organizations',
   'datasets',
+  'Infobase',
+  'InfobaseTrend',
   'polygons',
   'instruments',
   'optionSets',
@@ -203,5 +211,63 @@ export const tableRelationships: TableRelationships = {
   translationLUs: [
     { table: 'languageLUs', foreignKeys: 'langID' },
     { table: 'partLUs', foreignKeys: 'partID' },
+  ],
+  allSites: [
+    {
+      table: 'datasets',
+      foreignKeys: 'dataID',
+      auth: { depth: 1, required: true },
+    },
+    {
+      table: 'sites',
+      foreignKeys: 'healthReg',
+      auth: { depth: 1, required: true },
+    },
+    { table: 'samples', foreignKeys: ['sampID', 'sampleID'] },
+    {
+      table: 'partLUs',
+      properties: [
+        { property: 'fraction', foreignKeys: ['partID', 'fractionID'] },
+        { property: 'meas', foreignKeys: ['partID', 'measID'] },
+      ],
+    },
+  ],
+  allSitesAdj: [
+    {
+      table: 'datasets',
+      foreignKeys: 'dataID',
+      auth: { depth: 1, required: true },
+    },
+    {
+      table: 'sites',
+      foreignKeys: 'healthReg',
+      auth: { depth: 1, required: true },
+    },
+    { table: 'samples', foreignKeys: ['sampID', 'sampleID'] },
+    {
+      table: 'partLUs',
+      properties: [
+        { property: 'fraction', foreignKeys: ['partID', 'fractionID'] },
+        { property: 'meas', foreignKeys: ['partID', 'measID'] },
+      ],
+    },
+  ],
+  Infobase: [
+    {
+      table: 'partLUs',
+      properties: [
+        { property: 'fraction', foreignKeys: ['partID', 'fractionid'] },
+        { property: 'meas', foreignKeys: ['partID', 'measureid'] },
+      ],
+    },
+  ],
+  InfobaseTrend: [
+    {
+      table: 'partLUs',
+      properties: [
+        { property: 'fraction', foreignKeys: ['partID', 'fractionid'] },
+        { property: 'meas', foreignKeys: ['partID', 'measureid'] },
+      ],
+    },
   ],
 };
