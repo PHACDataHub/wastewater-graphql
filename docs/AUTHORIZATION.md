@@ -49,8 +49,8 @@ file.
       "whereIn": [
         "healthReg",
         [
-          "Yukon",
-          "Yukon-HNJ"
+          "Whitehorse",
+          "Haines Junction"
         ]
       ]
     },
