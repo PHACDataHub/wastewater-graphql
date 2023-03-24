@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.1](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.1.0...v1.1.1) (2023-03-24)
+
+
+### Miscellaneous Chores
+
+* release 1.1.1 ([8e468ef](https://github.com/PHACDataHub/wastewater-graphql/commit/8e468ef559cb17b3517f08fbcc8c3ccd7a833968))
+
 ## [1.1.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.0.0...v1.1.0) (2023-03-14)
 
 
