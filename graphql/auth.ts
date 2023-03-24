@@ -23,7 +23,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
   },
   hnj: {
     sites: {
-      whereIn: ['healthReg', ['Yukon', 'Yukon-HNJ']],
+      whereIn: ['healthReg', ['Whitehorse', 'Haines Junction']],
     },
     datasets: {
       whereIn: ['dataID', ['NML-WWPCR', 'NML-WWGX']],
