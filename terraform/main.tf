@@ -65,7 +65,7 @@ resource "azurerm_api_management_product" "ww-product" {
     each.value.description
   )
 
-  subscription_required = true
+  subscription_required = false
   approval_required     = false
   published             = false
 }
