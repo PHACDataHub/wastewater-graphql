@@ -23,5 +23,5 @@ type Infobase {
 }
 
 extend type Query {
-  Infobase(filter: allSitesAdjFilter): [Infobase]!
+  Infobase(filter: InfobaseFilter): [Infobase]!
 }
