@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.1.2](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.1.1...v1.1.2) (2023-05-03)
+
+
+### Bug Fixes
+
+* `infobase.graphql` now correctly uses `InfobaseFilter` ([#25](https://github.com/PHACDataHub/wastewater-graphql/issues/25)) ([0e17e60](https://github.com/PHACDataHub/wastewater-graphql/commit/0e17e6073faf2cf87fdcc2fd5d8e9bcea08a01f2))
+
 ## [1.1.1](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.1.0...v1.1.1) (2023-03-24)
 
 
