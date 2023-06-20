@@ -1,5 +1,6 @@
-import { ContextFunction, HttpQueryRequest } from 'apollo-server-core';
+import { ContextFunction } from '@apollo/server';
 import { AuthFilters, AuthContext } from './types';
+import { AzureFunctionsContextFunctionArgument } from '@as-integrations/azure-functions';
 
 /**
  * List of authorization groups, and their access filters.
@@ -34,15 +35,15 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
 /**
  * Determines the authorization context of a request.
  *
- * @param {HttpQueryRequest} request
+ * @param {AzureFunctionsContextFunctionArgument} request
  * @returns
  *  | { authenticated: boolean; filters?: undefined }
  *  | { authenticated: boolean; filters: any } = {};
  */
-const AuthContextFunction: ContextFunction<any, AuthContext> = (
-  request: HttpQueryRequest
+const AuthContextFunction = (
+  request: AzureFunctionsContextFunctionArgument
 ) => {
-  const headers = request.request.headers as any;
+  const headers = request.req.headers as any;
 
   // No access without a specified group.
   const header = headers['x-auth-group'];

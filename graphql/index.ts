@@ -1,13 +1,15 @@
 /**
  * Main server entrypoint
  */
-import { ApolloServer } from 'apollo-server-azure-functions';
-import { ApolloServerPluginLandingPageLocalDefault } from 'apollo-server-core';
+import { ApolloServer } from '@apollo/server';
+import { startServerAndCreateHandler } from '@as-integrations/azure-functions';
+import { ApolloServerPluginLandingPageLocalDefault } from '@apollo/server/plugin/landingPage/default';
 
 import { DateTimeResolver } from 'graphql-scalars';
 
 import auth from './auth';
-import wasteWaterAPI from './api';
+import { database } from './config';
+import { WasteWaterAPI } from './api';
 import typeDefs from './schema';
 import resolvers from './resolvers';
 
@@ -25,11 +27,19 @@ const server = new ApolloServer({
   csrfPrevention: true,
   cache: 'bounded',
   plugins: [ApolloServerPluginLandingPageLocalDefault({ embed: true })],
-  dataSources: () => ({
-    wasteWater: wasteWaterAPI,
-  }),
   introspection: true,
-  context: auth,
 });
 
-exports.graphqlHandler = server.createHandler();
+const knexConfig = database;
+
+export default startServerAndCreateHandler(server, {
+  context: async (req) => {
+    const { cache } = server;
+    return {
+      ...(await auth(req)),
+      dataSources: {
+        wasteWater: new WasteWaterAPI({ knexConfig, cache }),
+      },
+    };
+  },
+});
