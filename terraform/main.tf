@@ -36,6 +36,7 @@ resource "azurerm_api_management_api" "wastewater-graphql-api" {
   display_name = var.api_display_name
   path         = var.api_path
   service_url  = var.function_app_url
+  subscription_required = false
 
   revision  = "1"
   protocols = ["https"]
@@ -65,7 +66,7 @@ resource "azurerm_api_management_product" "ww-product" {
     each.value.description
   )
 
-  subscription_required = false
+  subscription_required = true
   approval_required     = false
   published             = false
 }
