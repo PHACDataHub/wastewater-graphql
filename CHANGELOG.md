@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.2.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.1.2...v1.2.0) (2023-07-12)
+
+
+### Features
+
+* add `siteID` to `allSites` and `allSitesAdj` ([#28](https://github.com/PHACDataHub/wastewater-graphql/issues/28)) ([fcab2cc](https://github.com/PHACDataHub/wastewater-graphql/commit/fcab2cc8361adda60dcc2b1c5d7a2e22860739d0))
+
 ## [1.1.2](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.1.1...v1.1.2) (2023-05-03)
 
 
