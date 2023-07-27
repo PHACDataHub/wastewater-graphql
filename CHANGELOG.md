@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.3.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.2.0...v1.3.0) (2023-07-27)
+
+
+### Features
+
+* Upgrade to Apollo Server v4 ([#27](https://github.com/PHACDataHub/wastewater-graphql/issues/27)) ([d34f6bc](https://github.com/PHACDataHub/wastewater-graphql/commit/d34f6bc6d8254c87492f973e2ae0819f369fcaa1))
+
 ## [1.2.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.1.2...v1.2.0) (2023-07-12)
 
 
