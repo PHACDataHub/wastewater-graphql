@@ -1,7 +1,6 @@
-import { SQLDataSource } from 'datasource-sql';
+import { BatchedSQLDataSource } from "@nic-jennings/sql-datasource"
 import { Knex } from 'knex';
 
-import { database } from '../config';
 import { AuthContext } from '../types';
 import { createAuthorizationPlan } from './authorization';
 import {
@@ -196,9 +195,9 @@ export class QuerySet {
  * @export
  * @class WasteWaterAPI
  * @typedef {WasteWaterAPI}
- * @extends {SQLDataSource}
+ * @extends {BatchedSQLDataSource}
  */
-export class WasteWaterAPI extends SQLDataSource {
+export class WasteWaterAPI extends BatchedSQLDataSource {
   /**
    * Knex configuration
    *
@@ -224,7 +223,7 @@ export class WasteWaterAPI extends SQLDataSource {
    * @returns {Knex}
    */
   private getKnex() {
-    return this.knex;
+    return this.db.query;
   }
   /**
    * Perform a standard graphQL query on the SQL database.
@@ -247,7 +246,7 @@ export class WasteWaterAPI extends SQLDataSource {
     const qs = new QuerySet(
       this.getKnex(),
       table,
-      this.conf.schema,
+      this.conf.knexConfig.schema,
       context,
       columnMaps,
       first
@@ -303,4 +302,3 @@ export class WasteWaterAPI extends SQLDataSource {
   }
 }
 
-export default new WasteWaterAPI(database);
