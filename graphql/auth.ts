@@ -30,6 +30,11 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereIn: ['dataID', ['NML-WWPCR', 'NML-WWGX']],
     },
   },
+  open: {
+    sites: {
+      where: ['siteID', 'thisiddoesnotexist'],
+    },
+  }
 };
 
 /**
@@ -47,7 +52,7 @@ const AuthContextFunction = (
 
   // No access without a specified group.
   const header = headers['x-auth-group'];
-  if (!header) return { authenticated: false };
+  if (!header) return { authenticated: true, filters: groups["open"] };
 
   // if group is valid, setup appropriate authorization context.
   if (header in groups) {
@@ -55,7 +60,8 @@ const AuthContextFunction = (
   }
 
   // Otherwise, no access.
-  return { authenticated: false };
+  return {authenticated: true, filters: groups["open"]}
+  // return { authenticated: false };
 };
 
 export default AuthContextFunction;
