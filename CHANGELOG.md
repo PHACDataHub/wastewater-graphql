@@ -1,5 +1,12 @@
 # Changelog
 
+## [1.4.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.3.0...v1.4.0) (2023-08-18)
+
+
+### Features
+
+* enable public access to the API ([#33](https://github.com/PHACDataHub/wastewater-graphql/issues/33)) ([9dc6abf](https://github.com/PHACDataHub/wastewater-graphql/commit/9dc6abf4d4c09a84c9da5534b41cc4a3472c1156))
+
 ## [1.3.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.2.0...v1.3.0) (2023-07-27)
 
 
