@@ -55,7 +55,7 @@ const connection: Knex.StaticConnectionConfig = {
   database: process.env.DB_DATABASE,
   userName: process.env.DB_USER || undefined,
   password: process.env.DB_PASSWORD || undefined,
-  requestTimeout: 30000,
+  requestTimeout: 60000,
   type,
   options: {
     encrypt: true,
