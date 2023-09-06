@@ -124,7 +124,6 @@ const resolvers: Resolvers = {
     datasets: apiResolver('datasets'),
     polygons: apiResolver('polygons'),
     instruments: apiResolver('instruments'),
-    optionSets: apiResolver('optionSets'),
     setLUs: apiResolver('setLUs'),
     partLUs: apiResolver('partLUs'),
     contacts: apiResolver('contacts'),
