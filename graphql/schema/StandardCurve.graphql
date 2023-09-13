@@ -1,0 +1,24 @@
+input StandardCurveFilter {
+  sampleID: StringFilter
+  N2_Curve_ID: StringFilter
+  PMMV_Curve_ID: StringFilter
+  CDCA_Curve_ID: StringFilter
+  CDCB_Curve_ID: StringFilter
+  RSVA_Curve_ID: StringFilter
+  RSVB_Curve_ID: StringFilter
+}
+
+type StandardCurve {
+  sampleID: String
+  N2_Curve_ID: String
+  PMMV_Curve_ID: String
+  CDCA_Curve_ID: String
+  CDCB_Curve_ID: String
+  RSVA_Curve_ID: String
+  RSVB_Curve_ID: String
+  sample: Samples
+}
+
+extend type Query {
+  StandardCurve(filter: StandardCurveFilter): [StandardCurve]!
+}

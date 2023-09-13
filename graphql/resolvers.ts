@@ -117,6 +117,7 @@ const resolvers: Resolvers = {
     fraction: single('partLUs', 'fraction'),
     meas: single('partLUs', 'meas'),
   })),
+  StandardCurve: withParentResolver('StandardCurve')(({ single }) => ({})),
 
   Query: {
     addresses: apiResolver('addresses'),
@@ -139,6 +140,7 @@ const resolvers: Resolvers = {
     allSitesAdj: apiResolver('allSitesAdj'),
     Infobase: apiResolver('Infobase'),
     InfobaseTrend: apiResolver('InfobaseTrend'),
+    StandardCurve: apiResolver('StandardCurve'),
   },
 };
 

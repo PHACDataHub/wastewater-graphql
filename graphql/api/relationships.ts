@@ -24,6 +24,7 @@ import { TableRelationships } from './types';
  *  "sites",
  *  "samples",
  *  "measures"
+ *  "StandardCurve"
  * ]}
  */
 export const tables = [
@@ -47,6 +48,7 @@ export const tables = [
   'sites',
   'samples',
   'measures',
+  'StandardCurve',
 ] as const;
 
 /**
@@ -266,6 +268,13 @@ export const tableRelationships: TableRelationships = {
         { property: 'fraction', foreignKeys: ['partID', 'fractionid'] },
         { property: 'meas', foreignKeys: ['partID', 'measureid'] },
       ],
+    },
+  ],
+  StandardCurve: [
+    {
+      table: 'samples',
+      foreignKeys: ['sampID', 'sampleID'],
+      auth: { depth: 2, required: true },
     },
   ],
 };
