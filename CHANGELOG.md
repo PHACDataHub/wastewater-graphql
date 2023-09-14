@@ -1,5 +1,17 @@
 # Changelog
 
+## [1.5.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.4.0...v1.5.0) (2023-09-14)
+
+
+### Features
+
+* Enable querying of `StandardCurve` ([b2b416d](https://github.com/PHACDataHub/wastewater-graphql/commit/b2b416dcfe5355355fb831404165c8abed69c29c))
+
+
+### Bug Fixes
+
+* improve performance by removing top clauses ([2c13599](https://github.com/PHACDataHub/wastewater-graphql/commit/2c135996b83b3cfa383281013651e77714bbb61f))
+
 ## [1.4.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.3.0...v1.4.0) (2023-08-18)
 
 
