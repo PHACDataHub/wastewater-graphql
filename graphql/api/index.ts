@@ -144,6 +144,7 @@ export class QuerySet {
       }
     }
     console.log(this.querySet.toString());
+    console.log(this.querySet.toSQL().toNative())
     return this.querySet;
   }
   /**
@@ -168,14 +169,12 @@ export class QuerySet {
           .withSchema(this.schema)
           .select(joinedF)
           .from(c.table)
-          .where(joinedF, r)
-          .limit(1),
+          .where(joinedF, r),
         this.knex
           .withSchema(this.schema)
           .select(joinedF)
           .from(c.table)
           .where(joinedF, r)
-          .limit(1),
       ];
       this.secure(sq[1], c);
       querySet.andWhere(function () {
