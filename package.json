@@ -21,7 +21,7 @@
     "copyfiles": "^2.4.1",
     "dataloader": "^2.1.0",
     "dotenv": "^16.0.3",
-    "graphql": "^16.6.0",
+    "graphql": "^16.8.1",
     "graphql-scalars": "^1.20.0",
     "knex": "^2.4.0",
     "tedious": "^15.1.0",
