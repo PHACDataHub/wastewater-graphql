@@ -27,7 +27,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereIn: ['healthReg', ['Whitehorse', 'Haines Junction']],
     },
     datasets: {
-      whereIn: ['dataID', ['NML-WWPCR', 'NML-WWGX']],
+      whereIn: ['dataID', ['NML-WWPCR', 'NML-GXWW', 'onsite-GXWW']],
     },
   },
   open: {
