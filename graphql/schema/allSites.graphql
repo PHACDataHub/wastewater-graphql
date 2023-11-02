@@ -23,11 +23,11 @@ type allSites {
     MA7: Float
     confidence: Int
     siteID: String
-    dataset: Datasets
-    sample: Samples
-    fraction: PartLUs
-    meas: PartLUs
-    site: Sites
+    # dataset: Datasets
+    # sample: Samples
+    # fraction: PartLUs
+    # meas: PartLUs
+    # site: Sites
 }
 
 extend type Query {

@@ -1,0 +1,16 @@
+type Zones {
+  isoCode: String
+  isoZone: String
+  zoneName: String
+#   isoCode_countries: Countries
+#   addresses(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageAddresses
+}
+input ZonesFilter {
+  isoCode: StringFilter
+  isoZone: StringFilter
+  zoneName: String
+}
+
+extend type Query {
+  zones(filter: ZonesFilter): [Zones]!
+}

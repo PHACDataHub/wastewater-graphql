@@ -1,12 +1,11 @@
 input SamplesFilter {
-  parSampID: StringFilter
-  sampID: StringFilter
-  mSRID: StringFilter
-  contID: StringFilter
+  sampleID: StringFilter
+  protocolID: StringFilter
+  contactID: StringFilter
   siteID: StringFilter
   purposeID: StringFilter
   saMaterial: StringFilter
-  dataID: StringFilter
+  datasetID: StringFilter
   origin: StringFilter
   repType: StringFilter
   collType: StringFilter
@@ -24,14 +23,14 @@ input SamplesFilter {
 }
 
 type Samples {
-  parSampID: String
-  sampID: String
-  mSRID: String
-  contID: String
+  sampleID: String
+  protocolID: String
+  organizationID: String
+  contactID: String
   siteID: String
   purposeID: String
   saMaterial: String
-  dataID: String
+  datasetID: String
   origin: String
   repType: String
   collType: String
@@ -43,18 +42,23 @@ type Samples {
   collDTEnd: DateTime
   sentDate: DateTime
   recDate: DateTime
-  qualityFlag: String
+  reportable: String
   lastEdited: DateTime
   notes: String
-  parentSample: Samples
-  methodSet: MethodSets
-  contact: Contacts
-  purpose: PartLUs
-  dataset: Datasets
-  site: Sites!
-  measures(filter: MeasuresFilter): [Measures]!
+  # parentSample: Samples
+  # contact: Contacts
+  # dataset: Datasets
+  # site: Sites!
+  # measures(filter: MeasuresFilter): [Measures]!
 }
+
+# type PageSamples {
+#   total: Int
+#   items: [Samples]
+# }
 
 extend type Query {
   samples(filter: SamplesFilter): [Samples]!
+  # getPageSamples(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageSamples
+  # getFirstSamples(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): Samples
 }

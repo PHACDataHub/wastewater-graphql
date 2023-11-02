@@ -16,7 +16,7 @@ type StandardCurve {
   CDCB_Curve_ID: String
   RSVA_Curve_ID: String
   RSVB_Curve_ID: String
-  sample: Samples
+  # sample: Samples
 }
 
 extend type Query {

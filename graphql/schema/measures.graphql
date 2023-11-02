@@ -1,69 +1,74 @@
 input MeasuresFilter {
-  measRepID: StringFilter
-  mSRID: StringFilter
+  measureRepID: StringFilter
+  protocolID: StringFilter
   sampleID: StringFilter
   purposeID: StringFilter
   polygonID: StringFilter
   siteID: StringFilter
-  dataID: StringFilter
-  measSetRepID: StringFilter
-  aDateStart: DateTimeFilter
-  aDateEnd: DateTimeFilter
-  repDate: DateTimeFilter
-  specID: StringFilter
-  fractionID: StringFilter
-  measID: StringFilter
-  groupID: StringFilter
-  classID: StringFilter
+  datasetID: StringFilter
+  measureSetRepID: StringFilter
+  compartment: StringFilter
+  specimenID: StringFilter
+  fraction: StringFilter
+  group: StringFilter
+  class: StringFilter
+  measure: StringFilter
   value: StringFilter
-  unitID: StringFilter
-  aggID: StringFilter
+  unit: StringFilter
+  aggregation: StringFilter
+  nomenclature: StringFilter
   index: IntFilter
-  qualityFlag: StringFilter
-  reportable: Boolean
-  lastEdited: DateTimeFilter
-  notes: StringFilter
+  measureLic: StringFilter
+  reportable: IntFilter
+  organizationID: StringFilter
+  contactID: StringFilter
+  refLink: StringFilter
 }
 
 type Measures {
-  measRepID: String
-  mSRID: String
+  measureRepID: String
+  protocolID: String
   sampleID: String
   purposeID: String
   polygonID: String
   siteID: String
-  dataID: String
-  measSetRepID: String
-  aDateStart: DateTime
-  aDateEnd: DateTime
-  repDate: DateTime
-  specID: String
-  fractionID: String
-  measID: String
-  groupID: String
-  classID: String
+  datasetID: String
+  measureSetRepID: String
+  compartment: String
+  specimenID: String
+  fraction: String
+  group: String
+  class: String
+  measure: String
   value: String
-  unitID: String
-  aggID: String
+  unit: String
+  aggregation: String
+  nomenclature: String
   index: Int
-  qualityFlag: String
-  reportable: Boolean
-  lastEdited: DateTime
-  notes: String
-  methodSet: MethodSets
-  sample: Samples
-  purpose: PartLUs
-  polygon: Polygons
-  site: Sites
-  dataset: Datasets
-  measureSet: MeasureSets
-  spec: PartLUs
-  fraction: PartLUs
-  meas: PartLUs
-  group: PartLUs
-  class: PartLUs
-  unit: PartLUs
-  agg: PartLUs
+  measureLic: String
+  reportable: Int
+  organizationID: String
+  contactID: String
+  refLink: String
+  # protocolID_protocols: Protocols
+  # sampleID_samples: Samples
+  # purposeID_parts: Parts
+  # polygonID_polygons: Polygons
+  # siteID_sites: Sites
+  # datasetID_datasets: Datasets
+  # measureSetRepID_measureSets: MeasureSets
+  # specimenID_parts: Parts
+  # fraction_parts: Parts
+  # group_parts: Parts
+  # class_parts: Parts
+  # measure_parts: Parts
+  # unit_parts: Parts
+  # aggregation_parts: Parts
+  # nomenclature_parts: Parts
+  # measureLic_parts: Parts
+  # organizationID_organizations: Organizations
+  # contactID_contacts: Contacts
+  # qualityReports(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageQualityReports
 }
 
 extend type Query {

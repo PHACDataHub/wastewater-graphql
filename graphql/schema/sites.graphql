@@ -1,46 +1,54 @@
 input SitesFilter {
   parSiteID: StringFilter
   siteID: StringFilter
+  datasetID: StringFilter
   polygonID: StringFilter
-  siteTypeID: StringFilter
-  samShed: StringFilter
-  addID: StringFilter
-  contID: StringFilter
-  dataID: StringFilter
+  siteType: StringFilter
+  sampleShed: StringFilter
+  addressID: StringFilter
+  organizationID: StringFilter
+  contactID: StringFilter
   name: StringFilter
   descr: StringFilter
-  pHDept: StringFilter
+  repOrg1: StringFilter
+  repOrg2: StringFilter
   healthReg: StringFilter
   popServ: IntFilter
   geoLat: StringFilter
   geoLong: StringFilter
   geoEPSG: StringFilter
+  lastedEdited: DateTimeFilter
   notes: StringFilter
 }
 
 type Sites {
   parSiteID: String
   siteID: String
+  datasetID: String
   polygonID: String
-  siteTypeID: String
-  samShed: String
-  addID: String
-  contID: String
-  dataID: String
+  siteType: String
+  sampleShed: String
+  addressID: String
+  organizationID: String
+  contactID: String
   name: String
   descr: String
-  pHDept: String
+  repOrg1: String
+  repOrg2: String
   healthReg: String
   popServ: Int
   geoLat: String
   geoLong: String
   geoEPSG: String
+  lastedEdited: DateTime
   notes: String
-  parentSite: Sites
-  polygon: Polygons
-  dataset: Datasets
-  measures(filter: MeasuresFilter): [Measures]!
-  samples(filter: SamplesFilter): [Samples]!
+  # datasetID_datasets: Datasets
+  # polygonID_polygons: Polygons
+  # siteType_parts: Parts
+  # organizationID_organizations: Organizations
+  # repOrg1_organizations: Organizations
+  # repOrg2_organizations: Organizations
+  # measures(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageMeasures
 }
 
 extend type Query {

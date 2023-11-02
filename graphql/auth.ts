@@ -19,7 +19,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       where: ['healthReg', 'Vancouver'],
     },
     datasets: {
-      whereIn: ['dataID', ['BCCDC', 'NML-WWPCR']],
+      whereIn: ['datasetID', ['BCCDC', 'NML-WWPCR']],
     },
   },
   hnj: {
@@ -27,7 +27,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereIn: ['healthReg', ['Whitehorse', 'Haines Junction']],
     },
     datasets: {
-      whereIn: ['dataID', ['NML-WWPCR', 'NML-GXWW', 'onsite-GXWW']],
+      whereIn: ['datasetID', ['NML-WWPCR', 'NML-GXWW', 'onsite-GXWW']],
     },
   },
   open: {

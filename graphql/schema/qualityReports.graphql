@@ -1,0 +1,25 @@
+input QualityReportsFilter {
+  quality: StringFilter
+  measureRepID: StringFilter
+  sampleID: StringFilter
+  measureSetRepID: StringFilter
+  qualityFlag: StringFilter
+  severity: StringFilter
+  notes: StringFilter
+}
+
+type QualityReports {
+  quality: String
+  measureRepID: String
+  sampleID: String
+  measureSetRepID: String
+  qualityFlag: String
+  severity: String
+  notes: String
+  # measureRepID_measures: Measures
+  # sampleID_samples: Samples
+  # measureSetRepID_measureSets: MeasureSets
+}
+extend type Query {
+  qualityReports(filter: QualityReportsFilter): [QualityReports]!
+}

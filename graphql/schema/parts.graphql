@@ -1,0 +1,205 @@
+type Parts {
+  partID: String
+  partLabel: String
+  partType: String
+  shortName: String
+  partDesc: String
+  partInstr: String
+  domain: String
+  specimenSet: String
+  compartmentSet: String
+  group: String
+  class: String
+  nomenclature: String
+  ontologyRef: String
+  latExp: String
+  mmaSet: String
+  unitSet: String
+  aggreationScale: String
+  aggregationSet: String
+  qualitySet: String
+  missingnessSet: String
+  status: String
+  changes: String
+  # protocolSteps(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageProtocolSteps
+  protocolSteps: String
+  protocolStepsRequired: String
+  protocolStepsOrder: Int
+  protocolRelationships: String
+  protocolRelationshipsRequired: String
+  protocolRelationshipsOrder: Int
+  # measures(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageMeasures
+  measures: String
+  measuresRequired: String
+  measuresOrder: Int
+  measureSets: String
+  measureSetsRequired: String
+  measureSetsOrder: Int
+  datasets: String
+  datasetsRequired: String
+  datasetsOrder: Int
+  # sites(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageSites
+  sites: String
+  sitesRequired: String
+  sitesOrder: Int
+  # samples(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageSamples
+  samples: String
+  samplesRequired: String
+  samplesOrder: Int
+  addresses: String
+  addressesRequired: String
+  addressesOrder: Int
+  contacts: String
+  contactsRequired: String
+  contactsOrder: Int
+  organizations: String
+  organizationsRequired: String
+  organizationsOrder: Int
+  # instruments(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageInstruments
+  instruments: String
+  instrumentsRequired: String
+  instrumentsOrder: Int
+  polygons: String
+  polygonsRequired: String
+  polygonsOrder: Int
+  languages: String
+  languagesRequired: String
+  languagesOrder: Int
+  # translations(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageTranslations
+  translations: String
+  translationsRequired: String
+  translationsOrder: Int
+  parts: String
+  partsRequired: String
+  partsOrder: Int
+  sets: String
+  setsRquired: String
+  setsOrder: Int
+  qualityReports: String
+  qualityReportsRequired: String
+  qualityReportsOrder: Int
+  # sampleRelationships(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageSampleRelationships
+  sampleRelationships: String
+  sampleRelationshipsRequired: String
+  sampleRelationshipsOrder: Int
+  protocols: String
+  protocolsRequired: String
+  protocolsOrder: Int
+  countries: String
+  countriesRequired: String
+  countriesOrder: Int
+  zones: String
+  zonesRequired: String
+  zonesOrder: Int
+  refLink: String
+  dataType: String
+  minValue: String # contains string 'seeUnitVal'
+  maxValue: String # contains string 'seeUnitVal'
+  minLength: Int
+  maxLength: Int
+  # specimenSet_sets: Sets
+  # compartmentSet_sets: Sets
+  # unitSet_sets: Sets
+  # aggregationSet_sets: Sets
+  # qualitySet_sets: Sets
+  # missingnessSet_sets: Sets
+  # wideNames(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageWideNames
+}
+
+input PartsFilter {
+  partID: StringFilter
+  partLabel: StringFilter
+  partType: StringFilter
+  shortName: StringFilter
+  partDesc: StringFilter
+  partInstr: StringFilter
+  domain: StringFilter
+  specimenSet: StringFilter
+  compartmentSet: StringFilter
+  group: StringFilter
+  class: StringFilter
+  nomenclature: StringFilter
+  ontologyRef: StringFilter
+  latExp: StringFilter
+  mmaSet: StringFilter
+  unitSet: StringFilter
+  aggreationScale: StringFilter
+  aggregationSet: StringFilter
+  qualitySet: StringFilter
+  missingnessSet: StringFilter
+  status: StringFilter
+  changes: StringFilter
+  protocolSteps: StringFilter
+  protocolStepsRequired: StringFilter
+  protocolStepsOrder: IntFilter
+  protocolRelationships: StringFilter
+  protocolRelationshipsRequired: StringFilter
+  protocolRelationshipsOrder: IntFilter
+  measures: StringFilter
+  measuresRequired: StringFilter
+  measuresOrder: IntFilter
+  measureSets: StringFilter
+  measureSetsRequired: StringFilter
+  measureSetsOrder: IntFilter
+  datasets: StringFilter
+  datasetsRequired: StringFilter
+  datasetsOrder: IntFilter
+  sites: StringFilter
+  sitesRequired: StringFilter
+  sitesOrder: IntFilter
+  samples: StringFilter
+  samplesRequired: StringFilter
+  samplesOrder: IntFilter
+  addresses: StringFilter
+  addressesRequired: StringFilter
+  addressesOrder: IntFilter
+  contacts: StringFilter
+  contactsRequired: StringFilter
+  contactsOrder: IntFilter
+  organizations: StringFilter
+  organizationsRequired: StringFilter
+  organizationsOrder: IntFilter
+  instruments: StringFilter
+  instrumentsRequired: StringFilter
+  instrumentsOrder: IntFilter
+  polygons: StringFilter
+  polygonsRequired: StringFilter
+  polygonsOrder: IntFilter
+  languages: StringFilter
+  languagesRequired: StringFilter
+  languagesOrder: IntFilter
+  translations: StringFilter
+  translationsRequired: StringFilter
+  translationsOrder: IntFilter
+  parts: StringFilter
+  partsRequired: StringFilter
+  partsOrder: IntFilter
+  sets: StringFilter
+  setsRquired: StringFilter
+  setsOrder: IntFilter
+  qualityReports: StringFilter
+  qualityReportsRequired: StringFilter
+  qualityReportsOrder: IntFilter
+  sampleRelationships: StringFilter
+  sampleRelationshipsRequired: StringFilter
+  sampleRelationshipsOrder: IntFilter
+  protocols: StringFilter
+  protocolsRequired: StringFilter
+  protocolsOrder: IntFilter
+  countries: StringFilter
+  countriesRequired: StringFilter
+  countriesOrder: IntFilter
+  zones: StringFilter
+  zonesRequired: StringFilter
+  zonesOrder: IntFilter
+  refLink: StringFilter
+  dataType: StringFilter
+  minValue: StringFilter
+  maxValue: StringFilter
+  minLength: IntFilter
+  maxLength: IntFilter
+}
+
+extend type Query {
+  parts(filter: PartsFilter): [Parts]!
+}

@@ -1,0 +1,41 @@
+type Countries {
+  isoCode: String
+  isoCodeX: String
+  numCode: String
+  tld: String
+  nameEngl: String
+  nameOffical: String
+  sovereignity: String
+  countryExonym: String
+  capitalExonym: String
+  countryEndonym: String
+  capitalEndonym: String
+  langScript: String
+  phone: String
+  utc: String
+  utcDST: String
+#   zones(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageZones
+#   addresses(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageAddresses
+}
+
+input CountriesFilter {
+  isoCode: StringFilter
+  isoCodeX: StringFilter
+  numCode: StringFilter
+  tld: StringFilter
+  nameEngl: StringFilter
+  nameOffical: StringFilter
+  sovereignity: StringFilter
+  countryExonym: StringFilter
+  capitalExonym: StringFilter
+  countryEndonym: StringFilter
+  capitalEndonym: StringFilter
+  langScript: StringFilter
+  phone: StringFilter
+  utc: StringFilter
+  utcDST: StringFilter
+}
+
+extend type Query {
+  countries(filter: CountriesFilter): [Countries]!
+}
