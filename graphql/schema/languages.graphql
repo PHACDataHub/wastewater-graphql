@@ -1,30 +1,31 @@
-type LanguageLUs {
-  langID: String
+type Languages {
+  lang: String
   langFam: String
   langName: String
   natName: String
   ISO6391: String
-  ISO6392T: String
   ISO6392B: String
+  ISO6392T: String
   ISO6393: String
   ISO6396: String
+  changes: String
   notes: String
-  translationLUs(filter: TranslationLUsFilter): [TranslationLUs]!
 }
 
-input LanguageLUsFilter {
-  langID: StringFilter
+input LanguagesFilter {
+  lang: StringFilter
   langFam: StringFilter
   langName: StringFilter
   natName: StringFilter
   ISO6391: StringFilter
-  ISO6392T: StringFilter
   ISO6392B: StringFilter
+  ISO6392T: StringFilter
   ISO6393: StringFilter
   ISO6396: StringFilter
+  changes: StringFilter
   notes: StringFilter
 }
 
 extend type Query {
-  languageLUs(filter: LanguageLUsFilter): [LanguageLUs]!
+  languages(filter: LanguagesFilter): [Languages]!
 }

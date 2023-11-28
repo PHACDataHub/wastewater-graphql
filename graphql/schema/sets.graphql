@@ -1,0 +1,25 @@
+type Sets {
+  setID: String
+  setType: String
+  partID: String
+  partLabel: String
+  status: String
+  changes: String
+  notes: String
+  # parts(filter: String, pagination: String, where: Condition, _debug: Boolean, _cache: Boolean): PageParts
+}
+
+
+input SetsFilter {
+  setID: StringFilter
+  setType: StringFilter
+  partID: StringFilter
+  partLabel: StringFilter
+  status: StringFilter
+  changes: StringFilter
+  notes: StringFilter
+}
+
+extend type Query {
+  sets(filter: SetsFilter): [Sets]!
+}

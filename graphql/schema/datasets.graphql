@@ -1,27 +1,33 @@
 type Datasets {
-  dataID: String
+  parDatasetID: String
+  datasetID: String
   name: String
   license: String
   descr: String
   refLink: String
+  langID: Int
+  funderCont: String
+  custodyCont: String
   funderID: String
   custodyID: String
   notes: String
-  funder: Organizations
-  custody: Organizations
-  samples(filter: SamplesFilter): [Samples]!
-  measures(filter: MeasuresFilter): [Measures]!
-  polygons(filter: PolygonsFilter): [Polygons]!
-  instruments(filter: InstrumentsFilter): [Instruments]!
-  sites(filter: SitesFilter): [Sites]!
+  # samples(filter: SamplesFilter): [Samples]!
+  # measures(filter: MeasuresFilter): [Measures]!
+  # polygons(filter: PolygonsFilter): [Polygons]!
+  # instruments(filter: InstrumentsFilter): [Instruments]!
+  # sites(filter: SitesFilter): [Sites]!
 }
 
 input DatasetsFilter {
-  dataID: StringFilter
+  parDatasetID: StringFilter
+  datasetID: StringFilter
   name: StringFilter
   license: StringFilter
   descr: StringFilter
   refLink: StringFilter
+  langID: IntFilter
+  funderCont: StringFilter
+  custodyCont: StringFilter
   funderID: StringFilter
   custodyID: StringFilter
   notes: StringFilter

@@ -14,8 +14,8 @@ type InfobaseTrend {
     measureid: String
     LatestTrend: String
     pruid: Int
-    fraction: PartLUs
-    meas: PartLUs
+    # fraction: PartLUs
+    # meas: PartLUs
 }
 
 extend type Query {

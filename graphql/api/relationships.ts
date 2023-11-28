@@ -13,18 +13,21 @@ import { TableRelationships } from './types';
  *  "InfobaseTrend",
  *  "polygons",
  *  "instruments",
- *  "setLUs",
- *  "partLUs",
+ *  "sets",
+ *  "parts",
  *  "contacts",
  *  "measureSets",
  *  "methodSteps",
  *  "methodSets",
- *  "languageLUs",
- *  "translationLUs",
+ *  "languages",
+ *  "translations",
  *  "sites",
  *  "samples",
- *  "measures"
- *  "StandardCurve"
+ *  "measures",
+ *  "StandardCurve",
+ *  "countries",
+ *  "zones"
+ * 
  * ]}
  */
 export const tables = [
@@ -37,18 +40,21 @@ export const tables = [
   'InfobaseTrend',
   'polygons',
   'instruments',
-  'setLUs',
-  'partLUs',
+  'sets',
+  'parts',
   'contacts',
   'measureSets',
   'methodSteps',
   'methodSets',
-  'languageLUs',
-  'translationLUs',
+  'languages',
+  'translations',
   'sites',
   'samples',
   'measures',
+  'qualityReports',
   'StandardCurve',
+  'countries',
+  'zones'
 ] as const;
 
 /**
@@ -80,14 +86,14 @@ export const tableRelationships: TableRelationships = {
     },
     {
       table: 'datasets',
-      foreignKeys: 'dataID',
+      foreignKeys: 'datasetID',
       auth: { depth: 1, required: true },
     },
     { table: 'methodSets', foreignKeys: 'mSRID' },
     { table: 'contacts', foreignKeys: 'contID' },
     { table: 'measures', foreignKeys: ['sampleID', 'sampID'] },
     { table: 'samples', foreignKeys: ['sampID', 'parSampID'] },
-    { table: 'partLUs', foreignKeys: ['partID', 'purposeID'] },
+    { table: 'parts', foreignKeys: ['partID', 'purposeID'] },
   ],
   measures: [
     {
@@ -97,7 +103,7 @@ export const tableRelationships: TableRelationships = {
     },
     {
       table: 'datasets',
-      foreignKeys: 'dataID',
+      foreignKeys: 'datasetID',
       auth: { depth: 1, required: true },
     },
     { table: 'methodSets', foreignKeys: 'mSRID' },
@@ -105,7 +111,7 @@ export const tableRelationships: TableRelationships = {
     { table: 'polygons', foreignKeys: 'polygonID' },
     { table: 'measureSets', foreignKeys: 'measSetRepID' },
     {
-      table: 'partLUs',
+      table: 'parts',
       properties: [
         { property: 'purpose', foreignKeys: ['partID', 'purposeID'] },
         { property: 'spec', foreignKeys: ['partID', 'specID'] },
@@ -118,6 +124,15 @@ export const tableRelationships: TableRelationships = {
       ],
     },
   ],
+  qualityReports: [
+    {
+      table: 'measures',
+      foreignKeys: 'measureRepID',
+      auth: { depth: 1, required: true },
+    },
+    { table: 'samples', foreignKeys: 'sampleID' },
+    // { table: 'contacts', foreignKeys: 'contactID' },
+  ],
   measureSets: [
     { table: 'methodSets', foreignKeys: 'mSRID' },
     {
@@ -128,8 +143,8 @@ export const tableRelationships: TableRelationships = {
   ],
   sites: [
     { table: 'sites', foreignKeys: ['siteID', 'parSiteID'] },
-    { table: 'polygons', foreignKeys: 'polygonID' },
-    { table: 'datasets', foreignKeys: 'dataID' },
+    // { table: 'polygons', foreignKeys: 'polygonID' },
+    // { table: 'datasets', foreignKeys: 'datasetID' },
     { table: 'measures', foreignKeys: 'siteID' },
     {
       table: 'samples',
@@ -156,13 +171,13 @@ export const tableRelationships: TableRelationships = {
     },
     {
       table: 'samples',
-      foreignKeys: 'dataID',
+      foreignKeys: 'datasetID',
       auth: { depth: 2, required: true },
     },
-    { table: 'measures', foreignKeys: 'dataID' },
-    { table: 'polygons', foreignKeys: 'dataID' },
-    { table: 'instruments', foreignKeys: 'dataID' },
-    { table: 'sites', foreignKeys: 'dataID' },
+    { table: 'measures', foreignKeys: 'datasetID' },
+    { table: 'polygons', foreignKeys: 'datasetID' },
+    { table: 'instruments', foreignKeys: 'datasetID' },
+    { table: 'sites', foreignKeys: 'datasetID' },
   ],
   polygons: [
     { table: 'measures', foreignKeys: 'polygonID' },
@@ -173,7 +188,7 @@ export const tableRelationships: TableRelationships = {
     },
   ],
   instruments: [
-    { table: 'datasets', foreignKeys: 'dataID', auth: { depth: 3 } },
+    { table: 'datasets', foreignKeys: 'datasetID', auth: { depth: 3 } },
     { table: 'methodSteps', foreignKeys: 'instID' },
   ],
 
@@ -184,7 +199,7 @@ export const tableRelationships: TableRelationships = {
   ],
   methodSteps: [
     {
-      table: 'partLUs',
+      table: 'parts',
       properties: [
         { property: 'meth', foreignKeys: ['partID', 'methID'] },
         { property: 'meas', foreignKeys: ['partID', 'measID'] },
@@ -207,15 +222,15 @@ export const tableRelationships: TableRelationships = {
     { table: 'measures', foreignKeys: 'mSRID' },
     { table: 'measureSets', foreignKeys: 'mSRID' },
   ],
-  languageLUs: [{ table: 'translationLUs', foreignKeys: 'langID' }],
-  translationLUs: [
-    { table: 'languageLUs', foreignKeys: 'langID' },
-    { table: 'partLUs', foreignKeys: 'partID' },
+  languages: [{ table: 'translations', foreignKeys: 'langID' }],
+  translations: [
+    { table: 'languages', foreignKeys: 'langID' },
+    { table: 'parts', foreignKeys: 'partID' },
   ],
   allSites: [
     {
       table: 'datasets',
-      foreignKeys: 'dataID',
+      foreignKeys: 'datasetID',
       auth: { depth: 1, required: true },
     },
     {
@@ -225,7 +240,7 @@ export const tableRelationships: TableRelationships = {
     },
     { table: 'samples', foreignKeys: ['sampID', 'sampleID'] },
     {
-      table: 'partLUs',
+      table: 'parts',
       properties: [
         { property: 'fraction', foreignKeys: ['partID', 'fractionID'] },
         { property: 'meas', foreignKeys: ['partID', 'measID'] },
@@ -235,7 +250,7 @@ export const tableRelationships: TableRelationships = {
   allSitesAdj: [
     {
       table: 'datasets',
-      foreignKeys: 'dataID',
+      foreignKeys: 'datasetID',
       auth: { depth: 1, required: true },
     },
     {
@@ -245,7 +260,7 @@ export const tableRelationships: TableRelationships = {
     },
     { table: 'samples', foreignKeys: ['sampID', 'sampleID'] },
     {
-      table: 'partLUs',
+      table: 'parts',
       properties: [
         { property: 'fraction', foreignKeys: ['partID', 'fractionID'] },
         { property: 'meas', foreignKeys: ['partID', 'measID'] },
@@ -254,7 +269,7 @@ export const tableRelationships: TableRelationships = {
   ],
   Infobase: [
     {
-      table: 'partLUs',
+      table: 'parts',
       properties: [
         { property: 'fraction', foreignKeys: ['partID', 'fractionid'] },
         { property: 'meas', foreignKeys: ['partID', 'measureid'] },
@@ -263,7 +278,7 @@ export const tableRelationships: TableRelationships = {
   ],
   InfobaseTrend: [
     {
-      table: 'partLUs',
+      table: 'parts',
       properties: [
         { property: 'fraction', foreignKeys: ['partID', 'fractionid'] },
         { property: 'meas', foreignKeys: ['partID', 'measureid'] },

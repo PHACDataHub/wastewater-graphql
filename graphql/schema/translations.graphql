@@ -1,0 +1,25 @@
+type Translations {
+  lang: String
+  part: String
+  partLabel: String
+  partDesc: String
+  partInstr: String
+  changes: String
+  notes: String
+  # lang_languages: Languages
+  # part_parts: Parts
+}
+
+input TranslationsFilter {
+  lang: StringFilter
+  part: StringFilter
+  partLabel: StringFilter
+  partDesc: StringFilter
+  partInstr: StringFilter
+  changes: StringFilter
+  notes: StringFilter
+}
+
+extend type Query {
+  translations(filter: TranslationsFilter): [Translations]!
+}
