@@ -288,7 +288,7 @@ export const tableRelationships: TableRelationships = {
   StandardCurve: [
     {
       table: 'samples',
-      foreignKeys: ['sampID', 'sampleID'],
+      foreignKeys: 'sampleID',
       auth: { depth: 2, required: true },
     },
   ],

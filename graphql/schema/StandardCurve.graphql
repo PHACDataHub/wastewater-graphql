@@ -6,6 +6,7 @@ input StandardCurveFilter {
   CDCB_Curve_ID: StringFilter
   RSVA_Curve_ID: StringFilter
   RSVB_Curve_ID: StringFilter
+  LotNumber: StringFilter
 }
 
 type StandardCurve {
@@ -16,7 +17,7 @@ type StandardCurve {
   CDCB_Curve_ID: String
   RSVA_Curve_ID: String
   RSVB_Curve_ID: String
-  # sample: Samples
+  LotNumber: String 
 }
 
 extend type Query {
