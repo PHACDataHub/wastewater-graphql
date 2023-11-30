@@ -17,7 +17,7 @@ input SitesFilter {
   geoLat: StringFilter
   geoLong: StringFilter
   geoEPSG: StringFilter
-  lastedEdited: DateTimeFilter
+  lastEdited: DateTimeFilter
   notes: StringFilter
 }
 
@@ -40,7 +40,7 @@ type Sites {
   geoLat: String
   geoLong: String
   geoEPSG: String
-  lastedEdited: DateTime
+  lastEdited: DateTime
   notes: String
   # datasetID_datasets: Datasets
   # polygonID_polygons: Polygons
