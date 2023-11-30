@@ -1,5 +1,22 @@
 # Changelog
 
+## [2.0.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.5.0...v2.0.0) (2023-11-30)
+
+
+### ⚠ BREAKING CHANGES
+
+* update schema to ODM v2 ([#39](https://github.com/PHACDataHub/wastewater-graphql/issues/39))
+
+### Features
+
+* update schema to ODM v2 ([#39](https://github.com/PHACDataHub/wastewater-graphql/issues/39)) ([5efa779](https://github.com/PHACDataHub/wastewater-graphql/commit/5efa7797ce67ed7d398d0c9bd3e8fa6b0cbfdcc8))
+
+
+### Bug Fixes
+
+* add `LotNumber` to `StandardCurve` ([94128c8](https://github.com/PHACDataHub/wastewater-graphql/commit/94128c8f75b828cbc56b26a153775e9c559bedd2))
+* typo in `sites` schema ([df84379](https://github.com/PHACDataHub/wastewater-graphql/commit/df843793731513486ebed088290f3309aaf0d8c9))
+
 ## [1.5.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.4.0...v1.5.0) (2023-09-14)
 
 
