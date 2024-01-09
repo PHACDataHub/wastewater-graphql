@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.0.1](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.0.0...v2.0.1) (2024-01-09)
+
+
+### Bug Fixes
+
+* correct allSites, allSitesAdj schema ([#41](https://github.com/PHACDataHub/wastewater-graphql/issues/41)) ([ce870f3](https://github.com/PHACDataHub/wastewater-graphql/commit/ce870f328d44b73e34e7983f0d8eafc724aef304))
+
 ## [2.0.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v1.5.0...v2.0.0) (2023-11-30)
 
 
