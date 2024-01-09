@@ -8,20 +8,23 @@ input allSitesAdjFilter {
     valavg: FloatFilter
     sampleID: StringFilter
     MA7: FloatFilter
-    confidence: IntFilter
+    sd_avg: FloatFilter
+    Tests_performed: StringFilter
+    siteID: StringFilter
 }
 
 type allSitesAdj {
     collDT: DateTime
     name: String
     healthReg: String
-    measID: String
-    fractionID: String
-    dataID: String
+    measure: String
+    fraction: String
+    datasetID: String
     valavg: Float
     sampleID: String
     MA7: Float
-    confidence: Int
+    sd_avg: Float
+    Tests_performed: String
     siteID: String
     # dataset: Datasets
     # sample: Samples
