@@ -12,13 +12,14 @@
     collDT
     name
     healthReg
-    measID
-    fractionID
-    dataID
+    measure
+    fraction
+    datasetID
     valavg
     sampleID
     MA7
-    confidence
+    sd_avg
+    Tests_performed
     siteID
   }
 
@@ -27,17 +28,18 @@
 # COMMAND ----------
 
 # DBTITLE 1,allSitesAdj- The table that contains information about the adjusted (based on Quality Flag) ww daily signal average per replicate level assocaited with a given site
-   allSitesAdj {
+  allSitesAdj {
     collDT
     name
     healthReg
-    measID
-    fractionID
-    dataID
+    measure
+    fraction
+    datasetID
     valavg
     sampleID
     MA7
-    confidence
+    sd_avg
+    Tests_performed
     siteID
   }
 
