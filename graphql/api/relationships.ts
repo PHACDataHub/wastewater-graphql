@@ -26,7 +26,10 @@ import { TableRelationships } from './types';
  *  "measures",
  *  "StandardCurve",
  *  "countries",
- *  "zones"
+ *  "zones",
+ *  "healthregleveldata",
+ *  "provinceleveldata",
+ *  "canadaleveldata",
  * 
  * ]}
  */
@@ -54,7 +57,10 @@ export const tables = [
   'qualityReports',
   'StandardCurve',
   'countries',
-  'zones'
+  'zones',
+  "healthregleveldata",
+  "provinceleveldata",
+  "canadaleveldata",
 ] as const;
 
 /**

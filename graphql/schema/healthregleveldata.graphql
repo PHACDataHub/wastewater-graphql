@@ -1,0 +1,18 @@
+input healthregleveldataFilter {
+    date: DateTimeFilter
+    region: StringFilter
+    measureid: StringFilter
+    weighted_avg_HR: FloatFilter
+
+}
+
+type healthregleveldata {
+    date: DateTime
+    region: String
+    measureid: String
+    weighted_avg_HR: Float
+}
+
+extend type Query {
+  healthregleveldata(filter: healthregleveldataFilter): [healthregleveldata]!
+}

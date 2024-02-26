@@ -1,0 +1,16 @@
+input canadaleveldataFilter {
+    date: DateTimeFilter
+    measureid: StringFilter
+    weighted_avg_CAN: FloatFilter
+
+}
+
+type canadaleveldata {
+    date: DateTime
+    measureid: String
+    weighted_avg_CAN: Float
+}
+
+extend type Query {
+  canadaleveldata(filter: canadaleveldataFilter): [canadaleveldata]!
+}

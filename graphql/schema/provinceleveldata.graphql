@@ -1,0 +1,18 @@
+input provinceleveldataFilter {
+    date: DateTimeFilter
+    Province: StringFilter
+    measureid: StringFilter
+    weighted_avg_PR: FloatFilter
+
+}
+
+type provinceleveldata {
+    date: DateTime
+    Province: String
+    measureid: String
+    weighted_avg_PR: Float
+}
+
+extend type Query {
+  provinceleveldata(filter: provinceleveldataFilter): [provinceleveldata]!
+}
