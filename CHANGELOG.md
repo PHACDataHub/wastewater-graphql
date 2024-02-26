@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.1.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.0.1...v2.1.0) (2024-02-26)
+
+
+### Features
+
+* add `canadaleveldata`, `healthregleveldata`, `provinceleveldata` ([#43](https://github.com/PHACDataHub/wastewater-graphql/issues/43)) ([7a0cc42](https://github.com/PHACDataHub/wastewater-graphql/commit/7a0cc42c2a7673ed5c45a60778f7cc7cfde738cf))
+
 ## [2.0.1](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.0.0...v2.0.1) (2024-01-09)
 
 
