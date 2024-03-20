@@ -120,7 +120,7 @@ const resolvers: Resolvers = {
   StandardCurve: withParentResolver('StandardCurve')(({ single }) => ({})),
   Countries: withParentResolver('countries')(({ single }) => ({})),
   Zones: withParentResolver('zones')(({ single }) => ({})),
-  healthregleveldata: withParentResolver('healthregleveldata')(({ single }) => ({})),
+  TownLevelDataTrend: withParentResolver('TownLevelDataTrend')(({ single }) => ({})),
   provinceleveldata: withParentResolver('provinceleveldata')(({ single }) => ({})),
   canadaleveldata: withParentResolver('canadaleveldata')(({ single }) => ({})),
 
@@ -149,7 +149,7 @@ const resolvers: Resolvers = {
     StandardCurve: apiResolver('StandardCurve'),
     countries: apiResolver('countries'),
     zones: apiResolver('zones'),
-    healthregleveldata: apiResolver('healthregleveldata'),
+    TownLevelDataTrend: apiResolver('TownLevelDataTrend'),
     provinceleveldata: apiResolver('provinceleveldata'),
     canadaleveldata: apiResolver('canadaleveldata'),
   },

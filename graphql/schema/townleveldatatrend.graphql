@@ -1,0 +1,27 @@
+input TownLevelDataTrendFilter {
+    fractionid: StringFilter
+    region: StringFilter
+    location: StringFilter
+    measureid: StringFilter
+    LatestValue: FloatFilter
+    LatestTrend: StringFilter
+    t_low: FloatFilter
+    t_high: FloatFilter
+    LatestLevel: StringFilter
+}
+
+type TownLevelDataTrend {
+    fractionid: String
+    region: String
+    location: String
+    measureid: String
+    LatestValue: Float
+    LatestTrend: String
+    t_low: Float
+    t_high: Float
+    LatestLevel: String
+}
+
+extend type Query {
+  TownLevelDataTrend(filter: TownLevelDataTrendFilter): [TownLevelDataTrend]!
+}
