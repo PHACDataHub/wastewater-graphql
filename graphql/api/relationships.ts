@@ -27,7 +27,7 @@ import { TableRelationships } from './types';
  *  "StandardCurve",
  *  "countries",
  *  "zones",
- *  "healthregleveldata",
+ *  "TownLevelDataTrend",
  *  "provinceleveldata",
  *  "canadaleveldata",
  * 
@@ -58,7 +58,7 @@ export const tables = [
   'StandardCurve',
   'countries',
   'zones',
-  "healthregleveldata",
+  "TownLevelDataTrend",
   "provinceleveldata",
   "canadaleveldata",
 ] as const;
