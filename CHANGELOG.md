@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.1.0...v2.2.0) (2024-03-20)
+
+
+### Features
+
+* add access to `townleveldatatrend` ([#45](https://github.com/PHACDataHub/wastewater-graphql/issues/45)) ([725ba55](https://github.com/PHACDataHub/wastewater-graphql/commit/725ba558745b1f9d8d4fba454d383f01ad98fc17))
+
 ## [2.1.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.0.1...v2.1.0) (2024-02-26)
 
 
