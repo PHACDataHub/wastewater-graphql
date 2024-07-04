@@ -15,7 +15,6 @@ variable "auth_groups" {
       description   = "National Microbiology Laboratory"
       subscriptions = 15
       suspended     = []
-
     },
     { group         = "csc"
       name          = "CSC"
@@ -34,7 +33,20 @@ variable "auth_groups" {
       description   = "Haines Junction (Yukon)"
       subscriptions = 15
       suspended     = []
-  }]
+    },
+    { group         = "omecp"
+      name          = "OMECP"
+      description   = "Ontario Ministry of the Environment, Conservation and Parks"
+      subscriptions = 15
+      suspended     = []
+    },
+    { group         = "pho"
+      name          = "PHO"
+      description   = "Public Health Ontario"
+      subscriptions = 15
+      suspended     = []
+    },
+  ]
 }
 
 # Azure subscription id 
