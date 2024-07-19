@@ -2,9 +2,9 @@ input allSitesFilter {
     collDT: DateTimeFilter
     name: StringFilter
     healthReg: StringFilter
-    measID: StringFilter
-    fractionID: StringFilter
-    dataID: StringFilter
+    measure: StringFilter
+    fraction: StringFilter
+    datasetID: StringFilter
     valavg: FloatFilter
     sampleID: StringFilter
     MA7: FloatFilter
