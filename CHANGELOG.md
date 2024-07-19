@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.2.1](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.2.0...v2.2.1) (2024-07-19)
+
+
+### Bug Fixes
+
+* correct allsites filters ([cbcb0b0](https://github.com/PHACDataHub/wastewater-graphql/commit/cbcb0b0b0a776d8d161f75ec9421c8eda83dc322))
+
 ## [2.2.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.1.0...v2.2.0) (2024-03-20)
 
 
