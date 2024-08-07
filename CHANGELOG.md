@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.3.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.2.1...v2.3.0) (2024-08-07)
+
+
+### Features
+
+* add `WastewaterAtEpiYearWeek` table ([#54](https://github.com/PHACDataHub/wastewater-graphql/issues/54)) ([5d1de97](https://github.com/PHACDataHub/wastewater-graphql/commit/5d1de9798ffe96559d746d9d500c609b5ece81c2))
+
+
+### Bug Fixes
+
+* correct int to float types in `InfobaseTrend` ([12fcfd0](https://github.com/PHACDataHub/wastewater-graphql/commit/12fcfd0bbac37621e46c54321f190750a2fe80b4))
+
 ## [2.2.1](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.2.0...v2.2.1) (2024-07-19)
 
 
