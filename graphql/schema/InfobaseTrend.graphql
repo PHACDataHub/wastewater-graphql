@@ -1,21 +1,29 @@
-input InfobaseTrendFilter{
-    fractionid: StringFilter
-    region: StringFilter
+input InfobaseTrendFilter {
     Location: StringFilter
-    measureid: StringFilter
-    LatestTrend: StringFilter
-    pruid: IntFilter
+    measure: StringFilter
+    latestTrends: StringFilter
+    pruid: StringFilter
+    t_low: IntFilter
+    t_high: IntFilter
+    LatestLevel: StringFilter
+    Grouping: StringFilter
+    City: StringFilter
+    Province: StringFilter
+    Country: StringFilter
 }
-
 type InfobaseTrend {
-    fractionid: String
-    region: String
     Location: String
-    measureid: String
-    LatestTrend: String
-    pruid: Int
-    # fraction: PartLUs
-    # meas: PartLUs
+    measure: String
+    latestTrends: String
+    pruid: String
+    t_low: Int
+    t_high: Int
+    LatestLevel: String
+    Grouping: String
+    City: String
+    Province: String
+    Country: String
+
 }
 
 extend type Query {

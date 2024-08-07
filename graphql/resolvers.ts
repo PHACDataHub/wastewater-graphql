@@ -120,9 +120,7 @@ const resolvers: Resolvers = {
   StandardCurve: withParentResolver('StandardCurve')(({ single }) => ({})),
   Countries: withParentResolver('countries')(({ single }) => ({})),
   Zones: withParentResolver('zones')(({ single }) => ({})),
-  TownLevelDataTrend: withParentResolver('TownLevelDataTrend')(({ single }) => ({})),
-  provinceleveldata: withParentResolver('provinceleveldata')(({ single }) => ({})),
-  canadaleveldata: withParentResolver('canadaleveldata')(({ single }) => ({})),
+  WastewaterAtEpiYearWeek: withParentResolver('WastewaterAtEpiYearWeek')(({ single }) => ({})),
 
   Query: {
     // addresses: apiResolver('addresses'),
@@ -149,9 +147,7 @@ const resolvers: Resolvers = {
     StandardCurve: apiResolver('StandardCurve'),
     countries: apiResolver('countries'),
     zones: apiResolver('zones'),
-    TownLevelDataTrend: apiResolver('TownLevelDataTrend'),
-    provinceleveldata: apiResolver('provinceleveldata'),
-    canadaleveldata: apiResolver('canadaleveldata'),
+    WastewaterAtEpiYearWeek: apiResolver('WastewaterAtEpiYearWeek'),
   },
 };
 

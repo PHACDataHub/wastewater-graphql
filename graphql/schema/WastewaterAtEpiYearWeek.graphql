@@ -1,0 +1,37 @@
+input WastewaterAtEpiYearWeekFilter {
+    Location: StringFilter
+    SiteName: StringFilter
+    City: StringFilter
+    Province: StringFilter
+    Country: StringFilter
+    EpiYear: FloatFilter
+    EpiWeek: FloatFilter
+    Week_start: DateTimeFilter
+    measure: StringFilter
+    w_avg: FloatFilter
+    min: FloatFilter
+    max: FloatFilter
+    Population_Coverage: FloatFilter
+    pruid: StringFilter
+}
+
+type WastewaterAtEpiYearWeek {
+    Location: String
+    SiteName: String
+    City: String
+    Province: String
+    Country: String
+    EpiYear: Float
+    EpiWeek: Float
+    Week_start: DateTime
+    measure: String
+    w_avg: Float
+    min: Float
+    max: Float
+    Population_Coverage: Float
+    pruid: String
+}
+
+extend type Query {
+  WastewaterAtEpiYearWeek(filter: WastewaterAtEpiYearWeekFilter): [WastewaterAtEpiYearWeek]!
+}
