@@ -58,9 +58,7 @@ export const tables = [
   'StandardCurve',
   'countries',
   'zones',
-  "TownLevelDataTrend",
-  "provinceleveldata",
-  "canadaleveldata",
+  'WastewaterAtEpiYearWeek',
 ] as const;
 
 /**
