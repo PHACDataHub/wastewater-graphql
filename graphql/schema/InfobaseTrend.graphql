@@ -3,8 +3,8 @@ input InfobaseTrendFilter {
     measure: StringFilter
     latestTrends: StringFilter
     pruid: StringFilter
-    t_low: IntFilter
-    t_high: IntFilter
+    t_low: FloatFilter
+    t_high: FloatFilter
     LatestLevel: StringFilter
     Grouping: StringFilter
     City: StringFilter
@@ -16,8 +16,8 @@ type InfobaseTrend {
     measure: String
     latestTrends: String
     pruid: String
-    t_low: Int
-    t_high: Int
+    t_low: Float
+    t_high: Float
     LatestLevel: String
     Grouping: String
     City: String
