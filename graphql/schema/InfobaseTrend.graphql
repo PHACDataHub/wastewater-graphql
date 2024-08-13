@@ -10,6 +10,7 @@ input InfobaseTrendFilter {
     City: StringFilter
     Province: StringFilter
     Country: StringFilter
+    Viral_Activity_Level: StringFilter
 }
 type InfobaseTrend {
     Location: String
@@ -23,6 +24,7 @@ type InfobaseTrend {
     City: String
     Province: String
     Country: String
+    Viral_Activity_Level: String
 
 }
 
