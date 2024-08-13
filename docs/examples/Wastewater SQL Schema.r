@@ -84,12 +84,18 @@ datasets {
 # DBTITLE 1,InfobaseTrend- The table that contains information about the trend flag assocaited with a given site
 
   InfobaseTrend {
-    fractionid
-    region
     Location
-    measureid
-    LatestTrend
+    measure
+    latestTrends
     pruid
+    t_low
+    t_high
+    LatestLevel
+    Grouping
+    City
+    Province
+    Country
+    Viral_Activity_Level
   }
 
 # COMMAND ----------
