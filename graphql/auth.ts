@@ -30,6 +30,11 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereIn: ['datasetID', ['NML-WWPCR', 'NML-GXWW', 'onsite-GXWW']],
     },
   },
+  pho: {
+    sites:{
+      whereIn: ['healthReg', ['Dryden', 'Kenora']]
+    }
+  },
   open: {
     sites: {
       where: ['siteID', 'thisiddoesnotexist'],
