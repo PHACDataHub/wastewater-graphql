@@ -85,17 +85,18 @@ const recurseAuth = (plan: AuthQueryPlan, parent?: AuthNode) => {
 
   if (
     plan.filters &&
-    (plan.filters.where || plan.filters.whereNot || plan.filters.whereIn)
+    (plan.filters.where || plan.filters.whereNot || plan.filters.whereIn || plan.filters.whereNotIn)
   ) {
     const filterName = (c: string) => {
       if (c === 'whereIn') return 'where in';
       if (c === 'whereNot') return 'where not';
+      if (c === 'whereNotIn') return 'where not in';
       return c;
     };
     const cond_text = Object.keys(plan.filters || {})
       .map((c) => {
         if (typeof plan.filters !== 'undefined') {
-          const filter = plan.filters[c as 'where' | 'whereNot' | 'whereIn'];
+          const filter = plan.filters[c as 'where' | 'whereNot' | 'whereIn' | 'whereNotIn'];
           return (
             (filter &&
               `${filterName(c).toUpperCase()}\\n${plan.table}.${
