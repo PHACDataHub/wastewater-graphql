@@ -13,6 +13,9 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     sites: {
       where: ['healthReg', 'CSC'],
     },
+    datasets: {
+      whereNot: ['datasetID', 'NML-WWMPOX'],
+    },
   },
   bccdc: {
     sites: {
@@ -20,6 +23,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     },
     datasets: {
       whereIn: ['datasetID', ['BCCDC', 'NML-WWPCR']],
+      whereNot: ['datasetID', 'NML-WWMPOX'],
     },
   },
   hnj: {
@@ -28,12 +32,16 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     },
     datasets: {
       whereIn: ['datasetID', ['NML-WWPCR', 'NML-GXWW', 'onsite-GXWW']],
+      whereNot: ['datasetID', 'NML-WWMPOX'],
     },
   },
   pho: {
     sites:{
-      whereIn: ['healthReg', ['Dryden', 'Kenora']]
-    }
+      whereIn: ['healthReg', ['Dryden', 'Kenora', 'Toronto']]
+    },
+    datasets: {
+      whereNotIn: ['datasetID', ['NML-WWMPOX', 'OMECP']],
+    },
   },
   open: {
     sites: {

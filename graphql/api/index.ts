@@ -159,6 +159,7 @@ export class QuerySet {
       if (step.filters.where) querySet.where(...step.filters.where);
       if (step.filters.whereIn) querySet.whereIn(...step.filters.whereIn);
       if (step.filters.whereNot) querySet.whereNot(...step.filters.whereNot);
+      if (step.filters.whereNotIn) querySet.whereNotIn(...step.filters.whereNotIn);
     }
     step.children.forEach((c) => {
       const joinedF = typeof c.fk === 'string' ? c.fk : c.fk[0];
