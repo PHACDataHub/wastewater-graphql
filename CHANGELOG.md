@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.4.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.3.0...v2.4.0) (2024-08-22)
+
+
+### Features
+
+* `whereNotIn` filtering, mpox intake ([#60](https://github.com/PHACDataHub/wastewater-graphql/issues/60)) ([a80b8ba](https://github.com/PHACDataHub/wastewater-graphql/commit/a80b8ba269ca3480eacdd2f5fbe40b67b1964d72))
+* add PHO access filters ([#58](https://github.com/PHACDataHub/wastewater-graphql/issues/58)) ([f71fcf0](https://github.com/PHACDataHub/wastewater-graphql/commit/f71fcf0c2be2ba13704801bdabd2dc2744c7eb2b))
+
 ## [2.3.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.2.1...v2.3.0) (2024-08-13)
 
 
