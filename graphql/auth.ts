@@ -35,12 +35,27 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereNot: ['datasetID', 'NML-WWMPOX'],
     },
   },
-  pho: {
+  pho: { // MOH is using this as well
     sites:{
       whereIn: ['healthReg', ['Dryden', 'Kenora', 'Toronto']]
     },
     datasets: {
       whereNotIn: ['datasetID', ['NML-WWMPOX', 'OMECP']],
+    },
+    measures: {
+      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB"]]
+    }
+  },
+  omecp: { // as OMECP conditions TBD, use OMECP group as TPH group and rename afterwards
+    // TPH conditions
+    sites:{
+      whereIn: ['healthReg', ['Toronto']]
+    },
+    datasets: {
+      whereNotIn: ['datasetID', ['NML-WWMPOX', 'OMECP']],
+    },
+    measures: {
+      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB"]]
     },
   },
   open: {
