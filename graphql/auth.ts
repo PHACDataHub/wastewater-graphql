@@ -43,7 +43,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereNotIn: ['datasetID', ['NML-WWMPOX', 'OMECP']],
     },
     measures: {
-      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB"]]
+      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB", "flowVol"]]
     }
   },
   omecp: { // as OMECP conditions TBD, use OMECP group as TPH group and rename afterwards
@@ -55,7 +55,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereNotIn: ['datasetID', ['NML-WWMPOX', 'OMECP']],
     },
     measures: {
-      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB"]]
+      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB", "flowVol"]]
     },
   },
   open: {
