@@ -1,5 +1,13 @@
 # Changelog
 
+## [2.5.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.4.0...v2.5.0) (2024-09-26)
+
+
+### Features
+
+* `wastewatermpox` access ([#66](https://github.com/PHACDataHub/wastewater-graphql/issues/66)) ([409ea22](https://github.com/PHACDataHub/wastewater-graphql/commit/409ea2256b566e7d7cc86033597554579bba09b4))
+* add measure filter, TPH auth group ([5bc315b](https://github.com/PHACDataHub/wastewater-graphql/commit/5bc315b1601dd9156b54add10abb470c3f602787))
+
 ## [2.4.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.3.0...v2.4.0) (2024-08-22)
 
 
