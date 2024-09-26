@@ -27,9 +27,8 @@ import { TableRelationships } from './types';
  *  "StandardCurve",
  *  "countries",
  *  "zones",
- *  "TownLevelDataTrend",
- *  "provinceleveldata",
- *  "canadaleveldata",
+ *  "WastewaterAtEpiYearWeek",
+ *  "wastewatermpox",
  * 
  * ]}
  */
@@ -59,6 +58,7 @@ export const tables = [
   'countries',
   'zones',
   'WastewaterAtEpiYearWeek',
+  'wastewatermpox',
 ] as const;
 
 /**

@@ -16,6 +16,9 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     datasets: {
       whereNot: ['datasetID', 'NML-WWMPOX'],
     },
+    wastewatermpox: {
+      where: ['Location', 'thisiddoesnotexist'],
+    },
   },
   bccdc: {
     sites: {
@@ -25,6 +28,9 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereIn: ['datasetID', ['BCCDC', 'NML-WWPCR']],
       whereNot: ['datasetID', 'NML-WWMPOX'],
     },
+    wastewatermpox: {
+      where: ['Location', 'thisiddoesnotexist'],
+    },
   },
   hnj: {
     sites: {
@@ -33,6 +39,9 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     datasets: {
       whereIn: ['datasetID', ['NML-WWPCR', 'NML-GXWW', 'onsite-GXWW']],
       whereNot: ['datasetID', 'NML-WWMPOX'],
+    },
+    wastewatermpox: {
+      where: ['Location', 'thisiddoesnotexist'],
     },
   },
   pho: { // MOH is using this as well
@@ -44,7 +53,10 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     },
     measures: {
       whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB", "flowVol"]]
-    }
+    },
+    wastewatermpox: {
+      where: ['Location', 'thisiddoesnotexist'],
+    },
   },
   omecp: { // as OMECP conditions TBD, use OMECP group as TPH group and rename afterwards
     // TPH conditions
@@ -57,10 +69,16 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     measures: {
       whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB", "flowVol"]]
     },
+    wastewatermpox: {
+      where: ['Location', 'thisiddoesnotexist'],
+    },
   },
   open: {
     sites: {
       where: ['siteID', 'thisiddoesnotexist'],
+    },
+    wastewatermpox: {
+      where: ['Location', 'thisiddoesnotexist'],
     },
   }
 };
