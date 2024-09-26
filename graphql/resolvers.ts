@@ -121,6 +121,7 @@ const resolvers: Resolvers = {
   Countries: withParentResolver('countries')(({ single }) => ({})),
   Zones: withParentResolver('zones')(({ single }) => ({})),
   WastewaterAtEpiYearWeek: withParentResolver('WastewaterAtEpiYearWeek')(({ single }) => ({})),
+  wastewatermpox: withParentResolver('wastewatermpox')(({ single }) => ({})),
 
   Query: {
     // addresses: apiResolver('addresses'),
@@ -148,6 +149,7 @@ const resolvers: Resolvers = {
     countries: apiResolver('countries'),
     zones: apiResolver('zones'),
     WastewaterAtEpiYearWeek: apiResolver('WastewaterAtEpiYearWeek'),
+    wastewatermpox: apiResolver('wastewatermpox'),
   },
 };
 

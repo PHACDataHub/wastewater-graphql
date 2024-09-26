@@ -1,0 +1,29 @@
+input wastewatermpoxFilter {
+  Location: StringFilter
+  EpiYear: StringFilter
+  EpiWeek: StringFilter
+  Week_start: StringFilter
+  mpoxG2R: StringFilter
+  mpoxG2RTotal: StringFilter
+  g2r_perc: StringFilter
+  g2r_positive_epiweek: StringFilter
+  g2r_label: StringFilter
+  Grouping: StringFilter
+}
+
+type wastewatermpox {
+  Location: String
+  EpiYear: String
+  EpiWeek: String
+  Week_start: String
+  mpoxG2R: String
+  mpoxG2RTotal: String
+  g2r_perc: String
+  g2r_positive_epiweek: String
+  g2r_label: String
+  Grouping: String
+}
+
+extend type Query {
+  wastewatermpox(filter: wastewatermpoxFilter): [wastewatermpox]!
+}
