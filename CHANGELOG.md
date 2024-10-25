@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.5.0...v2.6.0) (2024-10-25)
+
+
+### Features
+
+* add MB group access ([#68](https://github.com/PHACDataHub/wastewater-graphql/issues/68)) ([d93e97e](https://github.com/PHACDataHub/wastewater-graphql/commit/d93e97ef766bf888713501415c3a26aa96624c91))
+
 ## [2.5.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.4.0...v2.5.0) (2024-09-26)
 
 
