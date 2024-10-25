@@ -46,6 +46,12 @@ variable "auth_groups" {
       subscriptions = 15
       suspended     = []
     },
+    { group         = "MB"
+      name          = "MB"
+      description   = "Manitoba grouping for PHAC"
+      subscriptions = 5
+      suspended     = []
+    },
   ]
 }
 
