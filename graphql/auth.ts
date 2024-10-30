@@ -80,6 +80,17 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     wastewatermpox: {
       where: ['Location', 'thisiddoesnotexist'],
     },
+  },
+  mb:{
+    sites:{
+      whereIn: ['siteID', ['THM, WPG-W, WPG-S, WPG-N, FLN, BDN']]
+    },
+    measures: {
+      whereIn: ['measure', ["covN2", "fluA", "fluB", "rsvA", "rsvB"]]
+    },
+    wastewatermpox: {
+      where: ['Location', 'thisiddoesnotexist'],
+    },
   }
 };
 
