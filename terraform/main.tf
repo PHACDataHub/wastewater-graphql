@@ -134,5 +134,7 @@ resource "azurerm_api_management_subscription" "ww-product-subscription" {
 
   state = each.value.state
 
+  allow_tracing = false
+
   depends_on = [azurerm_api_management_product.ww-product]
 }
