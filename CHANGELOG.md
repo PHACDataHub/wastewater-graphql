@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.6.1](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.6.0...v2.6.1) (2024-11-20)
+
+
+### Bug Fixes
+
+* correct mb condition ([03cc0a8](https://github.com/PHACDataHub/wastewater-graphql/commit/03cc0a8df3c4fe00b1b4d6e7a98aa5aa8b4774dc))
+
 ## [2.6.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.5.0...v2.6.0) (2024-10-25)
 
 
