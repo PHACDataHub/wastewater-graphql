@@ -81,7 +81,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       where: ['Location', 'thisiddoesnotexist'],
     },
   },
-  mb:{
+  MB:{
     sites:{
       whereIn: ['siteID', ["THM", "WPG-W", "WPG-S", "WPG-N", "FLN", "BDN"]]
     },
