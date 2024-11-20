@@ -86,7 +86,7 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereIn: ['siteID', ["THM", "WPG-W", "WPG-S", "WPG-N", "FLN", "BDN"]]
     },
     datasets: {
-      whereNot: ['datasetID', 'NML-WWMPOX'],
+      whereNotIn: ['datasetID',['NML-GXWW', 'NML-WWMPOX']],
     },
     measures: {
       whereIn: ['measure', ["covN2", "fluA", "fluB", "rsvA", "rsvB"]]
