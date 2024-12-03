@@ -16,6 +16,9 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     datasets: {
       whereNot: ['datasetID', 'NML-WWMPOX'],
     },
+    measures: {
+      whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]]
+    },
     wastewatermpox: {
       where: ['Location', 'thisiddoesnotexist'],
     },
@@ -27,6 +30,9 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     datasets: {
       whereIn: ['datasetID', ['BCCDC', 'NML-WWPCR']],
       whereNot: ['datasetID', 'NML-WWMPOX'],
+    },
+    measures: {
+      whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]]
     },
     wastewatermpox: {
       where: ['Location', 'thisiddoesnotexist'],
@@ -40,6 +46,9 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereIn: ['datasetID', ['NML-WWPCR', 'NML-GXWW', 'onsite-GXWW']],
       whereNot: ['datasetID', 'NML-WWMPOX'],
     },
+    measures: {
+      whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]]
+    },
     wastewatermpox: {
       where: ['Location', 'thisiddoesnotexist'],
     },
@@ -52,7 +61,8 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereNotIn: ['datasetID', ['NML-WWMPOX', 'OMECP']],
     },
     measures: {
-      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB", "flowVol"]]
+      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB", "flowVol"]],
+      whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]]
     },
     wastewatermpox: {
       where: ['Location', 'thisiddoesnotexist'],
@@ -67,7 +77,8 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereNotIn: ['datasetID', ['NML-WWMPOX', 'OMECP']],
     },
     measures: {
-      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB", "flowVol"]]
+      whereIn: ['measure', ["covN2", "covN200U", "fluA", "fluB", "rsvA", "rsvB", "flowVol"]],
+      whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]]
     },
     wastewatermpox: {
       where: ['Location', 'thisiddoesnotexist'],
@@ -89,7 +100,8 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
       whereNotIn: ['datasetID',['NML-GXWW', 'NML-WWMPOX']],
     },
     measures: {
-      whereIn: ['measure', ["covN2", "fluA", "fluB", "rsvA", "rsvB"]]
+      whereIn: ['measure', ["covN2", "fluA", "fluB", "rsvA", "rsvB"]],
+      whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]]
     },
     wastewatermpox: {
       where: ['Location', 'thisiddoesnotexist'],
