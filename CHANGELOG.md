@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.7.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.6.1...v2.7.0) (2024-12-03)
+
+
+### Features
+
+* add mpox measure filters ([#73](https://github.com/PHACDataHub/wastewater-graphql/issues/73)) ([8df6568](https://github.com/PHACDataHub/wastewater-graphql/commit/8df6568af957141652f6770c2c71a9aa3b17ebe7))
+
 ## [2.6.1](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.6.0...v2.6.1) (2024-11-20)
 
 
