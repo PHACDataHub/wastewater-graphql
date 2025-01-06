@@ -13,7 +13,7 @@ variable "auth_groups" {
     { group         = "nml-lab"
       name          = "NML"
       description   = "National Microbiology Laboratory"
-      subscriptions = 15
+      subscriptions = 30
       suspended     = []
     },
     { group         = "csc"
@@ -50,6 +50,12 @@ variable "auth_groups" {
       name          = "MB"
       description   = "Manitoba grouping for PHAC"
       subscriptions = 5
+      suspended     = []
+    },
+    { group         = "kcb"
+      name          = "KCB"
+      description   = "Kingston"
+      subscriptions = 15
       suspended     = []
     },
   ]
