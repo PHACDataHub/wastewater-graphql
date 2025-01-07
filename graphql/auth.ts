@@ -106,6 +106,20 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     wastewatermpox: {
       where: ['Location', 'thisiddoesnotexist'],
     },
+  },
+  kcb:{
+    sites:{
+      where: ['healthReg', "Kingston"]
+    },
+    datasets: {
+      whereNotIn: ['datasetID',['NML-WWMPOX']],
+    },
+    measures: {
+      whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]]
+    },
+    wastewatermpox: {
+      where: ['Location', 'thisiddoesnotexist'],
+    },
   }
 };
 
