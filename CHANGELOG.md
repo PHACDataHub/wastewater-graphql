@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.8.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.7.0...v2.8.0) (2025-01-15)
+
+
+### Features
+
+* add `Province` column to `allSites` and `allSitesAdj` ([#78](https://github.com/PHACDataHub/wastewater-graphql/issues/78)) ([b60fee2](https://github.com/PHACDataHub/wastewater-graphql/commit/b60fee266037d1c04aed12bb99aa3a568cc358f6))
+
 ## [2.7.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.6.1...v2.7.0) (2025-01-07)
 
 
