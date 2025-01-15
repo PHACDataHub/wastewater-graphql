@@ -11,6 +11,7 @@ input allSitesAdjFilter {
     sd_avg: FloatFilter
     Tests_performed: StringFilter
     siteID: StringFilter
+    Province: StringFilter
 }
 
 type allSitesAdj {
@@ -26,6 +27,7 @@ type allSitesAdj {
     sd_avg: Float
     Tests_performed: String
     siteID: String
+    Province: String
     # dataset: Datasets
     # sample: Samples
     # fraction: PartLUs
