@@ -12,6 +12,7 @@ input allSitesFilter {
     Tests_performed: StringFilter
     siteID: StringFilter
     Province: StringFilter
+    reportDate: DateTimeFilter
 }
 
 type allSites {
@@ -28,6 +29,7 @@ type allSites {
     Tests_performed: String
     siteID: String
     Province: String
+    reportDate: DateTime
     # dataset: Datasets
     # sample: Samples
     # fraction: PartLUs
