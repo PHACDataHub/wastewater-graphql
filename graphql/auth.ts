@@ -94,14 +94,10 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
   },
   MB:{
     sites:{
-      whereIn: ['siteID', ["THM", "WPG-W", "WPG-S", "WPG-N", "FLN", "BDN"]]
-    },
-    datasets: {
-      whereNotIn: ['datasetID',['NML-GXWW', 'NML-WWMPOX']],
+      whereNotIn: ['siteID', ['CHB', 'BEH', 'EDZ', 'MSS', 'WKG', 'EEL-1', 'EEL-2', 'TBQ', 'WAS', 'CNR', 'SNC']] // no access to FN Sites
     },
     measures: {
-      whereIn: ['measure', ["covN2", "fluA", "fluB", "rsvA", "rsvB"]],
-      whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]]
+      whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]] //no access to mpox measures
     },
     wastewatermpox: {
       where: ['Location', 'thisiddoesnotexist'],
