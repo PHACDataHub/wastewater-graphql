@@ -96,6 +96,9 @@ export const groups: { readonly [authGroup: string]: AuthFilters } = {
     sites:{
       whereNotIn: ['siteID', ['CHB', 'BEH', 'EDZ', 'MSS', 'WKG', 'EEL-1', 'EEL-2', 'TBQ', 'WAS', 'CNR', 'SNC']] // no access to FN Sites
     },
+    datasets: {
+      whereNot: ['datasetID', 'NML-WWMPOX'],
+    },
     measures: {
       whereNotIn: ['measure', ["g2rNML", "g2rG", "g2rWA"]] //no access to mpox measures
     },
