@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.9.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.8.0...v2.9.0) (2025-04-15)
+
+
+### Features
+
+* add datetime columns to `measures` ([8f56587](https://github.com/PHACDataHub/wastewater-graphql/commit/8f565879101ba30025ece1445f91c43246fcbf35))
+
 ## [2.8.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.7.0...v2.8.0) (2025-02-13)
 
 
