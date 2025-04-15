@@ -7,6 +7,9 @@ input MeasuresFilter {
   siteID: StringFilter
   datasetID: StringFilter
   measureSetRepID: StringFilter
+  aDateStart: DateTimeFilter
+  aDateEnd: DateTimeFilter
+  reportDate: DateTimeFilter
   compartment: StringFilter
   specimenID: StringFilter
   fraction: StringFilter
@@ -23,6 +26,7 @@ input MeasuresFilter {
   organizationID: StringFilter
   contactID: StringFilter
   refLink: StringFilter
+  lastEdited: DateTimeFilter
 }
 
 type Measures {
@@ -34,6 +38,9 @@ type Measures {
   siteID: String
   datasetID: String
   measureSetRepID: String
+  aDateStart: DateTime
+  aDateEnd: DateTime
+  reportDate: DateTime
   compartment: String
   specimenID: String
   fraction: String
@@ -50,6 +57,7 @@ type Measures {
   organizationID: String
   contactID: String
   refLink: String
+  lastEdited: DateTime
   # protocolID_protocols: Protocols
   # sampleID_samples: Samples
   # purposeID_parts: Parts

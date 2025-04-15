@@ -111,6 +111,9 @@ datasets {
     siteID
     datasetID
     measureSetRepID
+    aDateStart
+    aDateEnd
+    reportDate
     compartment
     specimenID
     fraction
@@ -127,6 +130,7 @@ datasets {
     organizationID
     contactID
     refLink
+    lastEdited
   }
 
 # COMMAND ----------
