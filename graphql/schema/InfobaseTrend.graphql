@@ -11,7 +11,7 @@ input InfobaseTrendFilter {
     Province: StringFilter
     Country: StringFilter
     Viral_Activity_Level: StringFilter
-    Week_start: StringFilter
+    Week_start: DateTimeFilter
 }
 type InfobaseTrend {
     Location: String
@@ -26,7 +26,7 @@ type InfobaseTrend {
     Province: String
     Country: String
     Viral_Activity_Level: String
-    Week_start: String
+    Week_start: DateTime
 
 }
 
