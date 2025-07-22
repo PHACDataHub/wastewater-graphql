@@ -1,5 +1,17 @@
 # Changelog
 
+## [2.10.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.9.0...v2.10.0) (2025-07-22)
+
+
+### Features
+
+* add `Week_start` to `InfobaseTrend` ([#83](https://github.com/PHACDataHub/wastewater-graphql/issues/83)) ([58a6e0a](https://github.com/PHACDataHub/wastewater-graphql/commit/58a6e0af5a1dc58d1ec2eb80b194e6ff11e9284b))
+
+
+### Bug Fixes
+
+* update `Week_start` to `DateTime` ([e149827](https://github.com/PHACDataHub/wastewater-graphql/commit/e149827c586ddfe57b0d7d3aaec21c286cd0fede))
+
 ## [2.9.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.8.0...v2.9.0) (2025-04-15)
 
 
