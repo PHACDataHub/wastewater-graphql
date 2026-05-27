@@ -1,0 +1,16 @@
+[project]
+name = "wastewater-api"
+version = "0.1.0"
+description = "Add your description here"
+readme = "README.md"
+requires-python = ">=3.14"
+dependencies = [
+    "fastapi-pagination>=0.15.13",
+    "fastapi[standard]>=0.128.0",
+    "pymssql>=2.3.11",
+    "pyodbc>=5.3.0",
+    "requests>=2.32.5",
+    "sqlakeyset>=2.0.1775222100",
+    "sqlmodel>=0.0.31",
+    "strawberry-graphql[debug-server]>=0.289.0",
+]
