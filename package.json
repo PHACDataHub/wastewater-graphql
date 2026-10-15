@@ -38,10 +38,5 @@
     "eslint": "^8.25.0",
     "eslint-config-prettier": "^8.5.0",
     "eslint-plugin-prettier": "^4.2.1"
-  },
-  "allowScripts": {
-    "@apollo/protobufjs@1.2.7": true,
-    "azure-functions-core-tools@4.0.4829": true,
-    "es5-ext@0.10.62": true
   }
 }
