@@ -1,5 +1,12 @@
 # Changelog
 
+## [2.10.1](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.10.0...v2.10.1) (2026-11-24)
+
+
+### Bug Fixes
+
+* Increase auth depth for qualityReports ([#123](https://github.com/PHACDataHub/wastewater-graphql/issues/123)) ([46ccbcb](https://github.com/PHACDataHub/wastewater-graphql/commit/46ccbcb24387981295e31a4e9ef5a45aac776a88))
+
 ## [2.10.0](https://github.com/PHACDataHub/wastewater-graphql/compare/v2.9.0...v2.10.0) (2025-07-22)
 
 
