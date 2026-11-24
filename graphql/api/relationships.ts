@@ -132,7 +132,7 @@ export const tableRelationships: TableRelationships = {
     {
       table: 'measures',
       foreignKeys: 'measureRepID',
-      auth: { depth: 1, required: true },
+      auth: { depth: 2, required: true },
     },
     { table: 'samples', foreignKeys: 'sampleID' },
     // { table: 'contacts', foreignKeys: 'contactID' },
